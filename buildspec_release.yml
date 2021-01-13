@@ -9,7 +9,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t  web:1 .
+      - docker build -t  web1 .
       - docker tag web:1 260171538315.dkr.ecr.ap-southeast-1.amazonaws.com/web1
   post_build:
     commands:
