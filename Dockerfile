@@ -1,15 +1,6 @@
-FROM centos:centos6
-
-MAINTAINER Harish
-
-RUN yum clean all
-
-RUN yum update
-
-RUN yum -y install httpd
-
+FROM centos
+RUN yum install httpd -y
 COPY index.html /var/www/html/
 
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
-
+CMD [“/usr/sbin/httpd”,” -D”,” FOREGROUND”]
 EXPOSE 80
