@@ -16,3 +16,7 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 260171538315.dkr.ecr.ap-southeast-1.amazonaws.com/web1
+artifacts:
+  files:
+   - imagedefinitions.json
+   - target/order-service.jar  
