@@ -1,6 +1,10 @@
 FROM centos:centos6
 
-MAINTAINER VarunMnaik
+MAINTAINER Harish
+
+RUN yum clean all
+
+RUN yum update
 
 RUN yum -y install httpd
 
