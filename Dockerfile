@@ -1,6 +1,3 @@
-FROM centos
-RUN yum install httpd -y
-COPY index.html /var/www/html/
-EXPOSE 80
-ENTRYPOINT  [“/usr/sbin/httpd”,” -D”,” FOREGROUND”]
+FROM httpd:2.4
+COPY ./index.html /usr/local/apache2/htdocs
 
