@@ -1,7 +1,7 @@
 [
     {
         "name": "web1",
-        "imageUri": "276701924684.dkr.ecr.us-east-1.amazonaws.com/manikcloud:latest"
+        "imageUri": "260171538315.dkr.ecr.ap-southeast-1.amazonaws.com/web1"
     }
 ]
 
