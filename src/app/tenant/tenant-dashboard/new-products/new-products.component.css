@@ -1,0 +1,33 @@
+td {
+  font-size: 14px;
+}
+
+.prdname {
+  font-weight: 800;
+  color: #000;
+  font-size: 18px;
+}
+
+.btn-try {
+  color: #fafafa;
+  font-size: 12px;
+  background-color: #70ad47;
+  border-radius: 3px;
+  padding: 6px 16px;
+}
+
+.btn-buy {
+  color: #fafafa;
+  font-size: 12px;
+  background-color: #0070c0;
+  border-radius: 3px;
+  padding: 6px 16px;
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 575px) {
+
+  .modal-title {
+    font-size: 14px;
+  }
+}

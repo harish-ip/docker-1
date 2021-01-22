@@ -1,0 +1,55 @@
+<div class="pt-3 pb-1" *ngIf="tenantName">
+  <h5>Tenant Name: <span class="text-primary">{{tenantName}}</span></h5>
+</div>
+
+<div class="alert alert-info mt-3 text-center" role="alert" *ngIf="!refundProduct">
+  <small> Please go to the <a [routerLink]="['/admin/refund/Refund-and-adjustment']"
+      class="alert-link text-primary">Refund
+      & Adjustment </a> and click on Refund Icon( <i class="fas fa-dollar-sign" title="Refund"
+      style="color: #fff; background-color: #2AC940; padding: 5px;border-radius: 5px;"></i> ) to Refund
+    the amount.</small>
+</div>
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3 refundproduct" *ngIf="refundProduct">
+
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div class="card">
+          <div class="row no-gutters">
+            <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 p-2 vertical-align">
+              <img src="{{refundProduct.productImage}}" class="img-fluid" alt="Product Image">
+            </div>
+            <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+              <div class="card-body">
+                <h5 class="card-title">{{refundProduct.productName}}</h5>
+                <p class="card-text"><small class="text-muted">$ {{refundProduct.productPrice}}</small></p>
+                <p class="card-text prd-desc">{{refundProduct.productDescription}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <form>
+          <div class="form-group mx-1">
+            <div class="row col-12 m-0 p-0">
+              <label for="refundAmount">Refund Amount</label>
+              <input type="text" class="form-control input-custom-control" id="inputPassword4"
+                placeholder="Refund Amount" [(ngModel)]="amount" disabled [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="float-right">
+              <button class="btn btn-warning mt-2" (click)="pay()">Pay</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,215 @@
+<!-- Loading Indicator -->
+<div *ngIf="!title.isLoding" class="d-flex justify-content-center">
+  <div class="lds-facebook">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<!-- Products against related suite-->
+<div class="row" *ngIf="title.isLoding">
+
+  <!-- no new products -->
+  <div class="col-12" *ngIf="!products">
+    <div class="d-flex justify-content-center">
+      <img src="./../assets/Images/noproduct.png" class="img-fluid" alt="noproduct">
+    </div>
+    <div class="text-center noSub">
+      No Products to show
+    </div>
+  </div>
+
+  <ng-container *ngIf="products">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 my-auto pb-3"
+      *ngFor="let product of products | paginate: { itemsPerPage: 6, currentPage: p }">
+
+      <div class="prd-div p-3 column-margin">
+
+        <!-- Product Image -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center py-3">
+          <!-- <img src="{{product.productImage}}" class="img-fluid" alt="operating system logo"> -->
+
+          <img [src]="santizer.bypassSecurityTrustResourceUrl(product.productIcon)" alt="{{product.productName}}"
+            class="img-icon">
+
+        </div>
+
+        <!-- Product Name -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <h6 class="prdname" title="{{product.productName}}">{{product.productName}}</h6>
+          <span class="prddura">
+            <td class="prddura" *ngIf="product.productDuration === '30'">
+              One Month
+            </td>
+            <td class="prddura" *ngIf="product.productDuration === '365'">
+              One Year
+            </td>
+            <td class="prddura" *ngIf="product.productDuration === '1095'">
+              Three Years
+            </td>
+          </span>
+        </div>
+
+        <!-- Product Price -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <h6 class="prdprice">Price: "TBD"
+            <!--  "TBD" / <span class="prdprice">{{product.productDuration}}</span> -->
+          </h6>
+        </div>
+
+        <!-- Product Description -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <p class="prddesc">{{product.productDescription}}</p>
+        </div>
+
+        <!-- Product Actions -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center mb-3">
+          <!-- <button type="button" class="btn btn-assign" title="Assign" style="cursor: not-allowed;">Assign</button> -->
+          <button type="button" class="btn btn-edit ml-1" title="Edit" (click)="UpdateProduct(product)">Edit</button>
+          <button type="button" class="btn btn-delete ml-1" title="Delete" data-toggle="modal" data-target="#delprd"
+            data-backdrop="static" data-keyboard="false" (click)="getDeletePrdDetails(product)">Delete</button><br>
+		  
+        </div>
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center mb-3">
+         <button class="btn btn-assign mr-2" data-backdrop="static" data-keyboard="false" data-target="#assign" data-toggle="modal" title="Assign" type="button" (click)="copyBuyProduct(product)"> License </button>
+        </div>
+
+      </div>
+
+    </div>
+  </ng-container>
+</div>
+<!-- Assign modal  -->
+<!-- <div class="modal fade" id="assign" tabindex="-1" role="dialog" aria-labelledby="assignTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"> Activate License To</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clear()">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <div class="col-12 my-3">Select Company</div>
+          <div class="col-12">
+            <select id="siteAdmin" name="siteAdmin" class="form-control" placeholder="Select Company" required
+              (change)="getClientAdmins()" [(ngModel)]="selectedSiteAdmin">
+              <option value="">Select Company</option>
+              <option *ngFor="let sa of clientadmins" [value]="sa.organizationName">
+                {{sa.organizationName}}
+              </option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3 text-center">
+        <button type="button" class="btn btn-modelAssign" data-dismiss="modal" title="Assign" (click)="assign();"
+          [disabled]="selectedSiteAdmin == ''"> 
+          Activate License
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div> -->
+<!-- Assign modal  -->
+<div class="modal fade" id="assign" tabindex="-1" role="dialog" aria-labelledby="assignTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Assign to</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clear()">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <div class="col-12 my-3">Select Company</div>
+          <div class="col-12">
+             <select id="companyUser" name="companyUser" class="form-control" placeholder="Select Company" required
+              [(ngModel)]="selectedCompany" (ngModelChange)="onCompSelected()">
+              <option value="">Select Company</option>
+              <option *ngFor="let sa of clientadmins" [value]="sa.username">
+                {{sa.organizationName}}
+              </option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3 text-center">
+        <!-- <button type="button" class="btn btn-modelAssign" data-dismiss="modal" title="Assign" (click)="assign()"
+          [disabled]="selectedSiteAdmin == ''">
+          Assign
+        </button> --> <button type="button" class="btn btn-assign mr-2" data-dismiss="modal" (click)="assignLicense()" title="Buy" [disabled]="selectedCompany == ''">Assign</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<!-- modal  -->
+<div *ngIf="products.length > 6">
+  <pagination-controls (pageChange)="p = $event" responsive=" true" previousLabel="Previous" nextLabel="Next">
+  </pagination-controls>
+</div>
+<!-- Try modal  -->
+<div class="modal fade" id="delprd" tabindex="-1" role="dialog" aria-labelledby="tryModalTitle" aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Do you want to delete product - <strong>{{prdname}}</strong></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body p-4">
+        <p>{{prddesc}}</p>
+      </div>
+
+      <div class="modal-footer mx-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+          <button type="button" class="btn btn-delete" title="Delete" data-dismiss="modal"
+            (click)="DeleteProduct()">Delete</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!-- modal  -->
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content" *ngIf="selectedProd">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">{{selectedProd.productName}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <p>
+            You are accessing <strong>{{selectedProd.productName}}</strong> by valid token
+          </p>
+          <div style="word-wrap: break-word;">
+            <p>{{token}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

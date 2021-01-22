@@ -1,0 +1,9 @@
+#description::placeholder {
+  transform: translateY(30px);
+  font-size: 12px;
+}
+
+.input-group-append {
+  margin-left: -1px;
+  height: 38px;
+}

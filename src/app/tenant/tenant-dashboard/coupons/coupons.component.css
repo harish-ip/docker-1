@@ -1,0 +1,23 @@
+.couponcode {
+  width: 200px;
+}
+
+.prdid {
+  width: 10%;
+}
+
+.prdname {
+  width: 15%;
+}
+
+.prddur {
+  width: 15%;
+}
+
+.w-25 {
+  word-wrap: break-word;
+  max-width: 250px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden !important;
+}

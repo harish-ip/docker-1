@@ -1,0 +1,322 @@
+<div class="col-12" *ngIf="!register">
+  <div class="d-flex justify-content-center">
+    <img src="./../assets/Images/noproduct.png" class="img-fluid" alt="noproduct">
+  </div>
+  <div class="text-center noSub">
+    No User to edit
+  </div>
+  <div class="d-flex justify-content-center mt-4">
+    <a class="btn btn-sm btn-select font-weight-bold" routerLink="/siteadmin/users/siteadmin-user-list"
+      routerLinkActive="router-link-active" title="Select User">Select
+      User</a>
+  </div>
+</div>
+
+<form method="post" #regForm="ngForm" (ngSubmit)="updateClientUsers()" *ngIf="register">
+
+  <div class="row mb-2 d-flex justify-content-center">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+      <!-- 1st row -->
+      <div class="form-group row">
+
+        <!-- First Name -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <input type="text" id="firstname" name="firstname"
+            class="form-control input-custom-control text-center column-margin" placeholder="First name"
+            [(ngModel)]="register.firstname" #firstname="ngModel" required minlength="1"
+            pattern="^[a-zA-z]+([\s][a-zA-Z]+)*$" maxlength="16" autocomplete="off">
+
+          <div *ngIf="firstname?.touched" class="text-danger">
+            <div *ngIf="firstname.errors?.required">
+              <small>First name is required</small>
+            </div>
+            <div *ngIf="firstname.errors?.pattern">
+              <small>Accept only alphabetical with space</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Last Name -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <input type="text" id="lastname" name="lastname"
+            class="form-control input-custom-control text-center column-margin" placeholder="Last name"
+            [(ngModel)]="register.lastname" #lastname="ngModel" required minlength="1" maxlength="16"
+            pattern="^[a-zA-z]+([\s][a-zA-Z]+)*$" autocomplete="off">
+
+          <div *ngIf="lastname?.touched" class="text-danger">
+            <div *ngIf="lastname.errors?.required">
+              <small>Last name is required</small>
+            </div>
+            <div *ngIf="lastname.errors?.pattern">
+              <small>Accept only alphabetical with space</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <input type="text" id="email" name="email" class="form-control input-custom-control text-center"
+            placeholder="Email" [email]="register.email!==''" [(ngModel)]="register.email" #email="ngModel"
+            (keyup)="isEmailExisted()" required minlength="6" maxlength="40"
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" autocomplete="off">
+
+          <div *ngIf="email?.touched" class="text-danger">
+            <div *ngIf="email.errors?.required">
+              <small> Email is required</small>
+            </div>
+            <div *ngIf="email.errors?.pattern">
+              <small>Email must be a valid email address </small>
+            </div>
+            <!-- <div *ngIf="email.errors?.minlength">
+                          <small>Email must be at least 6 characters long except domain name</small>
+                        </div> -->
+            <div *ngIf="emailexistError">
+              <small *ngIf="email?.dirty && email?.valid">{{emailexistError}}</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 2nd row -->
+      <div class="form-group row">
+
+        <!-- User Name -->
+        <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <input type="text" id="username" name="username"
+            class="form-control input-custom-control text-center column-margin" placeholder="User name"
+            [(ngModel)]="register.username" #username="ngModel" (keyup)="isExisted()" required minlength="6"
+            maxlength="16" autocomplete="off" pattern="[a-zA-Z0-9]+" disabled>
+
+          <div *ngIf="username?.touched" class="text-danger">
+            <div *ngIf="username.errors?.required">
+              <small> User name is required</small>
+            </div>
+            <div *ngIf="username.errors?.minlength">
+              <small> User name must be at least 6 characters</small>
+            </div>
+            <div *ngIf="usernamevalidation">
+              <small *ngIf="username?.dirty && username?.valid">{{usernamevalidation}}</small>
+            </div>
+            <div *ngIf="alreadyExistedError">
+              <small *ngIf="username?.dirty && username?.valid">{{alreadyExistedError}}</small>
+            </div>
+            <div *ngIf="username.errors?.pattern">
+              <small>Accept only alphabetic and numeric</small>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- Password -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <input type="password" id="password" name="password"
+            class="form-control input-custom-control text-center column-margin" placeholder="Password"
+            (keyup)="checkPwd()" [(ngModel)]="register.password" #password="ngModel" appBlockCopyPaste required
+            minlength="8" maxlength="16" autocomplete="off" appSpacenotallow>
+
+          <div *ngIf="password?.touched" class="text-danger">
+            <div *ngIf="password.errors?.required">
+              <small> Password is required</small>
+            </div>
+            <div *ngIf="password.errors?.minlength">
+              <small> Password must be at least 8 characters long</small>
+            </div>
+            <div *ngIf="pwdNotMatch">
+              <small>Password and confirm password does not match</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confirm password -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <input type="password" id="passwordConfirm" name="passwordConfirm" appConfirmPassword="password"
+            class="form-control input-custom-control text-center center" placeholder="Confirm password"
+            [(ngModel)]="register.passwordConfirm" #passwordConfirm="ngModel" appBlockCopyPaste required minlength="8"
+            maxlength="16" autocomplete="off" appSpacenotallow (keyup)="checkPwd()">
+
+          <div *ngIf="passwordConfirm?.touched" class="text-danger">
+            <div *ngIf="passwordConfirm.errors?.required" style="font-size: 15px;">
+              <small>Confirm password is required</small>
+            </div>
+          </div>
+          <div *ngIf="passwordConfirm?.dirty" class="text-danger">
+            <div *ngIf="passwordConfirm.errors?.notEqual && !passwordConfirm.errors?.required">
+              <small>Password and confirm password does not match</small>
+            </div>
+          </div>
+        </div>
+		<!-- Country -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <select id="country" name="country" appSelectRequiredValidator="null"
+            class="form-control input-custom-control column-margin" [(ngModel)]="register.country" #country="ngModel"
+            required (change)="Filter($event.target.value)">
+            <option value="null">Select country</option>
+            <option *ngFor="let country of countries" [value]="country.cname"
+              class="form-control input-custom-control-sm">
+              {{country.cname}}
+            </option>
+          </select>
+          <div *ngIf="country?.touched" class="text-danger">
+            <div *ngIf="country.errors?.required">
+              <small>Country is required</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3rd row -->
+      <div class="form-group row">
+
+        
+
+        <!-- state -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <select id="state" name="state" class="form-control input-custom-control column-margin"
+            [(ngModel)]="register.state" #state="ngModel" required (change)="selectedState($event.target.value)">
+            <option value="null" selected>Select state</option>
+            <option *ngFor="let state of states" [value]="state.sname" class="form-control input-custom-control-sm">
+              {{state.sname}}
+            </option>
+          </select>
+          <div *ngIf="state?.touched" class="text-danger">
+            <div *ngIf="state.errors?.required">
+              <small>State is required</small>
+            </div>
+          </div>
+        </div>
+
+       <!-- City -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <select id="city" name="city" appSelectRequiredValidator="null" placeholder="Select city"
+            class="form-control input-custom-control column-margin" [(ngModel)]="register.city" #city="ngModel"
+            required>
+            <option value="null">Select city</option>
+            <option *ngFor="let city of cities" [value]="city.name" class="form-control input-custom-control-sm">
+              {{city.name}}
+            </option>
+          </select>
+
+          <div *ngIf="city?.touched" class="text-danger">
+            <div *ngIf="city.errors?.required">
+              <small>City is required</small>
+            </div>
+          </div>
+        </div>
+                <!-- Location name -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <div class="form-group">
+            <input type="text" id="location" name="location" class="form-control text-center input-custom-control"
+              placeholder="Location" [(ngModel)]="register.location" #location="ngModel"
+              pattern="^[a-zA-z0-9]+([\s-][a-zA-Z0-9]+)*$" maxlength="64" minlength="4" autocomplete="off" required>
+          </div>
+
+          <div *ngIf="location?.touched" class="text-danger">
+            <div *ngIf="location.errors?.required">
+              <small>Location is required</small>
+            </div>
+            <div *ngIf="location.errors?.minlength" class="text-danger">
+              <small>Location must be at least 4 character long</small>
+            </div>
+            <div *ngIf="location.errors?.pattern" class="text-danger">
+              <small>Accept only alphabetics and numerics With Space</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4th row -->
+      <div class="form-group row">
+        <!-- Mobile number -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <div class="input-group">
+            <label for="phone_code"
+              class="form-control input-custom-control text-center input-custom-control extensionnum">{{phone_code}}</label>
+            <input type="tel" id="mobilenumber" name="mobilenumber"
+              class="form-control input-custom-control text-center input-custom-control column-margin"
+              placeholder="Mobile number" [(ngModel)]="register.mobilenumber" #mobilenumber="ngModel" maxlength="10"
+              minlength="10" pattern="^(?!0+$)\d{10}$" numbersonly required autocomplete="off">
+          </div>
+          <div *ngIf="mobilenumber?.touched" class="text-danger">
+            <div *ngIf="mobilenumber.errors?.required">
+              <small>Mobile number is required</small>
+            </div>
+            <div *ngIf="mobilenumber.errors?.minlength">
+              <small>Mobile number must be at least 10 numeric characters long</small>
+            </div>
+            <div *ngIf="mobilenumber.errors?.pattern && (register.mobilenumber.length == 10)" class="text-danger">
+              <small>Does not allow all zeros</small>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Organization name -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4" *ngIf="enableOrgName">
+          <div class="form-group">
+            <input type="text" id="organizationName" name="organizationName" disabled
+              class="form-control text-center input-custom-control" placeholder="Org name"
+              [(ngModel)]="register.organizationName" #organizationName="ngModel" required minlength="4" maxlength="64"
+              autocomplete="off" pattern="^[a-zA-z0-9-&.']+([\s][a-zA-Z0-9-$.']+)*$">
+          </div>
+
+          <div *ngIf="organizationName?.touched" class="text-danger">
+            <div *ngIf="organizationName.errors?.required">
+              <small>Organization name is required</small>
+            </div>
+            <div *ngIf="organizationName.errors?.minlength" class="text-danger">
+              <small>Organization name must be at least 4 character long</small>
+            </div>
+            <div *ngIf="organizationName.errors?.pattern" class="text-danger">
+              <small>only allow white space in between characters </small>
+            </div>
+          </div>
+        </div>
+<!-- Site Admin row -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <select id="site_admin" name="site_admin" class="form-control input-custom-control"
+            [(ngModel)]="register.siteadmin" #siteAdmin="ngModel" required disabled placeholder="Select site admin"
+            (change)="seletedSiteAdmin($event.target.value)">
+            <option selected>Select site admin</option>
+            <option *ngFor="let siteadmin of siteAdminList" [value]="siteadmin.username">
+              {{siteadmin.username}}
+            </option>
+          </select>
+
+          <div *ngIf="siteAdmin?.touched" class="text-danger">
+            <div *ngIf="siteAdmin.errors?.required">
+              <small>Site admin is required</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 5th row -->
+      <div class="form-group row">
+
+        <!-- Select Role -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <div class="form-group">
+            <select id="role" name="role" class="form-control input-custom-control" placeholder="select role" disabled
+              [(ngModel)]="register.role" required (change)="roleChange($event.target.value)">
+              <!-- <option value="ROLE_SITE_ADMIN">SITE ADMIN</option> -->
+              <option value="ROLE_SITE_USER">SITE USER</option>
+            </select>
+          </div>
+        </div>
+
+        
+      </div>
+
+      <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 c ol-xl-12 text-right pr-0">
+        <button type="submit"
+          [disabled]="regForm.invalid || isalreadyExistedEmail || isalreadyExistedUser || loading ||isUsername || register.country == 'null' || register.state == 'null' || register.city == 'null'"
+          class="btn-publish">
+          <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true" *ngIf="loading"></span>
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,146 @@
+.headerlogo {
+  width: 100px;
+}
+
+.img-text {
+  color: #FFF;
+  font-size: 40px !important;
+  line-height: 60px;
+  font-weight: 100;
+}
+
+.img-text strong {
+  color: #FFF;
+  font-size: 40px !important;
+  line-height: 60px;
+}
+
+/* Notifications row start */
+.email-rectangle-container-main {
+  border-radius: 5px;
+  background-color: #39F;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.11);
+}
+
+.email-rectangle-container-inner {
+  border-radius: 5px;
+  background-color: #198CFF;
+}
+
+.cart-rectangle-container-main {
+  border-radius: 5px;
+  background-color: #57B063;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.11);
+}
+
+.cart-rectangle-container-inner {
+  border-radius: 5px;
+  background-color: #469F52;
+}
+
+.notification-rectangle-container-main {
+  border-radius: 5px;
+  background-color: #A7578C;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.11);
+}
+
+.notification-rectangle-container-inner {
+  border-radius: 5px;
+  background-color: #904175;
+}
+
+.subscription-rectangle-container-main {
+  border-radius: 5px;
+  background-color: #487E99;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.11);
+}
+
+.subscription-rectangle-container-inner {
+  border-radius: 5px;
+  background-color: #407088;
+}
+
+.count {
+  color: #FFF !important;
+  font-size: 20px;
+}
+
+.unread-emails {
+  color: #FFF !important;
+  font-size: 10px;
+  line-height: 16px;
+}
+
+.view-all {
+  color: #FFF !important;
+  font-size: 10px;
+  line-height: 16px;
+}
+
+.fa-color {
+  color: #fafafa;
+}
+
+.notify-div {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+/* Notifications row end */
+
+/* responsive styles starts here */
+@media only screen and (max-width: 575px) {
+
+  .headerlogo {
+    width: 90px;
+  }
+
+  .fa-color {
+    font-size: 20px;
+    padding: 5px;
+  }
+
+  .fa-color-img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .small,
+  small {
+    font-size: 75%;
+    font-weight: 400;
+  }
+
+  .mx-5 {
+    margin-right: 0rem !important;
+    margin-left: 0rem !important;
+  }
+
+  .img-text {
+    color: #FFF;
+    font-size: 20px !important;
+    font-weight: 100;
+  }
+
+  .img-text strong {
+    color: #FFF;
+    font-size: 15px !important;
+  }
+
+  .count {
+    color: #FFF !important;
+    font-size: 25px;
+  }
+
+  .unread-emails {
+    color: #FFF !important;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .view-all {
+    color: #FFF !important;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

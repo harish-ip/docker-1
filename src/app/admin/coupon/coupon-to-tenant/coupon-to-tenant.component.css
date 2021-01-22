@@ -1,0 +1,127 @@
+.border {
+  border: 1px solid #a8abaf !important;
+}
+
+.credate {
+  color: #B6B6B6;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.coupon-div {
+  background-color: #F3CA3E;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.price-div {
+  background-color: #39F;
+  height: 45px;
+  padding: 10px;
+  color: #fafafa;
+}
+
+.actions-div {
+  background-color: #F3CA3E;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.actions-div,
+a {
+  color: #212529;
+  font-size: 11px;
+}
+
+.responsive-div {
+  max-height: 600px;
+  overflow-y: auto;
+  height: auto;
+  overflow-x: hidden;
+}
+
+.prdname {
+  color: #333;
+  font-size: 14px;
+  word-wrap: break-word;
+  max-width: 105px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* overflow: hidden !important; */
+}
+
+.prdheading {
+  color: #ada8a8 !important;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.custom-checkbox:checked+.prdname {
+  font-weight: bold;
+}
+
+.custom-checkbox:checked+.prdname {
+  font-weight: bold;
+}
+
+.desc {
+  text-align: justify;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.aligndiv {
+  padding: 15px;
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 575px) {
+
+  .responsive-div {
+    max-height: 400px;
+    overflow-y: auto;
+    height: auto;
+    overflow-x: hidden;
+  }
+
+  .ressize {
+    font-size: 12px;
+  }
+
+  .credate {
+    color: #B6B6B6;
+    font-size: 10px;
+  }
+
+  .cpncode {
+    font-size: 12px;
+  }
+
+  .exptime {
+    font-size: 12px;
+    text-align: center !important;
+    padding: 2px;
+  }
+
+  .resalign {
+    text-align: center !important;
+  }
+
+  .prdheading {
+    color: #ada8a8 !important;
+    font-size: 14px;
+  }
+
+  .loccoupon {
+    font-size: 12px;
+    margin-left: -5px;
+  }
+
+  .aligndiv {
+    padding-left: 10px;
+  }
+
+  .modal-title {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 list-group-horizontal-lg row ml-1">
+    <p>To &nbsp;&nbsp;</p>
+    <li class="list-group-item mr-1" *ngFor="let select of selectedValue;index as i">
+      <p class="m-0 pl-2">
+        <span>{{select.email}}</span>
+        <span aria-hidden="true" class="cls mx-2" (click)="getDeleteEmailDetails(i)" data-toggle="modal"
+          data-target="#removemail" data-backdrop="static" data-keyboard="false">&#10005;</span>
+      </p>
+    </li>
+  </div>
+</div>
+
+<div class="row mt-3">
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <form #mailForm="ngForm" (ngSubmit)="send()">
+      <!-- Subject -->
+      <div class="form-group text-display">
+        <!--  <label for="subject">Subject</label> -->
+        <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject"
+          [(ngModel)]="mailcontent.subject" #subject="ngModel" minlength="3" maxlength="128" required autocomplete="off"
+          pattern="^[a-zA-z0-9]+([\s][a-zA-Z0-9]+)*$">
+
+        <!-- Subject Validations-->
+        <div *ngIf="subject?.touched" class="text-danger">
+          <div *ngIf="subject.errors?.required">
+            <small>Subject is required</small>
+          </div>
+          <div *ngIf="subject.errors?.minlength">
+            <small>Subject must be at least 3 characters long</small>
+          </div>
+          <div *ngIf="subject.errors?.pattern">
+            <small>Accept only alphabetic and numeric</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div class="form-group text-display">
+        <!--  <label for="body">Message</label> -->
+        <textarea type="textarea" id="body" name="body" class="form-control form-input"
+          placeholder="<<Type Your Message Here>>" [(ngModel)]="mailcontent.body" #body="ngModel" rows="8" cols="50"
+          required minlength="5" style="resize: none;"></textarea>
+
+        <!-- body Validations-->
+        <div *ngIf="body?.touched" class="text-danger">
+          <div *ngIf="body.errors?.required">
+            <small>Body is required</small>
+          </div>
+          <div *ngIf="body.errors?.minlength">
+            <small>Body must be at least 5 characters long</small>
+          </div>
+        </div>
+      </div>
+      <!-- send button -->
+      <div class="form-group d-flex justify-content-end mt-2">
+        <button type="submit" class="btn-publish" [disabled]="mailForm.invalid || loading">
+          <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true" *ngIf="loading"></span>
+          Send Email
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Try modal  -->
+<div class="modal fade bd-example-modal-lg" id="removemail" tabindex="-1" role="dialog" aria-labelledby="tryModalTitle"
+  aria-hidden="true">
+
+  <div class="modal-dialog modal-lg" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Do you want to remove email - <strong>{{getemail}}</strong></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-footer mx-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+          <button type="button" class="btn btn-delete" title="Remove" data-dismiss="modal"
+            (click)="deleteEmail()">Remove</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

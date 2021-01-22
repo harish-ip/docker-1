@@ -1,0 +1,250 @@
+<!-- Banner Information -->
+<div class="container-fluid">
+  <div class="row bgi">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center overlay">
+      <br>
+      <img class="mt-5" src="./../assets/Images/logo_svg.svg" class="img-fluid" alt="AI3O-Logo">
+      <h1 class="mb-2"> Welcome to INSIGHT68 </h1>
+      <p class="mb-5"> Easy-to-use, fast, cloud powered self-service platform for running business intelligence,
+        reporting & analytics. </p>
+    </div>
+  </div>
+</div>
+
+<!-- Products Information -->
+<div class="container-fluid mt-5">
+  <!-- 1ST Row Information-->
+  <div class="row mx-5">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center info">
+      <h1 class="my-3"> How can INSIGHT68 Help You? </h1>
+      <p>Regardless of what industry you’re in, the potential for artificial intelligence is huge. Machine learning
+        and rule-based analysis can benefit you greatly from finding new ways to reduce costs, create efficiency, and
+        to optimize working environments. Our core products are:</p>
+    </div>
+  </div>
+
+  <!-- 2nd row products -->
+  <div class="row my-5 mx-5">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-3" *ngFor="let product of productList; let i = index;"
+      style="justify-content: space-between;">
+      <div class="card">
+        <img src="{{product.productImage}}" class="card-img-top" alt="{{product.productName}}">
+        <div class="card-body text-center">
+
+          <div class="img-icon-div">
+            <img [src]="_sanitizer.bypassSecurityTrustResourceUrl(product.productIcon)" alt="{{product.productName}}"
+              class="img-icon">
+          </div>
+          <h5 class="card-title">{{product.productName}}</h5>
+          <p class="card-text">"TBD"/
+            <span [ngSwitch]="product.productDuration">
+              <span *ngSwitchCase="'30'">month</span>
+              <span *ngSwitchCase="'365'">year</span>
+              <span *ngSwitchCase="'1095'">3 years</span>
+            </span>
+          </p>
+          <p class="card-desc">
+            {{product.productDescription.substr(0, 110)}}...
+          </p>
+
+
+          <div class="py-3">
+            <button type="button" class="btn btn-primary btn-more" title="More" (click)="copyproductdetail(product)">
+              More </button>
+            <button type="button" class="btn btn-primary btn-buy ml-3" title="Buy" (click)="copyBuyProduct(product)"
+              data-toggle="modal" data-target="#buyModal" data-backdrop="static" data-keyboard="false">
+              Buy
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AI3O Information -->
+<div class="container-fluid ai3o">
+
+  <div class="row mx-5">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+      <h1 class="text-center my-5"> What is included in INSIGHT68 Products Cloud? </h1>
+
+      <div class="row">
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 d-flex p-3">
+          <div class="text-left">
+            <i class="fas fa-calendar-check"></i>
+          </div>
+          <div class="text-left ml-2">
+            <h3>Ranking Reports</h3>
+            <p>Ranking reports let you easily view the best- and worst-performing facets of your business.</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 d-flex p-3">
+          <div class="text-left">
+            <i class="fas fa-columns"></i>
+          </div>
+          <div class="text-left ml-2">
+            <h3>Executive Dashboards</h3>
+            <p>Give your organization’s leaders a real-time overview of your business in the form of graphs, charts,
+              summaries and other information reports.</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 d-flex p-3">
+          <div class="text-left">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="text-left ml-2">
+            <h3>Geospatial Mapping</h3>
+            <p>Applications using location intelligence
+              can take your information and transform it into graphical and cartographic representations.</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 d-flex p-3">
+          <div class="text-left">
+            <i class="fas fa-table"></i>
+          </div>
+          <div class="text-left ml-2">
+            <h3>Pivot Tables</h3>
+            <p>Pivot tables can automatically extract significant features from a large, messy set of data. </p>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 d-flex p-3">
+          <div class="text-left">
+            <i class="fas fa-chart-pie"></i>
+          </div>
+          <div class="text-left ml-2">
+            <h3>What-If Analysis</h3>
+            <p>What-if analyses give you an objective view of the risks and rewards involved in each potential decision.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 d-flex p-3">
+          <div class="text-left">
+            <i class="fas fa-calendar-check"></i>
+          </div>
+          <div class="text-left ml-2">
+            <h3>Interactive Reports</h3>
+            <p>Interactive reports allow users to condense the massive amounts of collecting data into a wide variety of
+              possible views. </p>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 d-flex p-3">
+          <div class="text-left">
+            <i class="fas fa-calendar-check"></i>
+          </div>
+          <div class="text-left ml-2">
+            <h3>Operational Reports</h3>
+            <p>Provide your organization’s executives with a detailed summary of the daily events, giving them the
+              information they need to make critical decisions.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 d-flex p-3">
+          <div class="text-left">
+            <i class="fas fa-calendar-check"></i>
+          </div>
+          <div class="text-left ml-2">
+            <h3>Ad-Hoc Reports</h3>
+            <p>Ad-hoc reports are one of several important features of BI that let your nontechnical end-users generate
+              their own reports on the fly.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center my-5">
+          <div class="learn">Learn more about INSIGHT68 Cloud Individual Product Features</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- AI3O divroduct Plans -->
+
+<div class="container-fluid mb-5">
+
+  <div class="row mx-5">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center my-3">
+      <h4 class="my-4 text-center prd-plan-header">Find the INSIGHT68 Cloud plan that’s right for you.</h4>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
+      <div class="prd-plan my-3 p-3">
+        <h5 class="my-3"> 1 Month Subscription</h5>
+        <p> "TBD"/1 month. (excl. Taxes). <br><span>Get your entire cloud collection and free support</span></p>
+        <button type="button" class="btn btn-buy-now my-4" style="cursor: not-allowed;"> Buy Now
+        </button>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
+      <div class="prd-plan my-3 p-3">
+        <h5 class="my-3"> 1 Year Subscription </h5>
+        <p> "TBD"/1 year. (excl. Taxes). <br><span>Get your entire cloud collection and free support</span></p>
+        <button type="button" class="btn btn-buy-now my-4" style="cursor: not-allowed;"> Buy Now
+        </button>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
+      <div class="prd-plan my-3 p-3">
+        <h5 class="my-3"> 3 Years Subscription </h5>
+        <p> "TBD"/3 years. (excl. Taxes). <br><span>Get your entire cloud collection and free support</span></p>
+        <button type="button" class="btn btn-buy-now my-4" style="cursor: not-allowed;"> Buy Now
+        </button>
+      </div>
+    </div>
+
+    <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center my-5">
+      <span class="my-4 text-center">Purchase by phone: <strong> 0000 0000 0000 or by </strong>
+        <a [routerLink]="['/Contactus']" routerLinkActive="router-link-active" class="email"> email</a>
+      </span>
+    </div> -->
+
+  </div>
+</div>
+
+<div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModalTitle" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Do you want to Buy - <strong>{{productName}}</strong> Product
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p> {{productdesc}} </p>
+      </div>
+
+      <div class="modal-footer">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+          <button type="button" class="btn btn-primary btn-buy" data-dismiss="modal" (click)="addtocart(selproductId)" title="Buy">
+            Buy
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

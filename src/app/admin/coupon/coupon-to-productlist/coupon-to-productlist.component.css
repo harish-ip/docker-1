@@ -1,0 +1,52 @@
+.couponcode {
+  width: 15%;
+}
+
+.prdid {
+  width: 10%;
+}
+
+.prdname {
+  width: 15%;
+}
+
+.prddur {
+  width: 15%;
+}
+
+.w-25 {
+  text-align: justify;
+  word-wrap: break-word;
+  max-width: 250px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden !important;
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 575px) {
+
+  .couponcode {
+    width: 25%;
+  }
+
+  .prdid {
+    width: 10%;
+  }
+
+  .prdname {
+    width: 15%;
+  }
+
+  .prddur {
+    width: 15%;
+  }
+
+  .w-25 {
+    word-wrap: break-word !important;
+    max-width: 250px;
+    text-align: unset;
+    white-space: normal;
+  }
+
+}

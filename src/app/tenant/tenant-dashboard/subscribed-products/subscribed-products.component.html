@@ -1,0 +1,79 @@
+<!-- Loading Indicator -->
+<div *ngIf="!title.isLoding" class="d-flex justify-content-center">
+  <div class="lds-facebook">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<div *ngIf="title.isLoding">
+  <!-- Subscribed Products -->
+  <table class="table table-hover mb-0">
+
+    <thead>
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col">Product Description</th>
+        <th scope="col">Status</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="!showTenantProducts">
+        <td colspan="11" class="text-center">No subscribed products</td>
+      </tr>
+
+      <tr *ngFor="let subProd of tenantSubscribedProducts;let i = index">
+
+        <td class="prdname">
+          <a class="anchor" style="cursor: pointer;" (click)="goToLink(subProd)">
+            {{subProd.productName}}</a> <br>
+          <a class="anchor" style="cursor: pointer;" (click)="goToLink(subProd)">
+            <img class="mt-2" src="{{subProd.productImage}}" alt="Product Image" height="100" width="100">
+          </a>
+        </td>
+        <td class="w-50">
+          <a style="cursor: pointer; color: #333 !important;" (click)="goToLink(subProd)">
+            {{subProd.productDescription}}
+          </a>
+        </td>
+        <td *ngIf="!buttonEnable[i]" class="status">{{status[i]}} years left</td>
+        <td *ngIf="buttonEnable[i]" class="status text-center">---</td>
+        <td *ngIf="!buttonEnable[i]">{{subProd.startDate | date:'dd-MMM-yyyy'}}</td>
+        <td *ngIf="buttonEnable[i]" class="status text-center">---</td>
+        <td *ngIf="!buttonEnable[i]">{{subProd.endDate | date:'dd-MMM-yyyy'}}</td>
+        <td *ngIf="buttonEnable[i]" class="status text-center">---</td>
+        <td>"TBD"</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- modal  -->
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content" *ngIf="selectedProd">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">{{selectedProd.productName}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <p>
+            You are accessing <strong>{{selectedProd.productName}}</strong> by valid token
+          </p>
+          <div style="word-wrap: break-word;">
+            <p>{{token}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

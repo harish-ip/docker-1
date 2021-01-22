@@ -1,0 +1,15 @@
+.w-username {
+  width: 120px;
+}
+
+.w-email {
+  width: 250px;
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 575px) {
+
+  .alert-danger {
+    font-size: 14px;
+  }
+}

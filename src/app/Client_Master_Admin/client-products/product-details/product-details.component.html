@@ -1,0 +1,230 @@
+<div class="container-fluid">
+
+    <div class="row mx-5 py-3 prddetail">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div class="d-flex">
+                <img [src]="_sanitizer.bypassSecurityTrustResourceUrl(Product.productIcon)"
+                    alt="{{Product.productName}}" class="img-fluid" style="background-color: red;">
+                <h1 class="pl-3">{{Product.productName}}</h1>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div class="d-flex float-right">
+                <p class="price mr-3">Price:"TBD"</p>
+                <button type="button" class="btn btn-trial mr-3" data-toggle="modal" data-target="#tryModal"
+                    (click)="copytrialProd(Product)" data-backdrop="static" data-keyboard="false"
+                    title="Trial">Trial</button>
+                <button type="button" class="btn btn-buy" title="Buy" (click)="copyBuyProduct(Product)"
+                    data-toggle="modal" data-target="#buyModal" data-backdrop="static" data-keyboard="false">
+                    Buy
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <hr>
+    <div class="row mx-5 py-4">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+
+            <div>
+                <img src="{{Product.productImage}}" class="card-img-top" alt="{{Product.productName}}">
+            </div>
+
+            <div class="productstyleone mt-3">
+                <div class="d-flex" style="justify-content: space-between;">
+                    <div class="d-flex">
+                        <span> <i class="fa fa-cogs" aria-hidden="true"></i></span>
+                        <h6 class="pl-3">Product</h6>
+                    </div>
+                    <div class="float-right">
+                        <a style="cursor: not-allowed;">Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="productstyleone mt-3">
+                <div class="d-flex" style="justify-content: space-between;">
+                    <div class="d-flex">
+                        <span> <i class="fab fa-youtube"></i> </span>
+                        <h6 class="pl-3">Videos</h6>
+                    </div>
+                    <div class="float-right">
+                        <a style="cursor: not-allowed;">Watch</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="productstyleone mt-3">
+                <div class="d-flex" style="justify-content: space-between;">
+                    <div class="d-flex">
+                        <span> <i class="fas fa-file-pdf"></i> </span>
+                        <h6 class="pl-3">Product Manuals</h6>
+                    </div>
+                    <div class="float-right">
+                        <a style="cursor: not-allowed;">Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 resalign">
+            <h5>Product Description</h5>
+            <p>
+                {{Product.productDescription}}
+            </p>
+
+            <h5 class="mt-4">Product Features</h5>
+
+            <div class="row">
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 p-3">
+                    <div class="row">
+                        <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+                            <h5>Ranking Reports</h5>
+                            <p>Ranking reports let you easily view the
+                                best- and worst-performing facets of your business.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 p-3">
+
+                    <div class="row">
+                        <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+                            <i class="fas fa-columns"></i>
+                        </div>
+                        <div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+                            <h5>Executive Dashboards</h5>
+                            <p>Give your organization’s leaders a real-time overview of your business in the form of
+                                graphs, charts,
+                                summaries and other information reports.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 p-3">
+                    <div class="row">
+                        <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+                            <h5>Geospatial Mapping</h5>
+                            <p>Applications using location intelligence
+                                can take your information and transform it into graphical and cartographic
+                                representations</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 p-3">
+                    <div class="row">
+                        <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+                            <h5>What-If Analysis</h5>
+                            <p>What-if analyses give you an objective view of the risks and rewards involved in each
+                                potential
+                                decision,</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 p-3">
+                    <div class="row">
+                        <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+                            <h5>Interactive Reports</h5>
+                            <p>Interactive reports allow users to condense the massive amounts of collected data into a
+                                wide variety
+                                of possible views. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 p-3">
+                    <div class="row">
+                        <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+                            <h5>Operational Reports</h5>
+                            <p>Provide your organization’s executives with a detailed summary of the daily events,
+                                giving them the
+                                information they need to make critical decisions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-5">
+        </div>
+    </div>
+</div>
+
+<!-- Try modal  -->
+<div class="modal fade" id="tryModal" tabindex="-1" role="dialog" aria-labelledby="tryModalTitle" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Do you want to Trial - <strong>{{productName}}</strong> Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&#10005;</span>
+                </button>
+            </div>
+
+            <div class="modal-body p-4">
+                <p>{{productdesc}}</p>
+            </div>
+
+            <div class="modal-footer mx-5">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+                    <button type="button" class="btn btn-trial" title="Trial" data-dismiss="modal"
+                        (click)="trial()">Trial</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Buy model -->
+<div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModalTitle" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Do you want to Buy - <strong>{{productName}}</strong>
+                    Product
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&#10005;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p> {{productdesc}} </p>
+            </div>
+
+            <div class="modal-footer">
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+                    <button type="button" class="btn btn-buy" data-dismiss="modal" (click)="addtocart(selproductId)" title="Buy">
+                        Buy
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

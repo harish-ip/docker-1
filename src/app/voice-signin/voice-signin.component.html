@@ -1,0 +1,64 @@
+<div class="bgi">
+
+  <div class="overlay">
+
+    <div class="container">
+
+      <div class="row">
+
+        <!-- AI3O Logo and Information -->
+        <div class="col-6 col-sm-6 col-md-12 col-lg-6 col-xl-6 my-auto resdiv">
+          <a [routerLink]="['/welcome']" routerLinkActive="active" style="cursor: pointer;">
+            <img src="./../assets/Images/logo_svg.svg" class="img-fluid" alt="AI3O-Logo">
+          </a>
+          <p class="info">
+            Welcome to AI3O Business cloud Easy-to-use, fast, cloud powered self-service platform for running
+            Business intelligence, reporting & analytics on your data.
+          </p>
+        </div>
+
+        <!-- Voice Sign In Form -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 my-auto">
+
+          <form class="p-5 text-center">
+
+            <a class="mblview" [routerLink]="['/welcome']" routerLinkActive="active" style="cursor: pointer;">
+              <img src="./../assets/Images/logo_svg.svg" class="img-fluid" alt="AI3O-Logo">
+            </a>
+
+            <div class="my-3">
+              <h1 class="my-2">Voice Sign In</h1>
+              <p>Voice Sign in to your account</p>
+            </div>
+
+            <div class="p-3 my-5 click-div">
+              <span> <i class="fas fa-user-plus"></i> &nbsp;Click microphone button </span>
+            </div>
+
+            <div class="p-3 my-4 microphone-div">
+              <span> <i style="color: #0070C0;font-size: 25px;" class="fas fa-microphone"></i> </span>
+            </div>
+
+            <div class="my-4">
+              <button type="button" class="btn btn-normal-signin btn-block p-3" [routerLink]="['/signin']"
+                routerLinkActive="router-link-active">
+                Normal Sign In
+              </button>
+            </div>
+
+            <div class="p-3 mt-4 memeber-div">
+              <p>Not a member yet?
+                <a [routerLink]="['/signup']" routerLinkActive="router-link-active"> Get an AI3O ID </a>
+              </p>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

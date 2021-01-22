@@ -1,0 +1,52 @@
+.input-custom-control {
+  font-weight: bold;
+}
+
+#productPrice {
+  color: #f00;
+}
+
+#productDescription::placeholder {
+  transform: translateY(90px) !important;
+}
+
+.bgi {
+  background: url(/assets/Images/dummyImage.png);
+  background-size: 100% 100%;
+  width: 100%;
+}
+
+.border-secondary {
+  background-color: #EAEBED;
+  border: 1px solid #CCC !important;
+}
+
+/* responsive styles starts here */
+
+/* GalaxyNote3 / GalaxyNote9 / Galaxy S5 / Galaxy S9/S9+ / Iphone 5/SE / Iphone (6/7/8) / Iphone (6/7/8 Plus)
+ / Iphone X/XS / Iphone XR / Iphone XS Max / LG Optimus L70 / Nexus 5X / Nexus 6P / Pixel 2 / Pixel 2XL */
+@media (min-width: 320px) and (max-width: 480px) {}
+
+/* Nexus 7 */
+@media (min-width: 481px) and (max-width: 767px) {}
+
+/* Ipad / Ipad Mini */
+@media (min-width: 768px) and (max-width: 799px) {}
+
+/* Ipad Pro(10.5 Inch) / Nexus 10 */
+@media (min-width: 800px) and (max-width: 1000px) {
+
+  .ml-2 {
+    margin-left: 1rem !important;
+  }
+  .mr-2{
+    margin-right: 1rem !important;
+  }
+
+}
+
+/* Ipad Pro(12.9 Inch) */
+@media (min-width: 1001px) and (max-width: 1024px) {}
+
+/* Laptop with HIDPI Screen / Laptop with MDPI Screen / Laptop With Touch  */
+@media (min-width: 1025px) and (max-width: 1280px) {}

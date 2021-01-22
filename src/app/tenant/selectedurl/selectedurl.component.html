@@ -1,0 +1,24 @@
+<!-- <div *ngIf="selectedProd" class="container">
+  <h5 class="modal-title" id="exampleModalCenterTitle">{{selectedProd.productName}}</h5>
+  <div>
+    <p>
+      You are accessing <strong>{{selectedProd.productName}}</strong> by valid token <span
+        style="word-wrap: break-word;">{{token}}</span>
+    </p>
+  </div>
+</div> -->
+<div class="container">
+  <div class="marginTop">
+    <div class="card bg-light mb-3 mx-2" *ngIf="selectedProd">
+      <div class="card-header">
+        {{selectedProd.productName}}
+      </div>
+      <div class="card-body">
+        <p>
+          You are accessing <strong>{{selectedProd.productName}}</strong> by valid token <span
+            style="word-wrap: break-word;">{{token}}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

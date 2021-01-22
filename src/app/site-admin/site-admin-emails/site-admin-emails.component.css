@@ -1,0 +1,162 @@
+li {
+  background-color: #fff;
+  list-style: none;
+  font-size: 14px;
+  height: 50px;
+  padding: 12px;
+  box-shadow: none;
+  border: 1px solid #BDBDBD;
+}
+
+a {
+  color: #535353;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+span {
+  color: #E0E0E0;
+}
+
+.router-link-active {
+  color: #000 !important;
+  font-weight: 800 !important;
+}
+
+.d-flex-li {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.router-link-active .fa-chevron-right {
+  color: #f00 !important;
+}
+
+.mx-5 {
+  margin-left: 2rem !important;
+  margin-right: 2rem !important;
+}
+
+/* responsive styles starts here */
+/* GalaxyNote3 / GalaxyNote9 / Galaxy S5 / Galaxy S9/S9+ / Iphone 5/SE / Iphone (6/7/8) / Iphone (6/7/8 Plus)
+ / Iphone X/XS / Iphone XR / Iphone XS Max / LG Optimus L70 / Nexus 5X / Nexus 6P / Pixel 2 / Pixel 2XL*/
+@media (min-width: 320px) and (max-width: 480px) {
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+
+  .my-5 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Nexus 7 */
+@media (min-width: 481px) and (max-width: 767px) {
+  .mx-5 {
+    margin-left: 2rem !important;
+    margin-right: 2rem !important;
+  }
+
+  .my-5 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Ipad / Ipad Mini /   */
+@media (min-width: 768px) and (max-width: 799px) {
+  .mx-5 {
+    margin-left: 4rem !important;
+    margin-right: 4rem !important;
+  }
+
+  .my-5 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Ipad Pro(10.5 Inch) / Nexus 10*/
+@media (min-width: 800px) and (max-width: 1000px) {
+  .mx-5 {
+    margin-left: 4rem !important;
+    margin-right: 4rem !important;
+  }
+
+  .my-5 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Ipad Pro(12.9 Inch) */
+@media (min-width: 1001px) and (max-width: 1024px) {
+
+  /*  .marginTop {
+    margin-top: 33px;
+  } */
+
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+
+  .my-5 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  li {
+    background-color: #fff;
+    list-style: none;
+    font-size: 10px;
+    height: 50px;
+    padding: 5px;
+    box-shadow: none;
+    border: 1px solid #BDBDBD;
+    align-items: center;
+  }
+
+  a {
+    color: #535353;
+    text-decoration: none;
+    font-weight: 500;
+  }
+}
+
+/* Laptop with MDPI Screen / Laptop With Touch / */
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+  /*  .marginTop {
+    margin-top: 33px;
+  } */
+
+  .mx-5 {
+    margin-left: 3rem !important;
+    margin-right: 3rem !important;
+  }
+
+  .my-5 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  li {
+    background-color: #fff;
+    list-style: none;
+    font-size: 14px;
+    height: 50px;
+    padding: 5px;
+    box-shadow: none;
+    border: 1px solid #BDBDBD;
+    align-items: center;
+  }
+
+  a {
+    color: #535353;
+    text-decoration: none;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,87 @@
+<!-- Loading Indicator -->
+<div *ngIf="!title.isLoding" class="d-flex justify-content-center">
+  <div class="lds-facebook">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<div *ngIf="title.isLoding">
+
+  <table class="table table-hover mb-0">
+
+    <thead>
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col">Product Description</th>
+        <th scope="col">Status</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngIf="!showTenantTrialProducts">
+        <td colspan="10" class="text-center">No trial products</td>
+      </tr>
+
+      <tr *ngFor="let tryProd of trialProducts;let i = index">
+        <td class="prdname">
+          <a class="anchor" style=" cursor: pointer;" (click)="goToLink(tryProd)">{{tryProd.productName}}
+          </a>
+          <br>
+          <a class="anchor" style=" cursor: pointer;" (click)="goToLink(tryProd)">
+            <img class="mt-2" src="{{tryProd.productImage}}" alt="" height="100" width="100">
+          </a>
+        </td>
+        <td class="">
+          <a style=" cursor: pointer;color: #333 !important;" (click)="goToLink(tryProd)">{{tryProd.productDescription}}
+          </a>
+        </td>
+        <td class="href">{{statusForTrial[i]}} days left</td>
+        <td>{{tryProd.startDate | date:'dd/MMM/yyyy'}}</td>
+        <td>{{tryProd.endDate | date:'dd/MMM/yyyy'}}</td>
+        <td class="d-flex">
+          <button type="button" class="btn btn-default btn-sm btn-buy" data-toggle="modal" data-target="#buyModel"
+            (click)="copyProduct(tryProd)" title="Buy" data-backdrop="static" data-keyboard="false">
+            Buy
+          </button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+
+<!-- Buy modal  -->
+<div class="modal fade" id="buyModel" tabindex="-1" role="dialog" aria-labelledby="buyModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Do you want to Buy - <strong>{{productName}}</strong> Product
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p> {{productdesc}} </p>
+      </div>
+
+      <div class="modal-footer">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+          <button type="button" class="btn btn-buy btn-sm ml-5" data-dismiss="modal" (click)="addtocart(selproductId)"
+            title="Buy">
+            Buy
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

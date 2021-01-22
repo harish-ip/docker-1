@@ -1,0 +1,178 @@
+<!-- Loading Indicator -->
+<div *ngIf="!title.isLoding" class="d-flex justify-content-center">
+  <div class="lds-facebook">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<!-- Products against related suite-->
+<div class="row pb-5" *ngIf="title.isLoding">
+
+
+  <div class="col-12" *ngIf="newProducts.length == 0">
+    <div class="text-center noSub">
+      No products
+    </div>
+  </div>
+
+  <ng-container *ngIf="newProducts">
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-auto pb-3"
+      *ngFor="let products of newProducts; let i = index;">
+
+      <div class="prd-div">
+
+        <!-- Product Image -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center px-0">
+          <img src="{{products.productImage}}" class="img-fluid" alt="operating system logo">
+        </div>
+
+        <div class="p-3">
+          <!-- Product Name -->
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+            <h6 class="prdname" title="{{products.productName}}">{{products.productName}}</h6>
+          </div>
+
+          <!-- Product Price -->
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+            <h6 class="prdprice">
+              <!-- ${{products.productPrice}} -->"TBD" / <span class="prdprice">{{products.productDuration}}</span>
+            </h6>
+          </div>
+
+          <!-- Product Description -->
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+            <p class="prddesc" *ngIf="!expanded[i]">
+              {{product.productDescription}}
+              <a id="read{{i}}" (click)="readmore(i)" class="readmore">Readmore</a>
+            </p>
+            <p class="prddesc" *ngIf="expanded[i]">
+              {{product.productDescription}}
+              <a id="read{{i}}" (click)="Readless(i)" class="readmore">Readless</a>
+            </p>
+          </div>
+
+          <!-- Product Actions -->
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+            <button type="button" class="btn btn-sm btn-try font-weight-bold" data-toggle="modal"
+              data-target="#tryModal" (click)="copytrialProd(products)" data-backdrop="static"
+              data-keyboard="false">Trial</button>
+            <button type="button" class="btn btn-sm btn-buy font-weight-bold ml-3" data-toggle="modal"
+              data-target="#buyModal" (click)="copyBuyProduct(products)" data-backdrop="static"
+              data-keyboard="false">Buy</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </ng-container>
+
+
+</div>
+
+<!-- <div *ngIf="title.isLoding && (newProducts.length > 0)">
+  <pagination-controls (pageChange)="p = $event" responsive="true" previousLabel="Previous" nextLabel="Next">
+  </pagination-controls>
+</div> -->
+
+<!-- Try modal  -->
+<div class="modal fade" id="tryModal" tabindex="-1" role="dialog" aria-labelledby="tryModalTitle" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Do you want to Trial - <strong>{{productName}}</strong> Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body p-4">
+        <p>{{productdesc}}</p>
+      </div>
+
+      <div class="modal-footer mx-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+          <button type="button" class="btn btn-default btn-sm btn-try" title="Trial" data-dismiss="modal"
+            (click)="trial()">Trial</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Buy modal  -->
+<div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModalTitle" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Do you want to Buy - <strong>{{productName}}</strong> Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body p-4">
+        <p> {{productdesc}} </p>
+      </div>
+
+      <div class="modal-footer mx-5">
+
+        <!-- <div class="row"> -->
+
+        <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+            <p>Have a coupon code? Fill in the field and apply</p>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 form-inline text-center">
+            <input type="text" class="code-txtbox" id="code" name="code" placeholder="xxxx-xxxx-xxxx" autocomplete="off"
+              required maxlength="14" appCouponcode (keyup)="formatecoupon()">
+            <button type="button" class="btn btn-sm btn-apply" (click)="applycoupon()" [disabled]="applycouponbtn">Apply
+            </button>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+            <small><strong class="anchor">Note: </strong> Dashes are added automatically</small>
+          </div> -->
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+          <button type="button" class="btn btn-buy btn-sm" data-dismiss="modal" (click)="addtocart(selproductId)" title="Buy">
+            Buy
+          </button>
+        </div>
+
+        <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" *ngIf="couponSuccessdiv">
+            <hr>
+            <p class="coupon-suc"><i class="fas fa-check-circle"></i> Coupon Code Applied Successfully on this
+              product.</p>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 notify-div" *ngIf="couponSuccessdiv">
+
+            <p class="discount"> Actual Price : <strong> ${{actualPrice}}</strong></p>
+            <p class="discount"> After Coupon : <strong> ${{discountedPrice}}</strong></p>
+
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center" *ngIf="couponFailurediv">
+            <hr>
+            <p class="coupon-fail"><i class="fas fa-times-circle"></i> {{couponErrMsg}}</p>
+          </div> -->
+
+        <!-- </div> -->
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

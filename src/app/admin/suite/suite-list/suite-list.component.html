@@ -1,0 +1,51 @@
+<div class="table-responsive margin" *ngIf="suites">
+
+  <table class="table table-hover mb-0" id="AddSuite">
+    <thead>
+      <tr>
+
+        <th scope="col">Suite Id</th>
+        <th scope="col">Suite Name</th>
+        <th scope="col">Suite Type</th>
+        <th scope="col">Suite Description</th>
+        <th scope="col" class="text-center">Products In Suite</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let suite of suites">
+        <td>{{suite.suiteId}}</td>
+        <td>{{suite.suiteName}}</td>
+        <td class="suitetype">{{suite.suiteType}}</td>
+        <td class="w-25">{{suite.suiteDescription}}</td>
+        <td>
+      <tr>
+        <th style="border-top: 0px solid #dee2e6;">Product Name</th>
+        <th style="border-top: 0px solid #dee2e6;">Price</th>
+      </tr>
+      <tr *ngFor="let prod of suite.products">
+        <td class="prdname" title="{{prod.productName}}">
+          {{prod.productName}}</td>
+        <td class="prdduration" *ngIf="prod.productDuration === '30'">
+          ${{prod.productPrice}}/Month
+        </td>
+        <td class="prdduration" *ngIf="prod.productDuration === '365'">
+          ${{prod.productPrice}}/Year
+        </td>
+      </tr>
+      </td>
+      <td class="d-flex">
+
+        <button class="btn btn-default btn-sm btn-edit" title="Edit" (click)="UpdateSuite(suite)"><i class="fa fa-edit"
+            aria-hidden="true"></i></button>
+        <button *ngIf="!suite.products || suite.products.length == 0" class="btn btn-danger btn-sm btn-delete ml-1"
+          title="Delete" (click)="DeleteSuite(suite.suiteId)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+
+      </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>

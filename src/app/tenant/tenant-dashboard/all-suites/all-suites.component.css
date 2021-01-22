@@ -1,0 +1,69 @@
+.prdname {
+  word-wrap: break-word;
+  max-width: 120px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden !important;
+}
+
+.prdduration {
+  word-wrap: break-word;
+  max-width: 120px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden !important;
+}
+
+.w-25-all {
+  word-wrap: break-word;
+  max-width: 385px !important;
+}
+
+.btn-try {
+  opacity: 0.5;
+  color: #fafafa;
+  font-size: 10px;
+  background-color: #2AC940;
+  border-radius: 5px;
+}
+
+.btn-buy {
+  color: #fafafa;
+  font-size: 10px;
+  background-color: #F36;
+  border-radius: 5px;
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 575px) {
+
+  .w-25-all {
+    word-wrap: break-word;
+    max-width: 140px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    height: 1.5rem;
+    white-space: nowrap;
+  }
+
+  .btn-try {
+    color: #fafafa;
+    font-size: 12px;
+    background-color: #2AC940;
+    border-radius: 5px;
+  }
+
+  .btn-buy {
+    color: #fafafa;
+    font-size: 12px;
+    background-color: #F36;
+    border-radius: 5px;
+  }
+
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  width: 0%;
+  color: #645e5e;
+}

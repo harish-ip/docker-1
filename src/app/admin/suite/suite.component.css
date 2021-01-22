@@ -1,0 +1,80 @@
+li {
+  background-color: #fff;
+  list-style: none;
+  font-size: 12px;
+  height: 50px;
+  padding: 12px;
+  box-shadow: none;
+  border: 1px solid #BDBDBD;
+}
+
+a {
+  color: #535353;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+span {
+  color: #E0E0E0;
+}
+
+.router-link-active {
+  color: #000 !important;
+  font-weight: 800 !important;
+}
+
+.d-flex-li {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.router-link-active .fa-chevron-right {
+  color: #f00 !important;
+}
+
+.mx-5 {
+  margin-left: 9rem !important;
+  margin-right: 9rem !important;
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 575px) {
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+
+  .my-5 {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+  }
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 768px) {
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+
+  .my-5 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+}
+
+/* responsive styles starts here */
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+
+  .col-lg-3 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+  .col-lg-9 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+}

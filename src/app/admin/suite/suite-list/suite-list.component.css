@@ -1,0 +1,95 @@
+.w-8 {
+  width: 8%;
+}
+
+.w-25 {
+  text-align: justify;
+  word-wrap: break-word;
+  max-width: 120px;
+}
+
+.prdname {
+  word-wrap: break-word;
+  max-width: 115px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden !important;
+}
+
+.prdduration {
+  word-wrap: break-word;
+  max-width: 120px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden !important;
+}
+
+.form-group {
+  background-color: rgba(0, 0, 0, 0.06);
+  color: black;
+  border: none;
+  border-radius: 25px;
+}
+
+.form-inline .form-control {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+}
+
+.btn-edit {
+  color: #fff;
+  font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+  background-color: #2AC940;
+  border-radius: 5px;
+}
+
+.btn-delete {
+  color: #fafafa;
+  font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+  background-color: #F36;
+  border-radius: 5px;
+}
+
+
+/* responsive styles starts here */
+@media only screen and (max-width: 575px) {
+
+  .prdname {
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  .prdduration {
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  .suitetype {
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  .btn-delete {
+    color: #fafafa;
+    font-size: 10px;
+    line-height: 16px;
+    text-align: center;
+    background-color: #F36;
+    border-radius: 5px;
+  }
+
+  .w-25 {
+    word-wrap: break-word !important;
+    max-width: 150px;
+    text-align: unset;
+    white-space: unset;
+  }
+
+}

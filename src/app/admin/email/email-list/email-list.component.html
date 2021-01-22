@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row d-flex top">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style="position: relative;">
+      <span class="info">
+        Select list of emails to send email
+      </span>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right">
+      <div class="form-inline form-group searchbox">
+        <input class="form-control searchTerm" type="text" name="search" placeholder="Search by email"
+          [(ngModel)]="searchTerm" aria-label="search" aria-describedby="search" autocomplete="off">
+        <span class="p-2"><i class="fas fa-search"></i></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover mb-3">
+
+    <thead>
+      <tr>
+        <th scope="col">Sl.No</th>
+        <th scope="col"></th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">User Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobile Number</th>
+        <th scope="col" (click)="sort('country')">Country
+          <span class="glyphicon sort-icon" *ngIf="key =='country'"
+            [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"><i
+              class="fas fa-chevron-down"></i></span>
+        </th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngIf="users">
+        <ng-container *ngIf="users.length == 0">
+          <td colspan="9" class="text-center">No Emails </td>
+        </ng-container>
+      </tr>
+
+      <tr
+        *ngFor="let user of users|  paginate: { itemsPerPage: 10, currentPage: p }| tenantFilter : searchTerm | orderBy:key:reverse;let i=index; ">
+        <td><label for="{{i+1}}">{{i+1}}</label></td>
+        <img src="../assets/Images/user.png" class="img-fluid" alt="user" style="margin-top: 10px;">
+        <td><label for="{{user.username}}">{{user.firstname}}</label></td>
+        <td><label for="{{user.username}}">{{user.lastname}}</label></td>
+        <td><label for="{{user.username}}">{{user.username}}</label></td>
+        <td><label for="{{user.username}}" style="color: #0070C0;">{{user.email}}</label></td>
+        <td>
+          <label for="{{user.username}}">
+            {{user.extensionNumber}} - {{user.mobilenumber}}
+          </label></td>
+        <td><label for="{{user.username}}">{{user.country}}</label></td>
+        <td>
+          <input type="checkbox" id="{{user.username}}" [(ngModel)]="selected[i]" [ngModelOptions]="{standalone: true}"
+            (change)="change($event.target,user)">
+          <label for="{{user.username}}" class="m-0"></label>
+        </td>
+      </tr>
+
+    </tbody>
+
+  </table>
+</div>
+<ng-container *ngIf="users.length > 10">
+  <pagination-controls (pageChange)="p = $event" responsive="true" previousLabel="Previous" nextLabel="Next">
+  </pagination-controls>
+</ng-container>
+
+
+<!-- Buttons -->
+<div class="d-flex justify-content-end resdiv my-2">
+
+  <button type="button" class="btn btn-selectall ml-1" title="Select All" (click)="selectAll()"
+    *ngIf="selectAllDeselectAll">
+    <!-- <span class="mr-1"><i class="fas fa-check-circle"></i></span> -->
+    Select All
+  </button>
+
+  <button type="button" class="btn btn-selectall ml-1" title="De-select All" (click)="DeSelectAll()"
+    *ngIf="!selectAllDeselectAll">
+    <!-- <span class="mr-1"><i class="fas fa-times"></i></span> -->
+    De-select All
+  </button>
+
+  <button class="btn btn-next ml-1" title="Next" (click)="next()">
+    Next
+  </button>
+</div>

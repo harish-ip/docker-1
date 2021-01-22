@@ -1,0 +1,93 @@
+.labels {
+  color: #bdbdbd;
+  font-weight: 400;
+}
+
+.subject {
+  color: #000;
+  font-weight: bolder;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.email {
+  background: #f2f2f2;
+  border-radius: 25px !important;
+  color: #374d92;
+  overflow-y: auto;
+  font-weight: 800;
+  border: 1px solid #bdbdbd;
+}
+
+.message {
+  color: #828282;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+#reply::placeholder {
+  transform: translateY(45px);
+}
+
+.btn-reply {
+  color: #FFF;
+  background-color: #fec20a;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 6px 16px;
+  font-weight: 500;
+}
+
+.btn-back {
+  color: #FFF;
+  background-color: #70ad47;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 6px 16px;
+  font-weight: 500;
+}
+
+.btn-next {
+  color: #FFF;
+  background-color: #0070c0;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 6px 16px;
+  font-weight: 500;
+}
+
+
+/* GalaxyNote3 / GalaxyNote9 / Galaxy S5 / Galaxy S9/S9+ / Iphone 5/SE / Iphone (6/7/8) / Iphone (6/7/8 Plus)
+ / Iphone X/XS / Iphone XR / Iphone XS Max / LG Optimus L70 / Nexus 5X / Nexus 6P / Pixel 2 / Pixel 2XL */
+@media (min-width: 320px) and (max-width: 480px) {
+
+  .p-2 {
+    padding: 2px 20px !important;
+  }
+}
+
+
+/* Nexus 7 */
+@media (min-width: 481px) and (max-width: 767px) {
+	
+}
+
+/* Ipad / Ipad Mini */
+@media (min-width: 768px) and (max-width: 799px) {
+
+}
+
+/* Ipad Pro(10.5 Inch) / Nexus 10 */
+@media (min-width: 800px) and (max-width: 1000px) {
+
+}
+
+/* Ipad Pro(12.9 Inch) */
+@media (min-width: 1001px) and (max-width: 1024px) {
+
+}
+
+/* Laptop with HIDPI Screen / Laptop with MDPI Screen / Laptop With Touch  */
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+}

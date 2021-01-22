@@ -1,0 +1,62 @@
+.labels {
+  color: #bdbdbd;
+  font-weight: 400;
+}
+
+.subject {
+  color: #000;
+  font-weight: bolder;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.sent {
+  overflow-y: auto;
+  max-height: 100px !important;
+}
+
+.email {
+  background: #f2f2f2;
+  border-radius: 25px !important;
+  color: #374d92;
+  font-weight: 800;
+  border: 1px solid #bdbdbd;
+  padding: 5px 18px !important;
+}
+
+.message {
+  color: #828282;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+#reply::placeholder {
+  transform: translateY(45px);
+}
+
+.btn-reply {
+  color: #FFF;
+  background-color: #fec20a;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 6px 16px;
+  font-weight: 500;
+}
+
+.btn-back {
+  color: #FFF;
+  background-color: #70ad47;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 6px 16px;
+  font-weight: 500;
+}
+
+.btn-next {
+  color: #FFF;
+  background-color: #0070c0;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 6px 16px;
+  font-weight: 500;
+}

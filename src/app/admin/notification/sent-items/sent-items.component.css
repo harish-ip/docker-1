@@ -1,0 +1,154 @@
+.form-inline .form-control {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+}
+
+.form-group {
+  background-color: rgba(0, 0, 0, 0.06);
+  color: black;
+  border: none;
+  margin-bottom: 2px !important;
+}
+
+.searchbox {
+  float: right;
+  margin-right: -12px;
+}
+
+.searchTerm {
+  font-size: 12px;
+  box-shadow: none;
+  color: #949494;
+}
+
+.top {
+  margin-top: -42px;
+}
+
+.read {
+  background: #c0c1c3;
+}
+
+.unread {
+  background: #ffffff;
+}
+
+.subject {
+  color: #0f78c3;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.w-50 {
+  word-wrap: break-word;
+  white-space: unset;
+  text-align: unset;
+  width: 35% !important;
+}
+
+.fa-trash-alt {
+  font-size: 20px;
+}
+
+.btn-delete {
+  background-color: rgb(92, 88, 88);
+  color: #FFF;
+  font-size: 16px;
+  padding: 6px 8px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+
+.data {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  border: 1px;
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: red;
+  padding: 3px;
+  color: red;
+  /*   top: 20px; */
+  bottom: 20px;
+  left: 20px;
+  height: 50px;
+  max-width: 300px;
+  overflow-y: auto;
+}
+
+strong {
+  word-break: break-all;
+}
+
+
+/* GalaxyNote3 / GalaxyNote9 / Galaxy S5 / Galaxy S9/S9+ / Iphone 5/SE / Iphone (6/7/8) / Iphone (6/7/8 Plus)
+ / Iphone X/XS / Iphone XR / Iphone XS Max / LG Optimus L70 / Nexus 5X / Nexus 6P / Pixel 2 / Pixel 2XL */
+@media (min-width: 320px) and (max-width: 480px) {
+  .searchbox {
+    float: right;
+    margin-right: -12px;
+    margin-top: 12%;
+  }
+
+  .table-responsive {
+    overflow-y: auto;
+  }
+
+}
+
+/* Nexus 7 */
+@media (min-width: 481px) and (max-width: 767px) {
+  .searchbox {
+    float: right;
+    margin-right: -12px;
+    margin-top: 10%;
+  }
+
+  .table-responsive {
+    overflow-y: auto;
+    
+  }
+}
+
+/* Ipad / Ipad Mini */
+@media (min-width: 768px) and (max-width: 799px) {
+  .searchbox {
+    float: right;
+    margin-right: -12px;
+    margin-top: 8%;
+  }
+
+  .table-responsive {
+    overflow-y: auto;
+  }
+}
+
+/* Ipad Pro(10.5 Inch) / Nexus 10 */
+@media (min-width: 800px) and (max-width: 1000px) {
+
+  .searchbox {
+    float: right;
+    margin-right: -12px;
+    margin-top: 9%;
+  }
+}
+
+/* Ipad Pro(12.9 Inch) */
+@media (min-width: 1001px) and (max-width: 1024px) {
+  .top {
+    margin-top: -3px;
+  }
+}
+
+/* Laptop with HIDPI Screen / Laptop with MDPI Screen / Laptop With Touch  */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .top {
+    margin-top: -3px;
+  }
+}

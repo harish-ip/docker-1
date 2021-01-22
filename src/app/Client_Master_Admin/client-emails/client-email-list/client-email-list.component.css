@@ -1,0 +1,206 @@
+.info {
+  color: #157bc5;
+  font-weight: 700;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.table-responsive {
+  /* max-height: 600px; */
+  overflow-y: hidden;
+  height: auto;
+}
+
+thead tr:nth-child(1) th {
+  background: #333;
+  color: #828282;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  font-size: 14px;
+}
+
+thead {
+  box-sizing: border-box;
+  background-color: #bfd9ed;
+  border-radius: 5px;
+  border: 1px solid #ebebeb;
+}
+
+.form-inline .form-control {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+}
+
+.form-group {
+  background-color: rgba(0, 0, 0, 0.06);
+  color: black;
+  border: none;
+  margin-bottom: 2px !important;
+}
+
+.searchbox {
+  float: right;
+  margin-right: -12px;
+}
+
+.searchTerm {
+  font-size: 12px;
+  box-shadow: none;
+  color: #949494;
+}
+
+label {
+  display: block;
+  cursor: pointer;
+}
+
+.btn-selectall {
+  color: #FFF;
+  background-color: #70ad47;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 6px 16px;
+  font-weight: 500;
+}
+
+.btn-next {
+  color: #FFF;
+  background-color: #0070C0;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 6px 16px;
+  font-weight: 500;
+}
+
+input[type="checkbox"]+label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  font: 14px/20px 'Open Sans', Arial, sans-serif;
+  color: #ddd;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.top {
+  margin-top: -42px;
+}
+
+/* responsive styles starts here */
+
+/* GalaxyNote3 / GalaxyNote9 / Galaxy S5 / Galaxy S9/S9+ / Iphone 5/SE / Iphone (6/7/8) / Iphone (6/7/8 Plus)
+ / Iphone X/XS / Iphone XR / Iphone XS Max / LG Optimus L70 / Nexus 5X / Nexus 6P / Pixel 2 / Pixel 2XL */
+@media (min-width: 320px) and (max-width: 480px) {
+  .searchbox {
+    float: right;
+    margin-top: 3px;
+  }
+
+  .resdiv {
+    margin-top: 10px;
+  }
+
+  .top {
+    margin-top: 10px;
+  }
+
+  .table-responsive {
+    overflow-y: auto;
+  }
+}
+
+/* Nexus 7 */
+@media (min-width: 481px) and (max-width: 767px) {
+  .searchbox {
+    float: right;
+    margin-top: 3px;
+  }
+
+  .resdiv {
+    margin-top: 10px;
+  }
+
+  .top {
+    margin-top: 10px;
+  }
+
+  .table-responsive {
+   overflow-y: auto;
+  }
+}
+
+/* Ipad / Ipad Mini */
+@media (min-width: 768px) and (max-width: 799px) {
+  .searchbox {
+    float: right;
+    margin-top: 3px;
+    margin-right: -22px;
+  }
+
+  .resdiv {
+    margin-top: 10px;
+  }
+
+  .top {
+    margin-top: 10px;
+  }
+
+  .table-responsive {
+    overflow-y: auto;
+  }
+}
+
+/* Ipad Pro(10.5 Inch) / Nexus 10 */
+@media (min-width: 800px) and (max-width: 1000px) {
+  .searchbox {
+    float: right;
+    margin-top: 3px;
+  }
+
+  .resdiv {
+    margin-top: 10px;
+  }
+
+  .top {
+    margin-top: 10px;
+  }
+}
+
+/* Ipad Pro(12.9 Inch) */
+@media (min-width: 1001px) and (max-width: 1024px) {
+  .searchbox {
+    float: right;
+    margin-top: 3px;
+  }
+
+  .resdiv {
+    margin-top: 10px;
+  }
+
+  .top {
+    margin-top: 10px;
+  }
+}
+
+/* Laptop with HIDPI Screen / Laptop with MDPI Screen / Laptop With Touch  */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .searchbox {
+    float: right;
+    margin-top: 3px;
+  }
+
+  .resdiv {
+    margin-top: 10px;
+  }
+
+  .top {
+    margin-top: 0px;
+  }
+}

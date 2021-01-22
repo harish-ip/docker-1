@@ -1,0 +1,220 @@
+<!-- Container -->
+<div class="container">
+  <!-- Row -->
+
+  <div class="row text-center mt-3" *ngIf="errmsg">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 alert alert-danger" role="alert">
+      No coupons are available
+    </div>
+  </div>
+
+  <div class="row">
+
+    <!-- col-md-3 -->
+    <div class="col-md-3 p-3 text-center" *ngFor=" let coupon of couponlist; let i = index">
+
+      <span class="credate">{{coupon.createdDate | date: 'yyyy-MM-dd'}}</span>
+
+      <div class="row border" [ngStyle]="{'opacity':statusForCouponCodes[i] == 0 ? 0.5 : 1 }">
+
+        <!-- first row -->
+        <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 text-center font-weight-bold coupon-div">
+          {{coupon.couponCode}}
+        </div>
+
+        <!-- second row -->
+        <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 text-center font-weight-bold price-div">
+          $ {{coupon.amount}} <sub>off</sub>
+        </div>
+
+        <!-- third row -->
+        <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 font-weight-bold actions-div">
+
+          <div class="row vertical-align">
+
+            <div class="col-5 col-md-5 col-sm-5 col-lg-5 col-xl-5">
+              Expires in {{statusForCouponCodes[i]}} days
+            </div>
+
+            <div class="col-7 col-md-7 col-sm-7 col-lg-7 col-xl-7">
+
+              <button type="button" class="btn btn-link btn-sm" routerLinkActive="router-link-active"
+                [disabled]="statusForCouponCodes[i] === 0" data-toggle="modal" data-target="#View"
+                (click)="viewCoupon(coupon)" data-backdrop="static" data-keyboard="false">
+                View
+              </button>&nbsp;
+
+              <button type="button" class="btn btn-link btn-sm" rrouterLinkActive="router-link-active"
+                data-toggle="modal" data-target="#Delete" (click)="viewCoupon(coupon)" data-backdrop="static"
+                data-keyboard="false">
+                Delete
+              </button>&nbsp;
+
+              <button type="button" class="btn btn-link btn-sm" routerLinkActive="router-link-active"
+                [disabled]="statusForCouponCodes[i] === 0" data-toggle="modal" data-target="#Edit"
+                (click)="GetCoupon(coupon)" data-backdrop="static" data-keyboard="false">
+                Edit
+              </button>&nbsp;
+
+              <button type="button" class="btn btn-link btn-sm" [disabled]="statusForCouponCodes[i] === 0"
+                (click)="CouponToProduct(coupon)">Apply</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- View coupon model popup -->
+<div class="modal fade" id="View" tabindex="-1" role="dialog" aria-labelledby="View" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Coupon/Offer Details - <strong> {{viewedcouponCode}}</strong></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body desc">
+        {{couponDescription}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Coupon model popup -->
+<div class="modal fade" id="Edit" tabindex="-1" role="dialog" aria-labelledby="Edit" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center">Update - <strong> {{viewedcouponCode}}</strong> Coupon Code</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form #updateCouponForm="ngForm" (ngSubmit)="updatecoupon()" *ngIf="Editcoupon">
+
+          <div class="row m-2 d-flex justify-content-center">
+
+            <!-- 1st row -->
+            <div class="form-group row">
+
+              <div class="col-md-6">
+                <!-- couponCode -->
+                <input type="text" class="form-control input-custom-control text-center column-margin" id="couponCode"
+                  name="couponCode" placeholder="Coupon Code" [(ngModel)]="Editcoupon.couponCode" #couponCode="ngModel"
+                  required minlength="8" maxlength="16" autocomplete="off" pattern="^[a-zA-Z0-9-]*$" disabled>
+              </div>
+
+              <div class="col-md-6">
+
+                <div class="input-group">
+                  <!-- Prefix text -->
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">$</div>
+                  </div>
+                  <!-- Price -->
+                  <input type="text" class="form-control input-custom-control text-center" id="amount" name="amount"
+                    placeholder="Amount" [(ngModel)]="amount1" #amount="ngModel" required minlength="1" maxlength="4"
+                    autocomplete="off" appPrice>
+                </div>
+
+                <!-- Price Validations -->
+                <div *ngIf="amount?.touched" class="text-danger">
+                  <div *ngIf="amount.errors?.required">
+                    <small>Amount is required</small>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- 2nd row -->
+            <div class="form-group row w-100">
+
+              <textarea type="text" id="description" name="description" class="form-control input-custom-control resize"
+                placeholder="Coupon Description" [(ngModel)]="description1" #description="ngModel" required
+                minlength="15" maxlength="200" autocomplete="off" rows="4">
+                            </textarea>
+
+              <!-- Coupon description Validations -->
+              <div *ngIf="description?.touched" class="text-danger">
+                <div *ngIf="description.errors?.required">
+                  <small>Coupon description is required</small>
+                </div>
+                <div *ngIf="description.errors?.minlength">
+                  <small>Coupon description must be at least 15 characters long</small>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- 3rd row -->
+            <div class="form-group row">
+
+              <div class="col-md-6 input-group column-margin">
+
+                <input class="form-control" placeholder="Valid From" name="validFrom" [(ngModel)]="validfrom"
+                  ngbDatepicker #validFrom="ngbDatepicker" readonly [minDate]="minFromDate" [maxDate]="maxFromDate"
+                  required (ngModelChange)="settodates($event)">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="validFrom.toggle();" type="button">
+                    <span><i class="far fa-calendar-alt"></i></span>
+                  </button>
+                </div>
+
+              </div>
+
+              <div class="col-md-6 input-group">
+
+                <input class="form-control" placeholder="Valid To" name="validTo" [(ngModel)]="validtoo" ngbDatepicker
+                  #validTo="ngbDatepicker" readonly [minDate]="minToDate" [maxDate]="maxToDate" required>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="validTo.toggle();" type="button">
+                    <span><i class="far fa-calendar-alt"></i></span>
+                  </button>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="modal-footer text-center" style="border-top:none ! important;">
+              <button type="submit" class="btn-publish text-uppercase" [disabled]="updateCouponForm.invalid">
+                Update
+              </button>
+            </div>
+
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Delete coupon model popup -->
+<div class="modal fade" id="Delete" tabindex="-1" role="dialog" aria-labelledby="Delete" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Are you sure to delete coupon with code - <strong> {{viewedcouponCode}}</strong></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-delete text-uppercase"
+          (click)="DeleteCoupon(viewedcouponCode)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+td {
+  font-size: 14px;
+}
+
+.prdname {
+  font-weight: 800;
+  color: #000;
+  font-size: 18px;
+}
+
+.status {
+  color: #ec4444;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden !important;
+  font-weight: 500;
+}
+
+.anchor {
+  font-weight: 800;
+  font-size: 18px;
+  color: #000 !important;
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 575px) {}

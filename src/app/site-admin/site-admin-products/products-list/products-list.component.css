@@ -1,0 +1,179 @@
+.card {
+  opacity: 1;
+  border-radius: 0px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 #BDBDBD;
+  border: 1px solid #E2E2E2;
+}
+
+.card-title {
+  margin-top: 10px;
+  color: #333;
+  font-size: 22px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 2px !important;
+}
+
+.card-text {
+  color: red;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.card-desc {
+  color: #6A6A6A;
+  font-size: 16px;
+  word-break: break-all;
+  height: 55px;
+}
+
+.card-desc-more {
+  color: #6A6A6A;
+  font-size: 16px;
+  overflow: hidden;
+  height: 150px;
+  text-overflow: ellipsis;
+  overflow-y: scroll;
+  padding: 5px;
+}
+
+.readmore {
+  cursor: pointer !important;
+  text-decoration: none !important;
+  color: #0070c0 !important;
+  font-weight: 500;
+}
+
+.btn-try {
+  background-color: #FEC20A;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 3px;
+}
+
+.btn-buy {
+  background-color: #0070C0;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 3px;
+}
+
+.img-icon-div {
+  margin-top: -25%;
+}
+
+.img-icon {
+  border-radius: 50%;
+  width: 75px;
+  background-color: red;
+  padding: 20px;
+  height: 75px;
+}
+
+.modal-body p {
+  height: 4rem;
+  max-height: 4rem;
+  overflow-y: auto;
+  padding: 15px;
+}
+
+/* GalaxyNote3 / GalaxyNote9 / Galaxy S5 / Galaxy S9/S9+ / Iphone 5/SE / Iphone (6/7/8) / Iphone (6/7/8 Plus)
+ / Iphone X/XS / Iphone XR / Iphone XS Max / LG Optimus L70 / Nexus 5X / Nexus 6P / Pixel 2 / Pixel 2XL*/
+@media (min-width: 320px) and (max-width: 480px) {
+
+  .img-icon-div {
+    margin-top: -16%;
+  }
+
+  .card-desc-more {
+    padding: 15px;
+  }
+
+  .modal-title {
+    font-size: 14px !important;
+  }
+
+}
+
+/* Nexus 7 */
+@media (min-width: 481px) and (max-width: 767px) {
+  .img-icon-div {
+    margin-top: -10%;
+  }
+
+  .card-desc-more {
+    padding: 15px;
+  }
+
+  .modal-title {
+    font-size: 14px !important;
+  }
+
+  .mx-5 {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+}
+
+/* Ipad / Ipad Mini /   */
+@media (min-width: 768px) and (max-width: 799px) {
+  .img-icon-div {
+    margin-top: -8%;
+  }
+
+  .card-desc-more {
+    padding: 10px;
+  }
+}
+
+/* Ipad Pro(10.5 Inch) / Nexus 10*/
+@media (min-width: 800px) and (max-width: 1000px) {
+  .img-icon-div {
+    margin-top: -12%;
+  }
+
+  .card-desc-more {
+    padding: 12px;
+  }
+
+}
+
+/* Ipad Pro(12.9 Inch) */
+@media (min-width: 1001px) and (max-width: 1024px) {
+  .card-title {
+    font-size: 1em;
+  }
+
+  .card-text {
+    font-size: 1em;
+  }
+
+  .card-desc {
+    font-size: 0.9em;
+  }
+
+  .card-desc-more {
+    padding: 5px 13px;
+  }
+}
+
+/* Laptop with MDPI Screen / Laptop With Touch / */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .img-icon-div {
+    margin-top: -32%;
+  }
+
+  .card-desc {
+    height: 75px;
+  }
+
+  .card-desc-more {
+    padding: 6px;
+  }
+}

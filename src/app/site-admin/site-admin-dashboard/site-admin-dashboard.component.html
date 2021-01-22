@@ -1,0 +1,293 @@
+<div class="loading" *ngIf="title.isLoding">
+  <ul style="display: flex;">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+
+<!-- Dashboard starts here -->
+<div class="container-fluid" *ngIf="!title.isLoding">
+
+  <!-- Inner div  -->
+  <div class="row mx-5 my-5">
+
+    <!--Super Admin Informations Starts -->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 resalign">
+
+      <!-- Super Admin Profile Image -->
+      <div class="imgdiv info">
+        <img src="assets/Images/admin.png" *ngIf="!imgprev" width="120" height="120" />
+        <img src="{{dataShare.userdetails.value?.userImage}}" *ngIf="imgprev" width="120" height="120" />
+        <button class="uploadbtn" id="uploadbtn" title="Browse to upload image" type="file" (click)="uploadimg()">
+          <i class="fas fa-camera"></i>
+        </button>
+        <input type="file" id="prfupd" name="prfupd" (change)="uploadimage($event)" accept="image/x-png,image/jpeg"
+          style="display: none;">
+      </div>
+
+      <!-- Super Admin Info -->
+      <div class="info">
+        <!-- <h1 class="font-weight-bolder">AI3O.COM</h1> -->
+        <h3>{{lfirstName | uppercase}}</h3>
+        <p>Role - <strong>{{role}}</strong></p>
+      </div>
+
+      <hr>
+
+      <div class="row info">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+          <span><i class="fas fa-building"></i></span>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 info">
+          <h6 class="font-weight-bold company">Company</h6>
+          <h5 class="font-weight-bold company">{{auth.organizationName.value}}</h5>
+        </div>
+      </div>
+      <hr>
+      <div class="row info">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+          <span><i class="fas fa-map-marker-alt"></i></span>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+          <h6 class="font-weight-bold">Location</h6>
+          <h5 class="font-weight-bold location">{{location}}</h5>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <!-- Super Admin Informations Ends -->
+
+    <!-- Products and users information and access and graphs start -->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+      <div class="row">
+
+        <!-- Bar chart -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <div class="overview p-3">
+            <h5 class="heading p-2">&nbsp;
+              <!-- Overview Graph - Bar Type -->
+            </h5>
+            <div class="row graph">
+              <canvas baseChart [chartType]="'bar'" [datasets]="chartData" [labels]="labels" [options]="chartOptions"
+                [legend]="true" [colors]="colors">
+              </canvas>
+            </div>
+          </div>
+
+          <div class="category p-3 mt-3 column-margin">
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                <img src="/assets/Images/cloudAi.svg" class="iconimg" />
+              </div>
+              <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                <h6 title="Products">Products</h6>
+                <p title="Manage Products">Manage Products</p>
+              </div>
+              <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="prdcount" *ngIf="productsCounts < 10">
+                  0{{productsCounts}}
+                </div>
+                <div [ngClass]="{'numstyle': productsCounts < 100,'usercount':productsCounts >= 100}"
+                  *ngIf="productsCounts > 10">
+                  {{productsCounts}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-right m-0 p-0">
+                <!--   <a class="yellow mr-3" style="cursor: not-allowed;">Assign</a> -->
+                <a class="blue mr-3" [routerLink]="['/siteadmin/products/subscribed-products']"
+                  routerLinkActive="router-link-active">List</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Pie chart -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <div class="overview p-3">
+            <h5 class="heading p-2"> &nbsp;
+              <!-- Overview Graph - Pie Type -->
+            </h5>
+            <div class="row graph">
+              <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                [options]="piechartoptions"></canvas>
+            </div>
+          </div>
+          <div class="category p-3 mt-3 column-margin">
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                <img src="/assets/Images/cloudAi.svg" class="iconimg" />
+              </div>
+              <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                <h6 title="Client Site User">Client Site User</h6>
+                <p title="Manage Users">Manage Users</p>
+              </div>
+              <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="prdcount" *ngIf="(userCounts < 10)">
+                  0{{userCounts}}
+                </div>
+                <div [ngClass]="{'numstyle': userCounts < 100,'usercount':userCounts >= 100}" *ngIf="(userCounts > 10)">
+                  {{userCounts}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-right m-0 p-0">
+                <a class="red mr-3" [routerLink]="['/siteadmin/users/create-siteadmin-user']"
+                  routerLinkActive="router-link-active">Create</a>
+                <a class="green mr-3" [routerLink]="['/siteadmin/users/edit-siteadmin-user']"
+                  routerLinkActive="router-link-active">Edit</a>
+                <a class="blue mr-3" [routerLink]="['/siteadmin/users/siteadmin-user-list']"
+                  routerLinkActive="router-link-active">List</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Overview data -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <div class="overview p-2">
+            <h5 class="heading p-2">Overview</h5>
+
+            <!-- 1st row -->
+            <div class="row p-2 m-2 overview-row">
+              <div class="col-2 col-md-2">
+                <div class="new-progressive-tenanats"></div>
+              </div>
+              <div class="col-md-10 col-10" style="margin-top: -3px;">
+                <strong class="title">New progressive users</strong>
+                <div class="progress">
+                  <div class="new-progress-users-bar" role="progressbar" style="width: 95%" aria-valuenow="25"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2nd row -->
+            <div class="row p-2 m-2 overview-row">
+              <div class="col-md-2 col-2">
+                <div class="existing-trail-using-tenanats"></div>
+              </div>
+              <div class="col-md-10 col-10" style="margin-top: -3px;">
+                <strong class="title">Existing trial users</strong>
+                <div class="progress">
+                  <div class="existing-trail-progress-users-bar" role="progressbar" style="width: 90%"
+                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3rd row -->
+            <div class="row p-2 m-2 overview-row">
+              <div class="col-md-2 col-2">
+                <div class="existing-active-tenanats"></div>
+              </div>
+              <div class="col-md-10 col-10" style="margin-top: -3px;">
+                <strong class="title">Existing active users</strong>
+                <div class="progress">
+                  <div class="existing-active-progress-users-bar" role="progressbar" style="width: 60%"
+                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4th row -->
+            <div class="row p-2 m-2 overview-row">
+              <div class="col-md-2 col-2">
+                <div class="existing-priority-inactive-users"></div>
+              </div>
+              <div class="col-md-10 col-10" style="margin-top: -3px;">
+                <strong class="title">Product downloads</strong>
+                <div class="progress">
+                  <div class="existing-priority-inactive-progress-users-bar" role="progressbar" style="width: 98%"
+                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5th row -->
+            <div class="row p-2 m-2 overview-row">
+              <div class="col-md-2 col-2">
+                <div class="existing-inactive-tenanats"></div>
+              </div>
+              <div class="col-md-10 col-10" style="margin-top: -3px;">
+                <strong class="title">New users in a month</strong>
+                <div class="progress">
+                  <div class="existing-inactive-progress-users-bar" role="progressbar" style="width: 88%"
+                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- Products and users information and access and graphs ends -->
+
+      <!-- Admin Quick Access -->
+      <div class="row">
+
+<!--         <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-3">
+          <div class="category p-3">
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                <img src="/assets/Images/cloudAi.svg" class="iconimg" />
+              </div>
+              <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                <h6>Emails</h6>
+                <p title="View all User Emails">View all User Emails</p>
+              </div>
+              <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="prdcount" *ngIf="(userCounts < 10)">
+                  0{{userCounts}}
+                </div>
+                <div [ngClass]="{'numstyle': userCounts < 100,'usercount':userCounts >= 100}" *ngIf="(userCounts > 10)">
+                  {{userCounts}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-right m-0 p-0">
+                <a class="green mr-3" [routerLink]="['/siteadmin/emails/siteadmin-email-compose']"
+                  routerLinkActive="router-link-active">Compose</a>
+                <a class="blue mr-3" [routerLink]="['/siteadmin/emails/siteadmin-email-list']"
+                  routerLinkActive="router-link-active">View</a>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+<!--         <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-3">
+          <div class="category p-3">
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                <img src="/assets/Images/cloudAi.svg" class="iconimg" />
+              </div>
+              <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                <h6>Reports</h6>
+                <p title="View all User Reports">View all User Reports</p>
+              </div>
+              <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="numstyle">00</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-right m-0 p-0">
+                <a class="green mr-3" style="cursor: not-allowed;">Compose</a>
+                <a class="blue mr-3" style="cursor: not-allowed;">View</a>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="row mx-5 my-5">
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+
+    <ul class="pl-0">
+
+      <a routerLink="companies-list" routerLinkActive="router-link-active">
+        <li class="d-flex-li">
+          Companies List
+          <span><i class="fas fa-chevron-right fa-lg"></i></span>
+        </li>
+      </a>
+
+      <a routerLink="create-company" routerLinkActive="router-link-active">
+        <li class="d-flex-li mt-2">
+          Create Company
+          <span><i class="fas fa-chevron-right fa-lg"></i></span>
+        </li>
+      </a>
+
+     <!--  <a routerLink="edit-company" routerLinkActive="router-link-active">
+        <li class="d-flex-li mt-2">
+          Edit Company
+          <span><i class="fas fa-chevron-right fa-lg"></i></span>
+        </li>
+      </a>
+      <a routerLink="extend-subscription" routerLinkActive="router-link-active">
+        <li class="d-flex-li mt-2">
+          Extend Subscription
+          <span><i class="fas fa-chevron-right fa-lg"></i></span>
+        </li>
+      </a> -->
+    </ul>
+
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

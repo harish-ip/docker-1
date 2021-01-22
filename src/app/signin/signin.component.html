@@ -1,0 +1,104 @@
+<div class="bgi" *ngIf="!mainLoading">
+
+  <div class="overlay">
+
+    <div class="container">
+
+      <div class="row">
+
+        <!-- AI3O Logo and Information -->
+        <div class="col-6 col-sm-6 col-md-12 col-lg-6 col-xl-6 my-auto resdiv">
+          <a [routerLink]="['/welcome']" routerLinkActive="active" style="cursor: pointer;">
+            <img src="./../assets/Images/logo_svg.svg" class="img-fluid" alt="AI3O-Logo">
+          </a><br>
+          <p class="info">
+            Welcome to Insight68 Business cloud. Easy-to-use, fast, cloud powered self-service platform for running
+            Business intelligence, reporting & analytics on your data.
+          </p>
+        </div>
+
+        <!-- Sign In Form -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 my-auto">
+
+          <form class="p-5 text-center" (submit)="onSubmit()">
+
+            <a class="mblview" [routerLink]="['/welcome']" routerLinkActive="active" style="cursor: pointer;">
+              <img src="./../assets/Images/logo_svg.svg" class="img-fluid" alt="AI3O-Logo">
+            </a>
+
+            <div class="my-4 text-center">
+              <h1 class="my-2">Sign In</h1>
+              <p class="mb-5">Sign in to your account</p>
+            </div>
+
+            <!-- User name -->
+            <div class="my-4 text-center">
+              <input type="text" placeholder="Email" class="form-control text-center input-custom-control"
+                [(ngModel)]="username" #email="ngModel" [ngModelOptions]="{standalone: true}" required
+                autocomplete="off" minlength="6" maxlength="40" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+				<div *ngIf="email?.touched" class="text-danger">
+            <div *ngIf="email.errors?.required">
+              <small> Email is required</small>
+            </div>
+            <div *ngIf="email.errors?.pattern">
+              <small>Email must be a valid email address </small>
+            </div>
+            <!-- <div *ngIf="email.errors?.minlength">
+                <small>Email must be at least 6 characters long except domain name</small>
+              </div> -->
+            <!-- <div *ngIf="emailexistError">
+              <small *ngIf="email?.dirty && email?.valid">{{emailexistError}}</small>
+            </div> -->
+          </div>
+            </div>
+
+            <!-- Password -->
+            <div class="my-4 text-center">
+              <input type="password" class="form-control text-center input-custom-control" [(ngModel)]="pwd"
+                #pswd="ngModel" [ngModelOptions]="{standalone: true}" placeholder="Password" required maxlength="16"
+                autocomplete="off">
+            </div>
+
+            <div class="row my-3">
+              <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left">
+                <div class="custom-control custom-checkbox">
+                  <input class="custom-control-input" id="checkbox-small" type="checkbox"
+                    style="cursor: not-allowed;" />
+                  <label class="custom-control-label text-display"
+                    style="color: #F2F2F2 !important;cursor: not-allowed">
+                    Remember Me
+                  </label>
+                </div>
+              </div>
+              <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 d-flex justify-content-end p-0">
+                <a class="text-display mr-3" routerLink="/forgotpassword" routerLinkActive="router-link-active"
+                  style="color: #fff !important;">
+                  Forgot Password?</a>
+              </div>
+            </div>
+
+            <div class="row my-4 p-3">
+              <button type="submit" class="btn btn-signin btn-block" [disabled]="loading">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm" (click)="onSubmit()" role="status"
+                  aria-hidden="true"></span>
+                Sign In
+              </button>
+            </div>
+
+           <!--  <div class="p-3 my-4 memeber-div text-center">
+              <p>Not a member yet?
+                <a [routerLink]="['/signup']" routerLinkActive="router-link-active"> Get an Insight68 ID </a>
+              </p>
+            </div> -->
+
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<app-loading *ngIf="mainLoading"></app-loading>

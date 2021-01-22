@@ -1,0 +1,146 @@
+.card-body {
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.11);
+}
+
+.bodyheading {
+  color: #000;
+  font-size: 30px;
+  line-height: 49px;
+  font-weight: 400;
+}
+
+.paragraph {
+  color: #5E5E5E;
+  font-weight: 300;
+  line-height: 30px;
+  word-wrap: break-word;
+  max-width: 450px;
+  overflow: hidden;
+  height: 7.3rem;
+}
+
+.btn-buy {
+  color: #fafafa;
+  font-size: 12px;
+  background-color: #0070c0;
+  border-radius: 3px;
+  padding: 5px 15px;
+}
+
+.btn-try {
+  color: #fafafa;
+  font-size: 12px;
+  background-color: #70ad47;
+  border-radius: 3px;
+  padding: 5px 15px;
+}
+
+.right-section {
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: #F8F8F8;
+  border: 1px solid #fbf9f9;
+  padding: 10px 20px 10px 20px;
+}
+
+.allproducts-heading {
+  color: #ada8a8;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.allproducts {
+  margin: 0px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #DDD;
+  box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.all-products-row-content {
+  display: inline-grid;
+}
+
+.all-products-row-span1 {
+  color: #333;
+  font-size: 12px;
+  font-weight: 500;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+
+.all-products-row-span2 {
+  color: #ada8a8;
+  font-size: 12px;
+  height: 2rem;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+
+.brand-new-tools-row-price {
+  font-size: 11px;
+  color: #000;
+  text-align: right !important;
+}
+
+.brand-new-tools-row-price strong {
+  color: #000;
+  font-size: 11px;
+}
+
+.modal-footer {
+  justify-content: normal !important;
+}
+
+.modal-body p {
+  height: 6rem;
+  overflow: hidden;
+}
+
+/* responsive styles */
+@media only screen and (max-width: 575px) {
+
+
+  .bodyheading {
+    color: #000;
+    font-size: 14px;
+  }
+
+  .paragraph {
+    color: #5E5E5E;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 25px;
+    height: 150px;
+    word-break: break-word;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow: overlay;
+  }
+
+  .all-products-row-span2 {
+    color: #ada8a8;
+    font-size: 10px;
+    height: 1.5rem;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+  }
+
+  .brand-new-tools-row-price {
+    font-size: 10px;
+    color: #000;
+    text-align: right !important;
+  }
+
+  .brand-new-tools-row-price strong {
+    color: #000;
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,233 @@
+<div class="container">
+  <div class="row d-flex top">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-end mx-2">
+      <div class="form-inline form-group searchbox">
+        <input class="form-control searchTerm" type="text" name="search" placeholder="Search by country"
+          [(ngModel)]="searchTerm" aria-label="search" aria-describedby="search" autocomplete="off">
+        <span class="p-2"><i class="fas fa-search"></i></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container scroll">
+  <div class="tree">
+
+    <div class="nav-link-main row">
+      <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">Company</div>
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">User Role</div>
+	  <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">User Name</div>
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">Location</div>
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-right">Actions</div>
+    </div>
+
+    <!-- List Of Client Admins -->
+    <div *ngIf="clientadmins" class="text-center">
+      <ng-container *ngIf="clientadmins.length == 0 && roleusers.length == 0">
+        No users
+      </ng-container>
+    </div>
+    <div class="clientAdmin row" *ngFor="let clientadmin of clientadmins |filter : searchTerm;let i = index;">
+      <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 companyname">
+	  <span class="pointer" id="clientadmin{{i}}" (click)="getSiteAdmins(clientadmin.username,i)">
+          <i class="fas fa-plus-square"></i>
+        </span>
+        {{clientadmin.organizationName}}
+      </div>
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 role text-capitalize">
+        <button id="{{clientadmin.username}}" type="button" class="popover-icon btn btn-link p-0" data-toggle="popover"
+          data-placement="right" data-trigger="focus"
+          (click)="getProductsOnUserName(clientadmin.username)" data-toggle="modal" data-target="#tryModal">{{clientadmin.rolealias}}
+        </button>
+      </div>
+	   <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 username">
+        {{clientadmin.username}}
+      </div>
+	   <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 location"
+        title="{{clientadmin.city}} - {{clientadmin.country}}">
+        {{clientadmin.city}} - {{clientadmin.country}}
+      </div>
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-right">
+        <span class="pointer" title="Edit" (click)="updateCompany(clientadmin)">
+          <i class="fas fa-edit"></i>
+        </span>
+        <span class="pointer ml-2" title="Extend Subscription" (click)="extendProduct(clientadmin)">
+          <i class="far fa-calendar-alt"></i>
+        </span>
+        <span class="pointer ml-2" disabled title="Delete" style="cursor: not-allowed;">
+          <i class="fas fa-trash-alt"></i>
+        </span>
+      </div>
+
+      <!-- List Of Site Admins -->
+      <ng-container *ngIf="clientadminindex == i">
+
+        <ng-container *ngFor="let siteadmin of siteadmins|filter : searchTerm;let j = index;">
+           <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 companyname pl-4 siteadmin">
+		   <span class="pointer" id="siteadmin{{j}}" (click)="getSiteUsers(siteadmin.username,j)">
+              <i class="fas fa-plus-square"></i>
+            </span>
+            {{siteadmin.organizationName}}
+          </div>
+		  <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 role siteadmin">
+            <button id="{{siteadmin.username}}" type="button" class="popover-icon btn btn-link p-0"
+              data-toggle="popover" data-placement="auto" data-trigger="focus"
+              (click)="getProductsOnUserName(siteadmin.username)" data-toggle="modal" data-target="#tryModal">{{siteadmin.rolealias}}
+            </button>
+          </div>
+          <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 username siteadmin">
+            {{siteadmin.username}}
+          </div>
+          <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 siteadmin location"
+            title="{{siteadmin.city}} - {{siteadmin.country}}">
+            {{siteadmin.city}} - {{siteadmin.country}}
+          </div>
+          <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 siteadmin text-right">
+            <span class="pointer" title="Edit" (click)="updateCompany(siteadmin)"><i class="fas fa-edit"></i></span>
+            <span class="pointer ml-2" title="Extend Subscription" (click)="extendProduct(siteadmin)"><i
+                class="far fa-calendar-alt"></i></span>
+            <span class="pointer ml-2" disabled title="Delete" style="cursor: not-allowed;">
+              <i class="fas fa-trash-alt"></i>
+            </span>
+          </div>
+
+          <!-- List Of Site Users -->
+          <ng-container *ngIf="siteadminindex==j">
+
+            <ng-container *ngFor="let siteuser of siteusers|filter : searchTerm;let k = index;">
+			<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 companyname pl-5">
+                {{siteuser.organizationName}}
+              </div>
+              
+              <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 role">
+                <button id="{{siteuser.username}}" type="button" class="popover-icon btn btn-link p-0"
+                  data-toggle="popover" data-placement="auto" data-trigger="focus"
+                  (click)="getProductsOnUserName(siteuser.username)" data-toggle="modal" data-target="#tryModal">{{siteuser.rolealias}}
+                </button>
+              </div>
+              <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 username">
+                <!-- <i class="fas fa-user-circle"></i> -->
+                {{siteuser.username}}
+              </div>
+              <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 location"
+                title="{{siteuser.city}} - {{siteuser.country}}">
+                {{siteuser.city}} - {{siteuser.country}}
+              </div>
+              <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-right">
+                <span class="pointer" title="Edit" (click)="updateCompany(siteuser)"><i class="fas fa-edit"></i></span>
+                <span class="pointer ml-2" title="Extend Subscription" (click)="extendProduct(siteuser)"><i
+                    class="far fa-calendar-alt"></i></span>
+                <span class="pointer ml-2" disabled title="Delete" style="cursor: not-allowed;">
+                  <i class="fas fa-trash-alt"></i>
+                </span>
+              </div>
+            </ng-container>
+
+          </ng-container>
+
+        </ng-container>
+
+      </ng-container>
+
+    </div>
+
+    <div class="clientAdmin row" *ngFor="let roleuser of roleusers|filter : searchTerm;let i = index;">
+	<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 companyname">
+        -
+      </div>
+	  <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 role text-capitalize">
+        <button id="{{roleuser.username}}" type="button" class="popover-icon btn btn-link p-0" data-toggle="popover"
+          data-placement="right" data-trigger="focus" (click)="getProductsOnUserName(roleuser.username)" data-toggle="modal" data-target="#tryModal">{{roleuser.rolealias}}
+        </button>
+      </div>
+      <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 username">
+        <!-- <span> <i class="fas fa-user-circle"></i> </span> -->
+        {{roleuser.username}}
+      </div>
+      <!-- <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 role">
+        {{roleuser.rolealias}}
+      </div> -->
+
+      
+
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 location" title="{{roleuser.city}} - {{roleuser.country}}">
+        {{roleuser.city}} - {{roleuser.country}}
+      </div>
+
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-right">
+        <span class="pointer" title="Edit" (click)="updateCompany(roleuser)">
+          <i class="fas fa-edit"></i>
+        </span>
+        <span class="pointer ml-2" title="Extend Subscription" (click)="extendProduct(roleuser)">
+          <i class="far fa-calendar-alt"></i>
+        </span>
+        <span class="pointer ml-2" disabled title="Delete" style="cursor: not-allowed;">
+          <i class="fas fa-trash-alt"></i>
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- <div id="myPopoverContent">
+  <div class="text-white">
+    <div [ngClass]="{'row mx-0': true,'border-bottom border-primary':!last}"
+      *ngFor="let prod of userProducts; let i=index; let last=last;">
+      <div class="col-6">
+        <p class="m-0">Product Name : </p>
+        <p [ngClass]="{'trial': prod.trial,'m-0':true,'subscribed':!prod.trial}">{{prod.trial ? 'Trial': 'Subscribed'}}
+        </p>
+        <p class="m-0">Start Date</p>
+        <p class="m-0 text-danger">End Date</p>
+      </div>
+      <div class="col-6">
+        <p class="m-0">{{prod.productName}}</p>
+        <p [ngClass]="{'trial': prod.trial,'m-0':true,'subscribed':!prod.trial}">Yes</p>
+        <p class="m-0">{{prod.startDate | date: 'dd-MMM-yyyy'}}</p>
+        <p class="m-0 text-danger">{{prod.endDate |date: 'dd-MMM-yyyy'}}</p>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- User  Products List  -->
+<div class="modal fade" id="tryModal" tabindex="-1" role="dialog" aria-labelledby="tryModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:75% !important;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><strong>{{username}}</strong> Products</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+	  <div *ngIf="userProducts" class="text-center">
+      <ng-container *ngIf="userProducts.length == 0">
+        No Products
+      </ng-container>
+    </div>
+	  <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 my-auto pb-3" *ngFor="let prod of userProducts; let i=index; let last=last;">
+<div class="card">
+        <img src="{{prod.productImage}}" class="card-img-top" alt="{{prod.productName}}">
+
+        <div class="card-body text-center">
+          <div class="img-icon-div">
+            <img [src]="sanitizer.bypassSecurityTrustResourceUrl(prod.productIcon)" alt="{{prod.productName}}"
+              class="img-icon">
+          </div>
+          <h5 class="card-title">{{prod.productName}}</h5>
+          <p class="card-text" style="max-height:2%!important;height:auto!important;">"TBD" / {{prod.productDuration}}</p>
+        <p class="card-desc" style="max-height:2%!important;height:auto!important;">
+            {{prod.productDescription}} <br>
+          </p>
+
+        </div>
+      </div>
+	  </div>
+	  
+      </div>
+</div>
+  </div>
+</div>

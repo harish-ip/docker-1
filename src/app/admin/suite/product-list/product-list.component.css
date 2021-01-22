@@ -1,0 +1,86 @@
+.prd-div {
+  background-color: #fff;
+  box-shadow: 1px 0px 2px 1px #BDBDBD;
+  border-color: #e2e2e2;
+}
+
+.prdname {
+  color: #333;
+  font-size: 25px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden !important;
+  margin-bottom: 0px !important;
+}
+
+.prddura {
+  color: #BDBDBD;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.prdprice {
+  color: #F00;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.prddesc {
+  color: #6A6A6A;
+  font-size: 16px;
+}
+
+.btn-edit {
+  background-color: #70AD47;
+  color: #FFF;
+  font-size: 16px;
+  padding: 6px 16px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.btn-delete {
+  background-color: #DD2527;
+  color: #FFF;
+  font-size: 16px;
+  padding: 6px 8px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.modal-footer {
+  justify-content: normal !important;
+}
+
+.img-icon {
+  border-radius: 50%;
+  width: 100px;
+  background-color: red;
+  padding: 20px;
+  height: 100px;
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 575px) {
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 768px) {
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 1024px) {
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+}

@@ -1,0 +1,66 @@
+<div class="bgi">
+
+  <div class="overlay">
+
+    <div class="container">
+
+      <div class="row">
+
+        <!-- ai3o Logo and Information -->
+        <div class="col-6 col-sm-6 col-md-12 col-lg-6 col-xl-6 my-auto resdiv">
+          <a [routerLink]="['/']" routerLinkActive="active" style="cursor: pointer;">
+            <img src="./../assets/Images/logo_svg.svg" class="img-fluid" alt="SignIn-Logo">
+          </a>
+          <p class="info">Welcome to AI3O Business cloud. Easy-to-use, fast, cloud powered self-service platform for
+            running Business intelligence, reporting & analytics on your data.</p>
+        </div>
+
+        <!-- Forgot Password Form -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 my-auto">
+
+          <form class="text-center p-5" (submit)="verifyOtp()">
+
+            <a class="mblview" [routerLink]="['/']" routerLinkActive="active" style="cursor: pointer;">
+              <img src="./../assets/Images/logo_svg.svg" class="img-fluid" alt="SignIn-Logo">
+            </a>
+
+            <h1>Forgot Password</h1>
+            <p>OTP Verification</p>
+            <div class="my-3">
+              Please Enter OTP
+            </div>
+
+            <!-- User name or Email -->
+            <div class="mb-5 d-flex justify-content-center">
+              <input type="tel" id="otp1" name="otp" size="1" autocomplete="off" class="otp mx-1" numbersonly
+                maxlength="1" [(ngModel)]="otpNum1" [ngModelOptions]="{standalone: true}">
+              <input type="tel" id="otp2" name="otp" size="1" autocomplete="off" class="otp mx-1" numbersonly
+                maxlength="1" [(ngModel)]="otpNum2" [ngModelOptions]="{standalone: true}">
+              <input type="tel" id="otp3" name="otp" size="1" autocomplete="off" class="otp mx-1" numbersonly
+                maxlength="1" [(ngModel)]="otpNum3" [ngModelOptions]="{standalone: true}">
+              <input type="tel" id="otp4" name="otp" size="1" autocomplete="off" class="otp mx-1" numbersonly
+                maxlength="1" [(ngModel)]="otpNum4" [ngModelOptions]="{standalone: true}">
+            </div>
+
+            <!-- buttons for resend otp and proceed -->
+            <div class="my-3 text-center">
+              <button type="submit" class="btn btn-Proceed btn-block" [disabled]="disabledOtpBtn">
+                <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"
+                  *ngIf="loadingOTP"></span>
+                Proceed
+              </button>
+            </div>
+
+            <div class="note">
+              <p><strong>Note: </strong>Do not refresh the page.</p>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

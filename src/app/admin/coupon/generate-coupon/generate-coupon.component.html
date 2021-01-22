@@ -1,0 +1,122 @@
+<form #creCouponForm="ngForm" (ngSubmit)="createcoupon()">
+
+  <div class="row mt-4 mb-2 d-flex justify-content-center">
+
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+      <!-- 1st row -->
+      <div class="form-group row">
+
+        <!-- couponCode -->
+        <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+          <div class="input-group">
+            <input type="text" class="form-control input-custom-control text-center column-margin" id="couponCode"
+              name="couponCode" placeholder="Coupon Code" [(ngModel)]="coupon.couponCode" #couponCode="ngModel" required
+              minlength="8" maxlength="16" autocomplete="off" pattern="^[a-zA-Z0-9-]*$" disabled>
+
+            <!-- couponCode Validations -->
+            <div class="input-group-postpend">
+              <div class="input-group-text">
+                <a (click)="makeRandom(8,'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')">
+                  <i class="fas fa-redo-alt"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price -->
+        <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+          <div class="input-group">
+            <!-- Prefix text -->
+            <div class="input-group-prepend">
+              <div class="input-group-text">$</div>
+            </div>
+            <input type="tel" class="form-control input-custom-control text-center" id="amount" name="amount"
+              placeholder="Amount" [(ngModel)]="coupon.amount" #amount="ngModel" required minlength="1" maxlength="4"
+              autocomplete="off" appPrice>
+          </div>
+
+          <!-- Price Validations -->
+          <div *ngIf="amount?.touched" class="text-danger">
+            <div *ngIf="amount.errors?.required">
+              <small>Amount is required</small>
+            </div>
+            <div *ngIf="amount.errors?.pattern">
+              <small>Accept only numeric characters</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2nd row -->
+      <div class="form-group row">
+
+        <!-- Coupon description -->
+        <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
+          <textarea type="text" id="description" name="description" class="form-control input-custom-control resize"
+            placeholder="Coupon Description" [(ngModel)]="coupon.description" #description="ngModel" required
+            minlength="15" maxlength="200" autocomplete="off" rows="4">
+                </textarea>
+
+          <!-- Coupon description Validations -->
+          <div *ngIf="description?.touched" class="text-danger">
+            <div *ngIf="description.errors?.required">
+              <small>Coupon description is required</small>
+            </div>
+            <div *ngIf="description.errors?.minlength">
+              <small>Coupon description must be at least 15 characters long</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3rd row -->
+      <div class="form-group row">
+
+        <!-- Valid From -->
+        <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 input-group">
+          <input class="form-control column-margin" placeholder="Valid From" name="validfrom" [(ngModel)]="validfrom"
+            ngbDatepicker #from="ngbDatepicker" readonly [minDate]="minFromDate" [maxDate]="maxFromDate" required
+            (ngModelChange)="settodates($event)">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="from.toggle();" type="button">
+              <span><i class="far fa-calendar-alt"></i></span>
+            </button>
+          </div>
+
+          <!-- Valid from Validations -->
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-danger" *ngIf="errmsg">
+            <small> {{errmsg}}</small>
+          </div>
+        </div>
+
+        <!-- Valid To -->
+        <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 input-group">
+          <input class="form-control" placeholder="Valid To" name="dp1" [(ngModel)]="validtoo" ngbDatepicker
+            #to="ngbDatepicker" readonly [minDate]="minToDate" [maxDate]="maxToDate" required>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="to.toggle();" type="button">
+              <span><i class="far fa-calendar-alt"></i></span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- publish button -->
+      <div class="form-group row">
+
+        <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 text-center mt-2">
+          <div class="form-group">
+            <button type="submit" class="btn-publish text-uppercase" [disabled]="creCouponForm.invalid">
+              Publish
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</form>

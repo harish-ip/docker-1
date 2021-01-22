@@ -1,0 +1,174 @@
+<div *ngIf="!title.isLoding" class="d-flex justify-content-center m-5">
+  <div class="lds-facebook">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<div class="container" *ngIf="title.isLoding">
+
+  <div class="row mb-3 p-2 mt-3">
+
+    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+
+      <div style="padding-right:17px;">
+
+        <div class="row">
+
+          <div class="card-body">
+
+            <!-- card body 1st row as Product name and cost-->
+            <div class="row">
+              <div class="col-6 col-sm-6 col-md-8 col-lg-8 col-xl-8 text-left">
+                <h5 class="bodyheading text-uppercase">{{prdname}}</h5>
+              </div>
+              <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 text-right">
+                <!-- <span><strong class="bodyheading">${{prdprice}}</strong>/{{prdsubs}}</span> -->
+                <span><strong class="bodyheading">"TBD"</strong>/{{prdsubs}}</span>
+              </div>
+            </div>
+
+            <!-- card body 2nd row as product image and description-->
+            <div class="row mb-3">
+              <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4" [style.background-image]="getBackground(prdimg)"
+                style="background-repeat:no-repeat;background-position:center;min-height:150px;background-size:80%;">
+              </div>
+              <div class="col-6 col-sm-6 col-md-8 col-lg-8 col-xl-8 d-flex justify-content-center">
+                <span class="paragraph">
+                  {{prddesc}}
+                </span>
+              </div>
+            </div>
+
+            <!-- card body 3rd row as buttons -->
+            <div class="row">
+
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-end">
+
+                <button type="button" class="btn btn-try mr-2" data-toggle="modal" data-target="#tryModalinitial"
+                  title="Trial free for one {{prdsubs}}" (click)="copytrialProdsingle(prdname,prddesc)"
+                  data-backdrop="static" data-keyboard="false">
+                  Trial
+                </button>
+
+                <button type="button" class="btn btn-buy" data-toggle="modal" data-target="#buyModalinitial"
+                  (click)="copyBuyProductsingle(prdname,prddesc)" title="Buy" data-backdrop="static"
+                  data-keyboard="false">
+                  Buy
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Products dynamic section -->
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 right-section">
+
+      <h5 class="allproducts-heading">All Products</h5>
+
+      <div class="row allproducts mt-3" *ngFor="let products of productList">
+
+        <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2 py-2 d-flex flex-wrap align-items-center">
+          <img class="img-fluid" src="{{products.productImage}}" alt="{{products.productName}}">
+        </div>
+
+        <div class="col-5 col-sm-5 col-md-6 col-lg-6 col-xl-6 all-products-row-content">
+          <a href="javascript:void(0)" (click)="ViewProduct(products)">
+            <span class="all-products-row-span1">{{products.productName}}</span>
+          </a>
+          <span class="all-products-row-span2">{{products.productDescription}}</span>
+        </div>
+
+        <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+          <!-- <label class="brand-new-tools-row-price"><strong
+                  class="brand-new-tools-row-price-strong">${{products.productPrice}}/{{products.productDuration}}</strong> -->
+          <label class="brand-new-tools-row-price">
+            <strong>"TBD"/
+              <span *ngIf="products.productDuration == '30'">month</span>
+              <span *ngIf="products.productDuration == '365'">year</span>
+              <span *ngIf="products.productDuration == '1095'">3 years</span>
+            </strong>
+          </label>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- Try Single Initial modal  -->
+<div class="modal fade" id="tryModalinitial" tabindex="-1" role="dialog" aria-labelledby="tryModalTitle"
+  aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Do you want to Trial - <strong>{{productName}}</strong> Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p>{{productdesc}}</p>
+      </div>
+
+      <div class="modal-footer">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+          <button type="button" class="btn btn-try" data-dismiss="modal" (click)="trial()">Trial</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Buy Single Initial modal  -->
+<div class="modal fade" id="buyModalinitial" tabindex="-1" role="dialog" aria-labelledby="buyModalTitle"
+  aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Do you want to Buy - <strong>{{productName}}</strong> Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p> {{productdesc}} </p>
+      </div>
+
+      <div class="modal-footer">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+          <button type="button" class="btn btn-buy" data-dismiss="modal" (click)="addtocart(selproductId)" title="Buy">
+            Buy
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

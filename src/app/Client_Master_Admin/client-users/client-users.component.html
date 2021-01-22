@@ -1,0 +1,35 @@
+<div class="row mx-5 my-5">
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+
+    <ul class="pl-0 marginTop">
+
+      <a routerLink="client-user-list" routerLinkActive="router-link-active">
+        <li class="d-flex-li">
+          List of Users
+          <span><i class="fas fa-chevron-right fa-lg"></i></span>
+        </li>
+      </a>
+
+      <a routerLink="create-client-user" routerLinkActive="router-link-active">
+        <li class="d-flex-li mt-2">
+          Create User
+          <span><i class="fas fa-chevron-right fa-lg"></i></span>
+        </li>
+      </a>
+
+     <!--  <a routerLink="edit-client-user" routerLinkActive="router-link-active">
+        <li class="d-flex-li mt-2">
+          Edit User
+          <span><i class="fas fa-chevron-right fa-lg"></i></span>
+        </li>
+      </a> -->
+
+    </ul>
+  </div>
+
+ <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

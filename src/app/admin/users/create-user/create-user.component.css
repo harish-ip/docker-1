@@ -1,0 +1,49 @@
+.extensionnum {
+  background-color: #EBEBEB;
+  font-weight: 400;
+  padding: 12px;
+  max-width: 96px !important;
+}
+
+/* GalaxyNote3 / GalaxyNote9 / Galaxy S5 / Galaxy S9/S9+ / Iphone 5/SE / Iphone (6/7/8) / Iphone (6/7/8 Plus)
+ / Iphone X/XS / Iphone XR / Iphone XS Max / LG Optimus L70 / Nexus 5X / Nexus 6P / Pixel 2 / Pixel 2XL */
+@media (min-width: 320px) and (max-width: 480px) {
+  .form-group {
+    margin-bottom: 0rem;
+  }
+}
+
+/* Nexus 7 */
+@media (min-width: 481px) and (max-width: 767px) {
+  .form-group {
+    margin-bottom: 0rem;
+  }
+}
+
+/* Ipad / Ipad Mini */
+@media (min-width: 768px) and (max-width: 799px) {
+  .form-group {
+    margin-bottom: 0rem;
+  }
+}
+
+/* Ipad Pro(10.5 Inch) / Nexus 10 */
+@media (min-width: 800px) and (max-width: 1000px) {
+  .column-margin {
+    margin-bottom: 1rem !important;
+  }
+
+  .form-group {
+    margin-bottom: 0rem;
+  }
+}
+
+/* Ipad Pro(12.9 Inch) */
+@media (min-width: 1001px) and (max-width: 1024px) {}
+
+/* Laptop with HIDPI Screen / Laptop with MDPI Screen / Laptop With Touch  */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .form-group {
+    margin-bottom: 1rem;
+  }
+}

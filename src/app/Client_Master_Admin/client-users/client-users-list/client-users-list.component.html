@@ -1,0 +1,123 @@
+<div class="container">
+  <div class="row d-flex top">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-end mx-2">
+      <div class="form-inline form-group searchbox">
+        <input class="form-control searchTerm" type="text" name="search" placeholder="Search by country"
+          [(ngModel)]="searchTerm" aria-label="search" aria-describedby="search" autocomplete="off">
+        <span class="p-2"><i class="fas fa-search"></i></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container scroll">
+  <div class="tree">
+    <div class="nav-link-main row">
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">User Name</div>
+      <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">User Role</div>
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">Branch</div>
+      <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">Location</div>
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">Actions</div>
+    </div>
+
+    <!-- List Of Site Admins -->
+    <!-- No Users -->
+    <div *ngIf="siteadmins" class="text-center">
+      <ng-container *ngIf="siteadmins.length == 0">
+        No Users
+      </ng-container>
+    </div>
+    <div class="clientAdmin row"
+      *ngFor="let siteadmin of siteadmins| paginate: { itemsPerPage: 10, currentPage: p } | filter : searchTerm;let i = index;">
+
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 username">
+        <span class="pointer" id="siteadmin{{i}}" (click)="getSiteUsers(siteadmin.username,i)">
+          <i class="fas fa-plus-square"></i>
+        </span>
+        {{siteadmin.username}}
+      </div>
+      <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 role">
+        <button id="{{siteadmin.username}}" type="button" class="popover-icon btn btn-link p-0" data-toggle="popover"
+          data-placement="right" data-trigger="focus" (click)="getHtmlData(siteadmin.username)">{{siteadmin.rolealias}}
+        </button>
+      </div>
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 companyname">
+        {{siteadmin.location}}
+      </div>
+      <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 location"
+        title="{{siteadmin.city}} - {{siteadmin.country}}">
+        {{siteadmin.city}} - {{siteadmin.country}}
+      </div>
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-right">
+        <span class="pointer" title="Edit" (click)="updateUser(siteadmin)">
+          <i class="fas fa-edit"></i>
+        </span>
+        <span class="pointer ml-2" disabled title="Delete" style="cursor: not-allowed;">
+          <i class="fas fa-trash-alt"></i>
+        </span>
+      </div>
+
+      <!-- List Of Site Admins -->
+      <ng-container *ngIf="siteadminindex == i">
+
+        <ng-container *ngFor="let siteuser of siteusers| filter : searchTerm;let j = index;">
+
+          <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 username pl-5 siteuser">
+            <!-- <span> <i class="fas fa-user-circle"></i> </span> -->
+            {{siteuser.username}}
+          </div>
+          <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 role siteuser">
+            <button id="{{siteuser.username}}" type="button" class="popover-icon btn btn-link p-0" data-toggle="popover"
+              data-placement="right" data-trigger="focus"
+              (click)="getHtmlData(siteuser.username)">{{siteuser.rolealias}}
+            </button>
+          </div>
+          <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 companyname siteuser">
+            {{siteuser.location}}
+          </div>
+          <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 siteuser"
+            title="{{siteuser.city}} - {{siteuser.country}}">
+            {{siteuser.city}} - {{siteuser.country}}
+          </div>
+          <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 siteuser text-right">
+            <span class="pointer" title="Edit" (click)="updateUser(siteuser)">
+              <i class="fas fa-edit"></i>
+            </span>
+            <span class="pointer ml-2" disabled title="Delete" style="cursor: not-allowed;">
+              <i class="fas fa-trash-alt"></i>
+            </span>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div *ngIf="siteadmins.length > 10">
+      <pagination-controls (pageChange)="p = $event" responsive="true" previousLabel="Previous" nextLabel="Next">
+      </pagination-controls>
+    </div>
+  </div>
+</div>
+
+
+<div id="myPopoverContent">
+  <div class="text-white" *ngIf="userProducts.length != 0">
+    <div [ngClass]="{'row mx-0': true,'border-bottom border-primary':!last}"
+      *ngFor="let prod of userProducts; let i=index; let last=last;">
+      <div class="col-6">
+        <p class="m-0">Product Name : </p>
+        <p [ngClass]="{'trial': prod.trial,'m-0':true,'subscribed':!prod.trial}">
+          {{prod.trial ? 'Trial': 'Subscribed'}}</p>
+        <p class="m-0">Start Date</p>
+        <p class="m-0 text-danger">End Date</p>
+      </div>
+      <div class="col-6">
+        <p class="m-0">{{prod.productName}}</p>
+        <p [ngClass]="{'trial': prod.trial,'m-0':true,'subscribed':!prod.trial}">Yes</p>
+        <p class="m-0">{{prod.startDate | date:'dd-MMM-yyyy'}}</p>
+        <p class="m-0 text-danger">{{prod.endDate | date:'dd-MMM-yyyy'}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="noProducts">
+  <p class="m-0 text-white">No Products <span [hidden]="!username">for {{username}}</span></p>
+</div>

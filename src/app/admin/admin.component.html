@@ -1,0 +1,7 @@
+<div [hidden]="loading">
+  <app-loading *ngIf="loading"></app-loading>
+</div>
+<div [hidden]="loading">
+  <app-loading *ngIf="mainLoading"></app-loading>
+  <router-outlet></router-outlet>
+</div>

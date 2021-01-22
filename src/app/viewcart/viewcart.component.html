@@ -1,0 +1,140 @@
+<div class="container">
+
+  <!-- Row for after login and no cart items from service-->
+  <div *ngIf="auth.rolebase != null && cartitems.length == 0">
+    <div class="d-flex justify-content-center">
+      <img src="./../assets/Images/noproduct.png" class="img-fluid" alt="noproduct">
+    </div>
+    <div class="text-center noSub">
+      No products in cart
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+      <button type="button" class="btn btn-select" title="Select Products" (click)="navigate()">Select
+        Products</button>
+    </div>
+  </div>
+
+  <!-- Row for after tenant login and cart items from service -->
+  <div class="row mt-3" *ngIf="auth.rolebase != null && cartitems.length > 0">
+
+    <div class="col-md-8">
+
+      <div class="tblproducts">
+
+        <div class="Review-order">Review Order</div>
+
+        <div class="table-responsive">
+
+          <table class="table table-hover">
+
+            <thead>
+              <tr>
+                <th></th>
+                <th scope="col">S.No</th>
+                <th scope="col">Product</th>
+                <th scope="col">Product Duration</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Price</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+
+            <tbody *ngIf="cartitems">
+              <tr *ngFor="let cartitem of cartitems; let i = index">
+                <td>
+                  <form>
+                    <input type="checkbox" class="custom-checkbox" (change)="checked($event,i,cartitem)"
+                      [ngModel]="checkbox[i].checked" [ngModelOptions]="{standalone: true}">
+                  </form>
+                </td>
+                <td>{{i+1}}</td>
+                <td>
+                  {{cartitem.productName}} <br>
+                  <img class="mt-2" src="{{cartitem.productImage}}" alt="Product Image" height="40" width="40">
+                </td>
+                <td *ngIf="cartitem.productDuration === '30'"> 1 Month </td>
+                <td *ngIf="cartitem.productDuration === '365'"> 1 Year </td>
+                <td *ngIf="cartitem.productDuration === '1095'"> 3 Years </td>
+                <td> {{cartitem.startDate | date:'yyyy-MM-dd'}} </td>
+                <td> {{cartitem.endDate | date:'yyyy-MM-dd'}} </td>
+                <td>"TBD"</td>
+                <td>
+                  <button type="button" class="btn btn-sm btn-delete"
+                    (click)="removecartitem(i,cartitem)">Remove</button>
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Order summary -->
+    <div class="col-md-4" *ngIf="auth.rolebase != null">
+
+      <div class="tblproducts">
+
+        <div class="Review-order">Order Summary</div>
+
+        <div class="table-responsive">
+
+          <table class="table table-borderless" id="table-summary">
+
+            <thead>
+
+              <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Price</th>
+              </tr>
+
+            </thead>
+
+            <tbody>
+
+              <tr *ngFor="let ordersummary of OrderSummaryProducts; let i = index">
+                <td class="Product-details pull-right">{{ordersummary.productName}}</td>
+                <td class="Product-details pull-right">"TBD"</td>
+              </tr>
+
+              <tr class="font-weight-bold">
+                <td class="Product-name">Total Price</td>
+                <td class="Product-details pull-right">"TBD"</td>
+              </tr>
+
+              <tr>
+                <td colspan="2" class="small">
+                  Prices are inclusive of all taxes
+                </td>
+              </tr>
+
+              <tr>
+                <td colspan="2">
+                  <div class="text-center">
+                    <button class="btn btn-delete" (click)="activatelicenseForSelectedProducts()"
+                      [disabled]="cartitems.length == 0 || loading">
+                      <span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"
+                        *ngIf="loading"></span>
+                      Subscribe
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

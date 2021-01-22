@@ -1,0 +1,410 @@
+.imgdiv {
+  position: relative;
+  display: inline-block;
+}
+
+.imgdiv .uploadbtn {
+  position: absolute;
+  top: 70%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  font-size: 25px;
+  cursor: pointer;
+  border: none !important;
+  background: none !important;
+}
+
+.imgdiv img {
+  padding: 20px;
+}
+
+.paddystyle {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.userhdstyle-title {
+  color: #828282;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.userstyleone p {
+  color: #333;
+  font-weight: 500;
+}
+
+.userstyleone span {
+  color: #BDBDBD;
+}
+
+.userstyletwo h5 {
+  font-size: 18px;
+  color: #70AD47;
+}
+
+.userstylethree {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.userstyletwo {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.userstylethree h5 {
+  font-size: 18px;
+  color: #0070C0;
+}
+
+.userprdstyle {
+  border: 1px solid #E2E2E2;
+  background-color: #F8F8F9;
+  padding: 15px;
+  box-shadow: 0 2px 4px 0 #BDBDBD;
+  text-align: center !important;
+}
+
+.userprdstyle h6 {
+  font-size: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden !important;
+  font-weight: 600;
+}
+
+.userprdstyle p {
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden !important;
+}
+
+.prdcount {
+  color: #f00;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.numstyle {
+  color: #70AD47;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.usercount {
+  color: #0070c0;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+
+.viewstyle {
+  color: #0070C0;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.fa-building,
+.fa-map-marker-alt,
+.fa-cogs {
+  font-size: 25px;
+}
+
+.fa-youtube,
+.fa-file-pdf,
+.fa-adobe {
+  font-size: 25px;
+  color: red;
+}
+
+.mx-5 {
+  margin-left: 2rem !important;
+  margin-right: 2rem !important;
+}
+
+hr {
+  margin-top: 9px !important;
+  margin-bottom: 9px !important;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+.aligncount {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 15px;
+}
+
+
+/* GalaxyNote3 / GalaxyNote9 / Galaxy S5 / Galaxy S9/S9+ / Iphone 5/SE / Iphone (6/7/8) / Iphone (6/7/8 Plus)
+ / Iphone X/XS / Iphone XR / Iphone XS Max / LG Optimus L70 / Nexus 5X / Nexus 6P / Pixel 2 / Pixel 2XL */
+@media (min-width: 320px) and (max-width: 480px) {
+  .userstyleone {
+    text-align: center;
+  }
+
+  .text-left {
+    text-align: center !important;
+  }
+
+  .userhdstyle {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+
+  .py-5 {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+  }
+
+  .resalign {
+    margin-bottom: 15px;
+    text-align: center !important;
+  }
+
+  .userstyleone p {
+    font-size: 16px !important;
+    color: #BDBDBD;
+    font-weight: 500;
+  }
+
+  .userstyleone span {
+    color: gray;
+    font-size: 20px;
+  }
+
+  .userstyletwo h5 {
+    font-size: 20px;
+    color: #70AD47;
+  }
+
+  .userprdstyle h6 {
+    font-size: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden !important;
+    font-weight: 600;
+  }
+
+  .userprdstyle p {
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden !important;
+  }
+
+  .numstyle {
+    color: #70AD47;
+    font-weight: 800;
+    font-size: 16px;
+  }
+}
+
+/* Nexus 7 */
+@media (min-width: 481px) and (max-width: 767px) {
+  .userstyleone {
+    text-align: center;
+  }
+
+  .text-left {
+    text-align: center !important;
+  }
+
+  .userhdstyle {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+
+  .py-5 {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+  }
+
+  .resalign {
+    margin-bottom: 15px;
+    text-align: center !important;
+  }
+
+  .userstyleone p {
+    font-size: 16px !important;
+    color: #BDBDBD;
+    font-weight: 500;
+  }
+
+  .userstyleone span {
+    color: gray;
+    font-size: 20px;
+  }
+
+  .userstyletwo h5 {
+    font-size: 20px;
+    color: #70AD47;
+  }
+
+  .userprdstyle h6 {
+    font-size: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden !important;
+    font-weight: 600;
+  }
+
+  .userprdstyle p {
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden !important;
+  }
+
+  .numstyle {
+    color: #70AD47;
+    font-weight: 800;
+    font-size: 16px;
+  }
+}
+
+/* Ipad / Ipad Mini */
+@media (min-width: 768px) and (max-width: 799px) {
+  .userstyleone {
+    text-align: center;
+  }
+
+  .userhdstyle {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .text-left {
+    text-align: center !important;
+  }
+
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+
+  .py-5 {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+  }
+
+  .resalign {
+    margin-bottom: 15px;
+    text-align: center !important;
+  }
+
+  .userstyleone p {
+    font-size: 20px;
+    color: #BDBDBD;
+    font-weight: 500;
+  }
+
+  .userstyleone span {
+    color: gray;
+    font-size: 20px;
+  }
+
+  .userstyletwo h5 {
+    font-size: 20px;
+    color: #70AD47;
+  }
+
+  .userprdstyle h6 {
+    font-size: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden !important;
+    font-weight: 600;
+  }
+
+  .userprdstyle p {
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden !important;
+  }
+
+  .numstyle {
+    color: #70AD47;
+    font-weight: 800;
+    font-size: 16px;
+  }
+}
+
+/* Ipad Pro(10.5 Inch) / Nexus 10 */
+@media (min-width: 800px) and (max-width: 1000px) {
+
+  .mx-5 {
+    margin-left: 3rem !important;
+    margin-right: 3rem !important;
+  }
+
+  .userstyleone {
+    text-align: center;
+  }
+
+  .resalign {
+    margin-bottom: 15px;
+    text-align: center !important;
+  }
+
+  .text-left {
+    text-align: center !important;
+  }
+
+  .numstyle {
+    color: #70AD47;
+    font-weight: 800;
+    font-size: 16px;
+  }
+
+  .userhdstyle {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+}
+
+/* Ipad Pro(12.9 Inch) */
+@media (min-width: 1001px) and (max-width: 1024px) {
+
+  .numstyle {
+    color: #70AD47;
+    font-weight: 800;
+    font-size: 16px;
+  }
+
+  .mx-5 {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+  }
+
+  .text-left {
+    text-align: center !important;
+  }
+}
+
+/* Laptop with HIDPI Screen / Laptop with MDPI Screen / Laptop With Touch  */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .numstyle {
+    color: #70AD47;
+    font-weight: 800;
+    font-size: 16px;
+  }
+
+  .text-left {
+    text-align: center !important;
+  }
+}

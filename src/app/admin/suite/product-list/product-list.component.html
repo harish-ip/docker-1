@@ -1,0 +1,105 @@
+<!-- Loading Indicator -->
+<div *ngIf="!title.isLoding" class="d-flex justify-content-center">
+  <div class="lds-facebook">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<!-- Products against related suite-->
+<div class="row" *ngIf="title.isLoding">
+
+  <!-- no new products -->
+  <div class="col-12" *ngIf="!products">
+    <div class="d-flex justify-content-center">
+      <img src="./../assets/Images/noproduct.png" class="img-fluid" alt="noproduct">
+    </div>
+    <div class="text-center noSub">
+      No Products to show
+    </div>
+  </div>
+
+  <ng-container *ngIf="products">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 my-auto pb-3" *ngFor="let product of products">
+
+      <div class="prd-div p-3">
+
+        <!-- Product Image -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center py-3">
+          <!-- <img src="{{product.productImage}}" class="img-fluid" alt="operating system logo"> -->
+
+          <img [src]="santizer.bypassSecurityTrustResourceUrl(product.productIcon)" alt="{{product.productName}}"
+            class="img-icon">
+
+        </div>
+
+        <!-- Product Name -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <h6 class="prdname" title="{{product.productName}}">{{product.productName}}</h6>
+          <span class="prddura">
+            <td class="prddura" *ngIf="product.productDuration === '30'">
+              One Month
+            </td>
+            <td class="prddura" *ngIf="product.productDuration === '365'">
+              One Year
+            </td>
+            <td class="prddura" *ngIf="product.productDuration === '1095'">
+              Three Years
+            </td>
+          </span>
+        </div>
+
+        <!-- Product Price -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <h6 class="prdprice">Price: "TBD"
+            <!--  "TBD" / <span class="prdprice">{{product.productDuration}}</span> -->
+          </h6>
+        </div>
+
+        <!-- Product Description -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <p class="prddesc">{{product.productDescription.substr(0, 45)}}...</p>
+        </div>
+
+        <!-- Product Actions -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center mb-3">
+          <button type="button" class="btn btn-edit" title="Edit" (click)="UpdateProduct(product)">Edit</button>
+          <button type="button" class="btn btn-delete ml-3" title="Delete" data-toggle="modal" data-target="#delprd"
+            data-backdrop="static" data-keyboard="false" (click)="getDeletePrdDetails(product)">Delete</button>
+        </div>
+
+      </div>
+
+    </div>
+  </ng-container>
+</div>
+
+<!-- Try modal  -->
+<div class="modal fade" id="delprd" tabindex="-1" role="dialog" aria-labelledby="tryModalTitle" aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Do you want to delete product - <strong>{{prdname}}</strong></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body p-4">
+        <p>{{prddesc}}</p>
+      </div>
+
+      <div class="modal-footer mx-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+          <button type="button" class="btn btn-delete" title="Delete" data-dismiss="modal"
+            (click)="DeleteProduct()">Delete</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

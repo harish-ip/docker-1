@@ -1,0 +1,183 @@
+<form #creproductForm="ngForm" (ngSubmit)="createProducts()">
+
+  <div class="row">
+
+    <div class="col-xs-4 col-sm-4 col-md-12 col-lg-4 col-xl-4">
+
+      <div class="form-group">
+
+        <!-- Product Image -->
+        <div class="bgi">
+          <div class="col-sm-12 border-secondary p-0 text-center" *ngIf="!previewImage">
+            <img src="./../assets/Images/dummyImage.png" alt="product" height="146">
+          </div>
+        </div>
+
+        <div class="bgi">
+          <div class="col-sm-12 border-secondary p-0 text-center" *ngIf="previewImage">
+            <img src="{{product.productImage}}" alt="product" width="310" height="146" class="img-fluid">
+          </div>
+        </div>
+
+        <!-- File control -->
+        <div class="input-group form-group mt-2">
+          <div class="custom-file">
+            <input type="file" id="productImage" name="productImage" (change)="processFile($event)"
+              aria-describedby="inputGroupFileAddon04" accept="image/x-png,image/jpeg" class="w-100" required>
+            <label class="custom-file-label text-center"
+              for="productImage">{{ImageFileName? ImageFileName: 'Choose image'}}</label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 2nd row -->
+      <div class="form-group">
+
+        <!-- Product Icon -->
+        <div class="bgi1">
+          <div class="col-sm-12 border-secondary p-0 text-center" *ngIf="!perviewIcon">
+            <img src="./../assets/Images/dummyImage.png" alt="product" height="146">
+          </div>
+        </div>
+
+        <div class="bgi1">
+          <div class="col-sm-12 border-secondary p-0 text-center" *ngIf="perviewIcon">
+            <img [src]="productIcon" alt="No Preview" height="146">
+          </div>
+        </div>
+
+        <!-- File control -->
+        <div class="input-group form-group mt-2">
+          <div class="custom-file">
+            <input type="file" id="productIcon" name="productIcon" (change)="iconFile($event)"
+              aria-describedby="inputGroupFileAddon04" accept="image/svg+xml" class="w-100" required>
+            <label class="custom-file-label text-center" for="productIcon">{{iconName? iconName: 'Choose icon'}}</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 1st row -->
+    <div class="col-xs-8 col-sm-8 col-md-12 col-lg-8 col-xl-8">
+
+      <div class="form-group row noMargin">
+        <!-- Product name -->
+        <div class="col-md-6 col-sm-12">
+
+          <input type="text" class="form-control input-custom-control column-margin" id="productName" name="productName"
+            placeholder="Product name" [(ngModel)]="product.productName" #productName="ngModel" required minlength="2"
+            maxlength="20" pattern="^[a-zA-Z]+([\s][a-zA-Z0-9.]+)*$" autocomplete="off" />
+
+          <!-- Product name Validations -->
+          <div *ngIf="productName?.touched" class="text-danger">
+            <div *ngIf="productName.errors?.required">
+              <small>Product name is required</small>
+            </div>
+            <div *ngIf="productName.errors?.minlength">
+              <small>Product name should be minimum 2 characters</small>
+            </div>
+            <div *ngIf="productName.errors?.pattern">
+              <small>Accept only alphabetical with space and numeric</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Price -->
+        <div class="col-md-6 col-sm-12" id="price">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text font-weight-bold">$</div>
+            </div>
+            <input type="tel" class="form-control input-custom-control column-margin" id="productPrice"
+              name="productPrice" placeholder="Product price" [(ngModel)]="product.productPrice" #productPrice="ngModel"
+              required minlength="1" maxlength="7" autocomplete="off" appPrice>
+          </div>
+
+          <!-- Price Validations -->
+          <div *ngIf="productPrice?.touched" class="text-danger">
+            <div *ngIf="productPrice.errors?.required">
+              <small>Product price is required</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 2nd row -->
+      <div class="form-group row">
+
+        <div class="col-sm-6">
+          <select id="trialDuration" name="trialDuration" class="form-control input-custom-control column-margin"
+            placeholder="select Duration*" [(ngModel)]="product.trialDuration" required>
+            <option value="trial" selected>Trial duration</option>
+            <option value="7">One Week</option>
+            <option value="14">Two Weeks</option>
+          </select>
+        </div>
+
+        <div class="col-sm-6">
+          <select id="productDuration" name="productDuration" class="form-control input-custom-control"
+            placeholder="select Duration*" [(ngModel)]="product.productDuration" required
+            (change)="validateProductDuration(product.productDuration)">
+            <option value="subscribe" selected>Product duration</option>
+            <option value="30">One Month</option>
+            <option value="365">One Year</option>
+            <option value="1095">Three Years</option>
+          </select>
+        </div>
+
+      </div>
+      <!-- 3rd row -->
+      <div class="form-group row noMargin">
+
+        <!-- product url -->
+        <div class="col-sm-12">
+          <input type="text" class="form-control input-custom-control column-margin" id="productUrl" name="productUrl"
+            placeholder="Product url (optional)" [(ngModel)]="product.productURL" #productUrl="ngModel"
+            autocomplete="off">
+        </div>
+
+      </div>
+      <!-- 4th row -->
+      <div class="form-group">
+
+        <!-- Description -->
+        <textarea type="text" class="form-control input-custom-control-textarea resize" id="productDescription" rows="9"
+          cols="3" name="productDescription" placeholder="Product description" [(ngModel)]="product.productDescription"
+          #productDescription="ngModel" required minlength="16" autocomplete="off">
+          </textarea>
+
+        <!-- Description Validations -->
+        <div *ngIf="productDescription?.touched" class="text-danger">
+          <div *ngIf="productDescription.errors?.required">
+            <small>Product description is required</small>
+          </div>
+          <div *ngIf="productDescription.errors?.minlength">
+            <small>Product description must be at least 16 characters long</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- publish button -->
+      <div class="form-group col-md-12 text-right px-0">
+        <button type="submit" class="btn-publish"
+          [disabled]="btnDisable || creproductForm.invalid || ImageFileName.length == 0 || !perviewIcon || !previewImage || (product.trialDuration == 'trial') || (product.productDuration == 'subscribe')">
+          <span class="spinner-border spinner-border-sm mr-1" *ngIf="loading" role="status" aria-hidden="true"></span>
+          Publish
+        </button>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12 text-center">
+      <!-- Note -->
+      <small class="note-color">
+        <strong class="note">Note: </strong>
+        All fields are mandatory except product url.
+      </small>
+    </div>
+
+  </div>
+  <!--  </div> -->
+</form>

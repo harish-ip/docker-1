@@ -1,0 +1,149 @@
+<div class="bgi">
+
+  <div class="overlay">
+
+    <div class="container">
+
+      <div class="row">
+
+        <!-- AI3O Logo and Information -->
+        <div class="col-6 col-sm-6 col-md-12 col-lg-6 col-xl-6 my-auto resdiv">
+          <a class="pointer" [routerLink]="['/welcome']" (click)="navigate()">
+            <img src="./../assets/Images/logo_svg.svg" class="img-fluid" alt="AI3O-Logo">
+          </a>
+          <p class="info ml-5" *ngIf="auth.rolebase == 'ROLE_USER'">
+            <span *ngIf="auth.islogin">{{auth.userName}}</span>
+          </p>
+          <p class="info" *ngIf="auth.rolebase != 'ROLE_USER'">
+            <span *ngIf="auth.islogin">{{auth.organizationName.value}} - {{auth.userName}}</span>
+          </p>
+
+          <p class="info" *ngIf="!auth.islogin">
+            Welcome to AI3O Business cloud. Easy-to-use, fast, cloud powered self-service platform for running Business
+            intelligence, reporting & analytics on your data.
+          </p>
+
+        </div>
+
+        <!-- Voice Sign In Form -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 my-auto">
+
+          <form class="p-5 text-center" #contactForm="ngForm" (ngSubmit)="contactUs()">
+
+            <a class="mblview pointer" (click)="navigate()">
+              <img src="./../assets/Images/logo_svg.svg" class="img-fluid" alt="AI3O-Logo">
+            </a>
+
+            <div class="my-3 text-center">
+              <h1 class="my-2">Contact Us</h1>
+              <p> If you have any queries, please do not hesitate to contact us. </p>
+            </div>
+
+            <div class="row">
+
+              <!-- First Name -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <p>
+                  <input type="text" placeholder="First name" class="form-control text-center input-custom-control"
+                    id="firstName" name="firstName" [(ngModel)]="contactus.firstName" #firstName="ngModel" required
+                    minlength="1" maxlength="16" pattern="^[a-zA-z]+([\s][a-zA-Z]+)*$" autocomplete="off">
+                </p>
+                <div *ngIf="firstName?.touched" class="text-danger">
+                  <div *ngIf="firstName.errors?.required">
+                    <small>First name is required</small>
+                  </div>
+                  <div *ngIf="firstName.errors?.pattern" class="text-danger">
+                    <small>Accept only alphabetical with space</small>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Last Name -->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <p>
+                  <input type="text" placeholder="Last name" class="form-control text-center input-custom-control"
+                    id="lastName" name="lastName" [(ngModel)]="contactus.lastName" #lastName="ngModel" required
+                    minlength="1" maxlength="16" pattern="^[a-zA-z]+([\s][a-zA-Z]+)*$" autocomplete="off">
+                </p>
+                <div *ngIf="lastName?.touched" class="text-danger">
+                  <div *ngIf="lastName.errors?.required">
+                    <small>Last name is required</small>
+                  </div>
+                  <div *ngIf="lastName.errors?.pattern" class="text-danger">
+                    <small>Accept only alphabetical with space</small>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Email -->
+            <div>
+              <p>
+                <input type="email" placeholder="Email" class="form-control text-center input-custom-control" id="email"
+                  name="email" [(ngModel)]="contactus.email" #email="ngModel" required minlength="6" maxlength="40"
+                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" autocomplete="off">
+              </p>
+              <div *ngIf="email?.touched">
+                <div *ngIf="email.errors?.required" class="text-danger">
+                  <small>Email is required</small>
+                </div>
+                <!--   <div *ngIf="email.errors?.minlength">
+                  <small>Email must be at least 6 characters long</small>
+                </div> -->
+                <div *ngIf="email.errors?.pattern" class="text-danger">
+                  <small>Email must be a valid</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Subject -->
+            <div>
+              <p>
+                <textarea type="text" placeholder="Subject" class="form-control text-center input-custom-control"
+                  d="subject" name="subject" [(ngModel)]="contactus.subject" #subject="ngModel" required minlength="4"
+                  maxlength="64" autocomplete="off" rows="3"></textarea>
+              </p>
+              <div *ngIf="subject?.touched">
+                <div *ngIf="subject.errors?.required" class="text-danger">
+                  <small>Subject is required</small>
+                </div>
+                <div *ngIf="subject.errors?.minlength" class="text-danger">
+                  <small>Subject must be at least 4 characters long</small>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Message -->
+            <div>
+              <p>
+                <textarea type="text" placeholder="Message" class="form-control text-center input-custom-control"
+                  id="message" name="message" [(ngModel)]="contactus.message" #message="ngModel" required minlength="4"
+                  maxlength="200" autocomplete="off" rows="3"></textarea>
+              </p>
+              <div *ngIf="message?.touched">
+                <div *ngIf="message.errors?.required" class="text-danger">
+                  <small>Message is required</small>
+                </div>
+                <div *ngIf="message.errors?.minlength" class="text-danger">
+                  <small>Message must be at least 4 characters long</small>
+                </div>
+
+              </div>
+            </div>
+
+
+            <!-- Send Button -->
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-send btn-block" [disabled]="contactForm.invalid || spin">
+                <span *ngIf="spin" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Send
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

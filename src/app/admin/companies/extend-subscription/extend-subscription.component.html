@@ -1,0 +1,179 @@
+<!-- <div class="container">
+
+  <div class="row">
+
+    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 pl-0">
+      <label class="form-check-label info" for="gridCheck">
+        Client Master Admin
+      </label> &nbsp;
+      <input class="check ml-0 pt-1" type="checkbox" id="gridCheck">
+    </div>
+
+    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <label class="form-check-label info" for="gridCheck">
+        Client Site Admin
+      </label> &nbsp;
+      <input class="check ml-0 pt-1" type="checkbox" id="gridCheck">
+    </div>
+
+    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <label class="form-check-label info" for="gridCheck">
+        Users
+      </label> &nbsp;
+      <input class="check ml-0 pt-1" type="checkbox" id="gridCheck">
+    </div>
+
+  </div>
+
+</div> -->
+
+<!-- no new products -->
+<div class="col-12" *ngIf="!showTenantProducts">
+  <div class="d-flex justify-content-center">
+    <img src="./../assets/Images/noproduct.png" class="img-fluid" alt="noproduct">
+  </div>
+  <div class="text-center noSub">
+    No Subscribed Products
+  </div>
+  <div class="d-flex justify-content-center mt-4">
+    <a class="btn btn-sm btn-select font-weight-bold" [routerLink]="['/admin/companies/companies-list']"
+      routerLinkActive="router-link-active" title="Select user">Select company</a>
+  </div>
+</div>
+
+<!-- Subscribed Products -->
+<div class="row" *ngIf="showTemplate">
+
+  <ng-container *ngIf="showTenantProducts">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 my-auto pb-3"
+      *ngFor="let subProduct of tenantSubscribedProducts;let i = index;">
+
+      <div class="prd-div p-3">
+
+        <!-- Tenant Name -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pb-3" *ngIf="tenantName">
+          <p class="username">{{tenantName}}</p>
+        </div>
+        <!-- Product Image -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center py-3 ">
+          <img [src]="santizer.bypassSecurityTrustResourceUrl(subProduct.productIcon)" alt="{{subProduct.productName}}"
+            class="img-icon">
+        </div>
+
+        <!-- Product Name -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <h6 class="prdname" title="{{subProduct.productName}}">{{subProduct.productName}}</h6>
+          <span class="prddura">
+            <div *ngIf="subProduct.productDuration === '30'">
+              One Month
+            </div>
+            <div *ngIf="subProduct.productDuration === '365'">
+              One Year
+            </div>
+            <div *ngIf="subProduct.productDuration === '1095'">
+              Three Years
+            </div>
+          </span>
+        </div>
+
+        <!-- Product Price -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <h6 class="prdprice">Price: "TBD" </h6>
+        </div>
+
+        <!-- Products start and end dates -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <p class="to"><span class="prddate">{{subProduct.startDate | date:'dd/MMM/yyyy'}}</span> to
+            <span class="prddate">{{subProduct.endDate | date:'dd/MMM/yyyy'}}</span></p>
+        </div>
+
+        <!-- Product Description -->
+        <!--  <div class="col-12 col-sm-12 col -md-12 col-lg-12 col-xl-12 text-center">
+          <p class="prddesc" *ngIf="subsubProductProd.productDescription.length <= 55">
+            {{subProduct.productDescription.substr(0, 55)}}<br>
+            <span *ngIf="subProduct.productDescription.length > 55">
+            <a id="{{i}}" (click)="readmore(i)" class="readmore">Readmore</a>
+          </p>
+          <p class="prddesc-more" *ngIf="expanded[i] == true">
+            {{subProduct.productDescription}} <br>
+            <a id="{{i}}" (click)="Readless(i)" class="readmore">Readless</a>
+          </p>
+        </div> -->
+        <div class="col-12 col-sm-12 col -md-12 col-lg-12 col-xl-12 text-center">
+          <p class="prddesc" *ngIf="subProduct.productDescription.length <= 55">
+            {{subProduct.productDescription.substr(0, 55)}}<br>
+
+          </p>
+          <span *ngIf="subProduct.productDescription.length > 55">
+            <p class="prddesc" *ngIf="expanded[i] == false">
+              {{subProduct.productDescription.substr(0, 55)}}...<br>
+
+              <a id="{{i}}" (click)="readmore(i)" class="readmore">Readmore</a>
+            </p>
+
+            <p class="prddesc-more" *ngIf="expanded[i] == true">
+              {{subProduct.productDescription}} <br>
+              <a id="{{i}}" (click)="Readless(i)" class="readmore">Readless</a>
+            </p>
+          </span>
+        </div>
+        <!-- Product Actions -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center mb-3">
+          <button class="btn-extend-time-period" type="button" data-toggle="modal"
+            (click)="getSelectedProduct(subProduct)" data-target="#extendPeriod" title="Extend time period"
+            data-backdrop="static" data-keyboard="false">
+            Extend Time Period</button>
+        </div>
+
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="extendPeriod" tabindex="-1" role="dialog" aria-labelledby="extendPeriodTitle"
+  aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="extendPeriodTitle">Extend Time Period</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clearDate()">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body" *ngIf="selectedProduct">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center my-2">
+          Product Name: <strong class="text">{{selectedProduct.productName}}</strong>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <label for="selectExtendPeriod">Select Time Period</label>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 input-group">
+            <input class="form-control c-datepicker" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date" ngbDatepicker
+              #d="ngbDatepicker" readonly [minDate]="minDate" [maxDate]="maxDate">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle();" type="button">
+                <span><i class="far fa-calendar-alt"></i></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer ">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <button type="button" class="btn-extend-time-period" data-dismiss="modal" (click)="extendProduct()"
+            title="Extend">Extend</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

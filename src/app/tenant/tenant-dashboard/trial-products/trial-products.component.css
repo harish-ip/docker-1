@@ -1,0 +1,40 @@
+td {
+  font-size: 14px;
+}
+
+.prdname {
+  font-weight: 800;
+  color: #000;
+  font-size: 18px;
+}
+
+.anchor {
+  font-weight: 800;
+  font-size: 18px;
+  color: #000 !important;
+}
+
+.btn-try {
+  color: #fafafa;
+  background-color: #2AC940;
+  font-size: 16px;
+  border-radius: 3px;
+  padding: 6px 16px;
+}
+
+.btn-buy {
+  color: #fafafa;
+  background-color: #0070c0;
+  font-size: 16px;
+  border-radius: 3px;
+  padding: 6px 16px;
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 575px) {
+
+  .modal-title {
+    font-size: 14px;
+  }
+
+}

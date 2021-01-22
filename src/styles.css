@@ -1,0 +1,746 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('http://fonts.googleapis.com/css?family=Roboto');
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.toast-container {
+  font-size: 10px !important;
+}
+
+.resize {
+  resize: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.resize::placeholder {
+  transform: translateY(22px);
+}
+
+/* Loading Icon */
+.lds-facebook {
+  display: inline-block;
+  margin-top: 150px;
+  position: relative;
+  width: 64px;
+  height: 250px;
+}
+
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  width: 13px;
+  background: #2ca2e9;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-facebook div:nth-child(1) {
+  left: 6px;
+  animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+  left: 26px;
+  animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+  left: 45px;
+  animation-delay: 0;
+}
+
+.table {
+  width: 99.7% !important;
+  margin-top: -1px;
+}
+
+.card-margin {
+  margin-top: -20%;
+}
+
+/* scroll bar starts */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #C8C8C8;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(180, 179, 179);
+}
+
+/* for all placeholder */
+::placeholder {
+  text-align: center;
+  font-size: 14px !important;
+  color: #c4c4c4 !important;
+}
+
+.input-custom-control {
+  background-color: #fcfcfc;
+  border: 1px solid #CCC;
+  border-radius: 3px !important;
+  height: 50px !important;
+  color: #333;
+}
+
+.input-custom-control-textarea {
+  background-color: #fcfcfc;
+  border: 1px solid #CCC;
+  border-radius: 3px !important;
+  height: 230px;
+  color: #333;
+}
+
+.form-upload-control {
+  text-align: center;
+  box-sizing: border-box;
+  background-color: #FCFCFC;
+  border: 1px solid #CCC;
+  box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.custom-file-label {
+  text-align: center;
+  font-size: 12px !important;
+  color: lightgrey !important;
+  top: 3px !important;
+  left: -1px !important;
+  background-color: #FCFCFC !important;
+}
+
+/* For note and information */
+.note {
+  font-weight: 700;
+  color: #333 !important;
+}
+
+.note-color {
+  color: #FF0040;
+  font-weight: 600;
+}
+
+.anchor {
+  color: #6F5996 !important;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.text-display {
+  color: #bdbdbd !important;
+  font-size: 14px;
+}
+
+.form-input-label {
+  box-sizing: border-box;
+  opacity: 0.8;
+  padding: 17px;
+  font-size: 10px;
+}
+
+/* Publish button css */
+.btn-publish {
+  background-color: #0070C0;
+  color: #FFF;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 6px 16px;
+  font-weight: 500;
+  border: none;
+}
+
+/* Publish button css when disabled */
+:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Extension text box styles */
+.extensionnum {
+  height: 38px;
+  max-width: 60px;
+}
+
+/* tabs section css starts here */
+.body-div-container {
+  box-sizing: border-box !important;
+  border-radius: 5px !important;
+  background-color: #F8F8F8 !important;
+  border: 1px solid #E5E5E5 !important;
+  padding: 10px;
+}
+
+.nav-tabs {
+  border-bottom: 0px solid #dee2e6 !important;
+  margin-bottom: 0px !important;
+}
+
+.nav-menu {
+  color: #ada8a8 !important;
+  font-size: 12px;
+  background-color: #EBEBEB;
+  width: 100%;
+  font-weight: 500 !important;
+}
+
+.nav-link.active {
+  color: #495057 !important;
+  background-color: #fff !important;
+  border-color: #dee2e6 #dee2e6 #fff !important;
+}
+
+/* tabs section css ends here */
+
+/* styles for div tag in the table */
+.table-responsive {
+  overflow-y: auto;
+  height: auto;
+}
+
+thead tr:nth-child(1) th {
+  background: #333;
+  color: #828282;
+  font-size: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+thead {
+  box-sizing: border-box;
+  background-color: #bfd9ed;
+  border-radius: 5px;
+}
+
+th {
+  color: #718a98;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  border-bottom: 0px solid #dee2e6;
+  text-align: left !important;
+}
+
+thead tr {
+  background-color: rgba(255, 255, 255, 0.98);
+}
+
+tr {
+  background-color: rgba(240, 240, 240, 0.98);
+}
+
+td {
+  color: #333;
+  font-size: 12px;
+}
+
+/* Extend button in extend subscription component */
+.btn-extend-time-period {
+  background-color: #2AC940;
+  color: #fafafa;
+  font-size: 10px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+
+/* edit button in suites list and products list and tenants list */
+.btn-edit {
+  color: #fff;
+  background-color: #2AC940;
+  border-radius: 5px;
+  border: none;
+  padding: .25rem .5rem;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* extend button in tenants list */
+.btn-extend {
+  color: #fafafa;
+  background-color: darkslateblue;
+  border-radius: 5px;
+  border: none;
+  padding: .25rem .5rem;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* next and select all button in tenants list for mail compose */
+.btn-next {
+  color: #fafafa;
+  text-align: center;
+  background-color: rgb(238, 35, 35);
+  border-radius: 5px;
+  border: none;
+  padding: .25rem .5rem;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* add button in offline payment for refund and adjustment component */
+.btn-add {
+  color: #fafafa;
+  font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+  background-color: rgb(218, 25, 25);
+  border-radius: 5px;
+}
+
+select {
+  height: 50px !important;
+  font-size: 12px !important;
+  color: #333 !important;
+}
+
+option {
+  font-size: 12px;
+}
+
+/* select button in no products and no users in a component we show this button */
+
+.noSub {
+  font-size: 25px !important;
+  color: #E0E0E0 !important;
+  font-weight: 600 !important;
+}
+
+.btn-select {
+  background-color: #FEC20A !important;
+  color: #333 !important;
+  font-size: 16px !important;
+  padding: 6px 25px 8px 25px !important;
+  border: 1px solid #E0E0E0 !important;
+  font-weight: 600 !important;
+}
+
+/* scroll bar Ends */
+
+/* Modal dialogue css for all pages starts*/
+
+.code-txtbox {
+  box-sizing: border-box;
+  background-color: #FCFCFC;
+  border: 1px solid #CCC;
+  box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+  height: 50px;
+  width: 280px;
+  font-size: 25px;
+  text-align: center;
+}
+
+.btn-apply {
+  color: #fff !important;
+  line-height: 16px !important;
+  background-color: #828282 !important;
+  height: 50px !important;
+}
+
+.modal-content {
+  border-radius: 0px !important;
+  border: none !important;
+}
+
+.close {
+  color: #E1E1E1 !important;
+  font-weight: 100;
+  opacity: 1 !important;
+  text-shadow: none !important;
+  font-weight: 100 !important;
+}
+
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.modal-header {
+  background-color: #374D92;
+  border-radius: 0px !important;
+  color: #FFF;
+  font-weight: 700;
+}
+
+.modal-body {
+  color: #828282;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 20px 45px !important;
+  text-align: center;
+}
+
+.modal-body p {
+  height: 4rem;
+  max-height: 4rem;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  color: #828282;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.code-txtbox::placeholder {
+  font-size: 30px;
+  color: #BDBDBD;
+  text-align: center;
+}
+
+.coupon-suc {
+  color: #178C27;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.fa-check-circle {
+  font-size: 25px;
+}
+
+.notify-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.discount {
+  background-color: #F2F2F2;
+  color: #828282;
+  font-size: 15px;
+  height: 65px;
+  padding: 20px 20px;
+}
+
+.discount strong {
+  color: #E78126;
+}
+
+.coupon-fail {
+  color: #e9051a;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.fa-times-circle {
+  font-size: 25px;
+}
+
+.card-img-top {
+  height: 160px !important;
+}
+
+/* Modal dialogue css for all pages ends*/
+@keyframes lds-facebook {
+  0% {
+    top: 6px;
+    height: 51px;
+  }
+
+  50%,
+  100% {
+    top: 19px;
+    height: 26px;
+  }
+}
+
+/* popover styles */
+.popover {
+  position: absolute;
+  will-change: transform;
+  top: 0px;
+  left: 0px;
+  transform: translate3d(579px, 258px, 0px);
+  background-color: #000000f1 !important;
+  max-width: 400px !important;
+  width: 400px !important;
+  /* max-width: 370px; */
+}
+
+.bs-popover-auto[x-placement^=top]>.arrow::after,
+.bs-popover-top>.arrow::after {
+  bottom: 1px;
+  border-width: .5rem .5rem 0;
+  border-top-color: #000000f1 !important;
+}
+
+.bs-popover-auto[x-placement^=bottom]>.arrow::after,
+.bs-popover-bottom>.arrow::after {
+  top: 1px;
+  border-width: .5rem .5rem 0;
+  border-bottom-color: #000000f1 !important;
+}
+
+.bs-popover-auto[x-placement^=right]>.arrow::after,
+.bs-popover-right>.arrow::after {
+  left: 1px;
+  border-width: .5rem .5rem .5rem 0;
+  border-right-color: #000000f1 !important;
+}
+
+.popover-body {
+  padding: .5rem .75rem;
+  color: #000000f1 !important;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+ul.ngx-pagination {
+  padding-inline-start: 0px;
+}
+
+/* **Important** responsive styles starts here */
+
+/* GalaxyNote3 / GalaxyNote9 / Galaxy S5 / Galaxy S9/S9+ / Iphone 5/SE / Iphone (6/7/8) / Iphone (6/7/8 Plus)
+ / Iphone X/XS / Iphone XR / Iphone XS Max / LG Optimus L70 / Nexus 5X / Nexus 6P / Pixel 2 / Pixel 2XL */
+ @media (min-width: 320px) and (max-width: 480px) {
+
+  .dropdown,
+  .dropleft,
+  .dropright,
+  .dropup {
+    position: unset !important;
+  }
+
+  /* scroll bar starts */
+  /* width */
+  ::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #C8C8C8;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(180, 179, 179);
+  }
+
+  /* tabs section css starts here */
+  .res-column {
+    flex-direction: column !important;
+  }
+
+  /* tabs section css ends here */
+
+
+  /* style for responsive when textboxes get gap between them */
+  .column-margin {
+    margin-bottom: 1rem !important;
+  }
+
+  /* styles for div tag in the table */
+  .table-responsive {
+    overflow-x: auto !important;
+    max-height: 400px;
+    overflow-y: auto;
+    height: auto;
+  }
+
+  th {
+    color: #ada8a8;
+    font-size: 11px;
+    font-weight: 500;
+    border-bottom: 0px solid #dee2e6;
+    height: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+  }
+
+  td {
+    color: #333;
+    font-size: 12px;
+    /* white-space: nowrap; */
+  }
+}
+
+/* Nexus 7 */
+@media (min-width: 481px) and (max-width: 767px) {
+	
+  .dropdown,
+  .dropleft,
+  .dropright,
+  .dropup {
+    position: unset !important;
+  }
+
+  /* scroll bar starts */
+  /* width */
+  ::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #C8C8C8;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(180, 179, 179);
+  }
+
+  /* tabs section css starts here */
+  .res-column {
+    flex-direction: column !important;
+  }
+
+  /* tabs section css ends here */
+
+
+  /* style for responsive when textboxes get gap between them */
+  .column-margin {
+    margin-bottom: 1rem !important;
+  }
+
+  /* styles for div tag in the table */
+  .table-responsive {
+    overflow-x: auto !important;
+    max-height: 400px;
+    overflow-y: auto;
+    height: auto;
+  }
+
+  th {
+    color: #ada8a8;
+    font-size: 11px;
+    font-weight: 500;
+    border-bottom: 0px solid #dee2e6;
+    height: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+  }
+
+  td {
+    color: #333;
+    font-size: 12px;
+    /* white-space: nowrap; */
+  }
+}
+
+/* Ipad / Ipad Mini */
+@media (min-width: 768px) and (max-width: 799px) {
+  .dropdown,
+  .dropleft,
+  .dropright,
+  .dropup {
+    position: unset !important;
+  }
+
+  /* scroll bar starts */
+  /* width */
+  ::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #C8C8C8;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(180, 179, 179);
+  }
+
+  /* tabs section css starts here */
+  .res-column {
+    flex-direction: column !important;
+  }
+
+  /* tabs section css ends here */
+
+  /* style for responsive when textboxes get gap between them */
+  .column-margin {
+    margin-bottom: 1rem !important;
+  }
+
+  /* styles for div tag in the table */
+  .table-responsive {
+    overflow-x: auto;
+    max-height: 400px;
+    overflow-y: auto;
+    height: auto;
+  }
+
+  th {
+    color: #ada8a8;
+    font-size: 11px;
+    font-weight: 500;
+    border-bottom: 0px solid #dee2e6;
+    height: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+  }
+
+  td {
+    color: #333;
+    font-size: 12px;
+    /* white-space: nowrap; */
+  }
+}
+
+/* Ipad Pro(10.5 Inch) / Nexus 10 */
+@media (min-width: 800px) and (max-width: 1000px) {
+  .column-margin {
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Ipad Pro(12.9 Inch) */
+@media (min-width: 1001px) and (max-width: 1024px) {
+
+}
+
+/* Laptop with HIDPI Screen / Laptop with MDPI Screen / Laptop With Touch  */
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+}
+

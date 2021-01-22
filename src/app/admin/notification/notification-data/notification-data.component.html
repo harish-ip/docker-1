@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="row d-flex top">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-end">
+      <div class="form-inline form-group searchbox">
+        <input class="form-control searchTerm" type="text" name="search" placeholder="Search by subject"
+          [(ngModel)]="searchTerm" aria-label="search" aria-describedby="search" autocomplete="off">
+        <span class="p-2"><i class="fas fa-search"></i></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">From</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Body</th>
+        <th scope="col">Time</th>
+        <th scope="col">Date</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="notification">
+
+        <ng-container *ngIf="notification.length == 0">
+          <td colspan="6" class="text-center">No notifications</td>
+        </ng-container>
+
+      </tr>
+
+      <ng-container *ngIf="notification">
+        <tr
+          *ngFor="let emails of notification | paginate: { itemsPerPage: 10, currentPage: p } | notificationFilter : searchTerm;let i=index;"
+          [ngClass]="{'read': !emails.read,'unread': emails.read}">
+
+          <td class="pointer" (click)="openEmail(emails.notificationId)">{{emails.email}}</td>
+          <td class="subject pointer w-25" (click)="openEmail(emails.notificationId)">
+            {{emails.subject}}
+          </td>
+          <!--      <td class="w-50 pointer" *ngIf="emails.message.substr < 45" (click)="openEmail(emails.notificationId)">
+            {{emails.message}}</td> -->
+          <td class="w-25 pointer" (click)="openEmail(emails.notificationId)">
+
+            <ng-container *ngIf="emails.message.length < 45; else elseTemplate">
+              <span>{{emails.message.substr(0, 45)}}</span>
+            </ng-container>
+            <ng-template #elseTemplate>
+              <span>{{emails.message.substr(0, 45)}}...</span>
+            </ng-template>
+          </td>
+          <td class="pointer" (click)="openEmail(emails.notificationId)"> {{emails.time}}</td>
+          <td class="pointer" (click)="openEmail(emails.notificationId)"> {{emails.date}}</td>
+          <td>
+            <span class="pointer" title="Delete" data-toggle="modal" data-target="#delnotification"
+              data-backdrop="static" data-keyboard="false" (click)="getdeletenotiDetails(emails)"> <i
+                class="fas fa-trash-alt"></i> </span>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="notification.length > 10">
+  <pagination-controls (pageChange)="p = $event" responsive="true" previousLabel="Previous" nextLabel="Next">
+  </pagination-controls>
+</div>
+
+<!-- Delete modal -->
+<div class="modal fade" id="delnotification" tabindex="-1" role="dialog" aria-labelledby="tryModalTitle"
+  aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Do you want to delete Notification - <strong>{{sub}}</strong></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body p-4">
+        <p>{{msg}}</p>
+      </div>
+
+      <div class="modal-footer mx-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+          <button type="button" class="btn btn-delete" title="Delete" data-dismiss="modal"
+            (click)="DeleteNotification(deletenotification.notificationId)">Delete</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

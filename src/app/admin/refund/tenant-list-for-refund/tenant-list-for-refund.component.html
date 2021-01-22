@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="form-inline form-group searchbox">
+    <input class="form-control searchTerm" type="text" name="search" placeholder="Search by email"
+      [(ngModel)]="searchTerm" aria-label="search" aria-describedby="search" autocomplete="off">
+    <span class="p-2"><i class="fas fa-search"></i></span>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-hover mb-0">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Tenant Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobile Number</th>
+        <th scope="col" (click)="sort('country')" style="cursor: pointer">Country
+          <span class="glyphicon sort-icon" *ngIf="key =='country'"
+            [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"><i
+              class="fas fa-chevron-down"></i></span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let register of user | emailFilter : searchTerm | orderBy: key : reverse">
+        <ng-container *ngIf="register.role == 'ROLE_USER'">
+          <td class="text-primary text-center">
+            <i class="fa fa-user" aria-hidden="true" style="cursor: pointer"
+              title="Refund & Adjustment- {{register.username}}"
+              (click)="navigation(register.username,register.email)"></i></td>
+          <td>{{register.firstname}}</td>
+          <td>{{register.lastname}}</td>
+          <td>{{register.username}}</td>
+          <td>{{register.email}}</td>
+          <td>
+            {{register.extensionNumber}} - {{register.mobilenumber}}
+          </td>
+          <td>{{register.country}}</td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+</div>

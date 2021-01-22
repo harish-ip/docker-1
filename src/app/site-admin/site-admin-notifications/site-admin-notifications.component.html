@@ -1,0 +1,42 @@
+<div class="row mx-5 my-5">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+
+        <ul class="pl-0">
+
+            <a routerLink="site-admin-notifications-list" routerLinkActive="router-link-active">
+                <li class="d-flex-li">
+                    Inbox
+                    <span><i class="fas fa-chevron-right fa-lg"></i></span>
+                </li>
+            </a>
+
+            <a routerLink="open-site-admin-notifications" routerLinkActive="router-link-active"
+                *ngIf="!collapseNotification">
+                <li class="d-flex-li mt-2">
+                    Open Inbox
+                    <span><i class="fas fa-chevron-right fa-lg"></i></span>
+                </li>
+            </a>
+
+            <a routerLink="site-admin-sent-items" routerLinkActive="router-link-active">
+                <li class="d-flex-li mt-2">
+                    Sent Emails
+                    <span><i class="fas fa-chevron-right fa-lg"></i></span>
+                </li>
+            </a>
+
+            <a routerLink="open-site-admin-sent-items" routerLinkActive="router-link-active"
+                *ngIf="!collapseNotification">
+                <li class="d-flex-li mt-2">
+                    Open Sent Emails
+                    <span><i class="fas fa-chevron-right fa-lg"></i></span>
+                </li>
+            </a>
+        </ul>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
+        <router-outlet></router-outlet>
+    </div>
+</div>

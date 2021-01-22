@@ -1,0 +1,139 @@
+<!-- Loading Indicator -->
+<div *ngIf="!title.isLoding" class="d-flex justify-content-center">
+  <div class="lds-facebook">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<!-- Products against related suite-->
+<div class="row" *ngIf="title.isLoding">
+
+  <div class="col-12" *ngIf="!newProducts">
+    <div class="d-flex justify-content-center">
+      <img src="./../assets/Images/noproduct.png" class="img-fluid" alt="noproduct">
+    </div>
+    <div class="text-center noSub">
+      No new products to show
+    </div>
+
+  </div>
+
+  <ng-container *ngIf="newProducts">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 my-auto pb-3"
+      *ngFor="let products of newProducts | paginate: { itemsPerPage: 6, currentPage: p }; let i = index;">
+
+      <div class="card">
+        <img src="{{products.productImage}}" class="card-img-top" alt="{{products.productName}}">
+
+        <div class="card-body text-center">
+          <div class="img-icon-div">
+            <img [src]="sanitizer.bypassSecurityTrustResourceUrl(products.productIcon)" alt="{{products.productName}}"
+              class="img-icon">
+          </div>
+          <h5 class="card-title" title="{{products.productName}}">{{products.productName}}</h5>
+          <p class="card-text">"TBD" / {{products.productDuration}}</p>
+
+          <p class="card-desc" *ngIf="products.productDescription.length <= 55">
+            {{products.productDescription.substr(0, 55)}}<br>
+          </p>
+
+          <span *ngIf="products.productDescription.length > 55">
+            <p class="card-desc" *ngIf="expanded[i] == false">
+              {{products.productDescription.substr(0, 55)}}...<br>
+
+              <a id="{{i}}" (click)="readmore(i)" class="readmore">Readmore</a>
+            </p>
+
+            <p class="card-desc-more" *ngIf="expanded[i] == true">
+              {{products.productDescription}} <br>
+              <a id="{{i}}" (click)="Readless(i)" class="readmore">Readless</a>
+            </p>
+          </span>
+
+          <div class="py-3">
+            <button type="button" class="btn btn-try" data-toggle="modal" data-target="#tryModal"
+              (click)="copytrialProd(products)" data-backdrop="static" data-keyboard="false"
+              title="Trial">Try Now</button>
+            <button type="button" class="btn btn-buy ml-3" data-toggle="modal" data-target="#buyModal"
+              (click)="copyBuyProduct(products)" data-backdrop="static" data-keyboard="false" title="Buy">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </ng-container>
+</div>
+<div *ngIf="newProducts.length > 6">
+  <pagination-controls (pageChange)="p = $event" responsive=" true" previousLabel="Previous" nextLabel="Next">
+  </pagination-controls>
+</div>
+
+<!-- <div *ngIf="title.isLoding && (newProducts.length > 6)">
+  <pagination-controls (pageChange)="p = $event" responsive="true" previousLabel="Previous" nextLabel="Next">
+  </pagination-controls>
+</div> -->
+
+<!-- Try modal  -->
+<div class="modal fade" id="tryModal" tabindex="-1" role="dialog" aria-labelledby="tryModalTitle" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Do you want to Trial - <strong>{{productName}}</strong> Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body p-4">
+        <p>{{productdesc}}</p>
+      </div>
+
+      <div class="modal-footer mx-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+          <button type="button" class="btn btn-try" title="Trial" data-dismiss="modal" (click)="trial()">Try</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Buy modal  -->
+<div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModalTitle" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Do you want to Buy - <strong>{{productName}}</strong> Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body p-4">
+        <p> {{productdesc}} </p>
+      </div>
+
+      <div class="modal-footer mx-5">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+          <button type="button" class="btn btn-buy" data-dismiss="modal" (click)="buy()" title="Buy">
+            Buy
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

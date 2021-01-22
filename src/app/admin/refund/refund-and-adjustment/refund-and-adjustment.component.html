@@ -1,0 +1,200 @@
+<div class="alert alert-info mt-3 text-center" role="alert" *ngIf="!tenantName">
+  <small> Please go to the
+    <a [routerLink]="['/admin/refund/tenant-list-for-refund']" class="alert-link text-primary"> Tenants list for refund
+    </a>
+    and click on Tenant Icon ( <i class="fa fa-user" title="Refund & Adjustment" aria-hidden="true"></i> ) to see All
+    Products.
+  </small>
+</div>
+
+<div class="pt-3 pb-1" *ngIf="tenantName">
+  <h5>Tenant Name: <span class="text-primary">{{tenantName}}</span></h5>
+</div>
+
+<div class="alert alert-info mt-1 text-center col-md-12" *ngIf="tenantName && title.isLoding">
+  <span>No products are subscribed</span>
+</div>
+
+<!-- Tenant User Subscribed Products List -->
+<div class="container">
+  <div class="row mt-1">
+    <div class="table-responsive" *ngIf="tenantName && !title.isLoding">
+      <table class="table table-hover mb-0">
+        <thead>
+          <tr>
+            <th scope="col">Product Id</th>
+            <th scope="col">Suite Name</th>
+            <th scope="col"></th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Product Price</th>
+            <th scope="col">Product Duration</th>
+            <th scope="col">Status</th>
+            <th scope="col">Product Description</th>
+            <th scope="col">Payment Mode</th>
+            <th scope="col">Transaction Number</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{product.productId}}</td>
+            <td>{{product.suiteName}}</td>
+            <td class="d-flex justify-content-center">
+              <img src="{{product.productImage}}" alt="{{product.productImage}}" width="30" height="30">
+            </td>
+            <td>{{product.productName}}</td>
+            <td>{{product.productPrice}}</td>
+            <td *ngIf="product.productDuration === '30'">
+              One Month
+            </td>
+            <td *ngIf="product.productDuration === '365'">
+              One Year
+            </td>
+            <td *ngIf="product.trial">
+              Trial</td>
+            <td *ngIf="!product.trial">Subcribed</td>
+            <td class="w-25">{{product.productDescription}}</td>
+            <td>{{product.paymentMode}}</td>
+            <td>{{product.transactionNumber}}</td>
+            <td class="actions">
+              <!-- Refund Button -->
+              <button
+                [ngClass]="(product.trial == 'false')?'btn btn-default btn-sm btn-edit disabled':'btn btn-default btn-sm btn-edit'"
+                title="Refund" (click)="refundProduct(product)" [disabled]="product.trial == true">
+                <i class="fas fa-dollar-sign"></i>
+              </button>
+              <!-- Exchange BUtton -->
+              <!--  <button class="btn btn-sm btn-delete ml-1" title="Exchange" data-toggle="modal"
+                          data-target="#ExchangeModel" (click)="getproduct(product)">
+                          <i class="fas fa-exchange-alt"></i>
+                        </button> -->
+              <button
+                [ngClass]="(product.trial == 'false')?'btn btn-sm btn-delete ml-1 disabled':'btn btn-sm btn-delete ml-1'"
+                title="Exchange" data-toggle="modal" data-target="#ExchangeModel" data-backdrop="static"
+                data-keyboard="false" (click)="getproduct(product)" [disabled]="product.trial == true">
+                <i class="fas fa-exchange-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Add Product button -->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-3">
+      <button class="btn btn-sm btn-add ml-1" title="Add Product - Offline Payment" (click)="addproduct()">
+        Add Product - Offline Payment
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Exchange Modal -->
+<div class="modal fade" id="ExchangeModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true" #ExchangeModel>
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Exchange</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clear()">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form #form="ngForm" (ngSubmit)="ExchangeProduct()">
+          <div class="row">
+
+            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" *ngIf="selectedProductToExchange">
+              <p>Suite Name : <span
+                  class="text-secondary font-weight-bold">{{selectedProductToExchange.suiteName}}</span>
+              </p>
+            </div>
+
+            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" *ngIf="selectedProductToExchange">
+              <p>Product Name : <span
+                  class="text-secondary font-weight-bold">{{selectedProductToExchange.productName}}</span></p>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center" *ngIf="selectedProductToExchange">
+              <p>Product Duration : <span class="text-secondary font-weight-bold">{{ProductDuration}} </span>
+              </p>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center mb-3">
+              <i class="fas fa-exchange-alt" style="transform: rotateZ(90deg);"></i>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+              <div class="form-group row vertical-align">
+                <label for="suiteName" class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">Suite Name :</label>
+                <select id="suiteId" name="suiteId" class="form-control col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 mr-1"
+                  placeholder="select Suite" (change)="getSuiteName($event.target.value);" required>
+                  <option *ngFor="let suite of suites" [ngValue]="suite.suiteId" id="suite{{suite.suiteId}}">
+                    {{suite.suiteName}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group row vertical-align">
+                <label for="productName" class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">Product Name :</label>
+                <select id="productId" name="productId"
+                  class="form-control col-7 col-sm-4 col-md-7 col-lg-7 col-xl-7 mr-1" placeholder="select Product"
+                  (change)="getProductname($event.target.value);" required>
+                  <option *ngFor="let product of selectedProductArray" [ngValue]="product.productId">
+                    {{product.productName}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group row vertical-align">
+                <label for="productDuration" class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">Product Duration
+                  :</label>
+                <select id="productDuration" name="productDuration"
+                  class="form-control col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 mr-1" placeholder="select Duration"
+                  [(ngModel)]="product.productDuration" (change)="getproductDuration($event.target.value)" required>
+                  <option value="30" selected>One Month</option>
+                  <option value="365">One Year</option>
+                </select>
+              </div>
+
+              <div class="form-group row vertical-align">
+                <label for="paymentMode" class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">Payment Mode :</label>
+                <select id="paymentMode" name="paymentMode"
+                  class="form-control col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 mr-1" placeholder="select Payment Mode"
+                  [(ngModel)]="paymentMode" (change)="paymentmode($event.target.value)" required>
+                  <option value="0" selected>Select Payment Mode</option>
+                  <option value="DD">DD</option>
+                  <option value="Cheque">Cheque</option>
+                </select>
+              </div>
+
+              <div class="form-group row vertical-align">
+                <label for="transactionNumber" class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">Transaction Number
+                  :</label>
+                <input type="text" id="transactionNumber" name="transactionNumber"
+                  class="form-control col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 mr-1" placeholder="Transaction Number"
+                  [(ngModel)]="product.transactionNumber" required minlength="6" maxlength="6" autocomplete="off"
+                  numbersonly>
+                <small class="form-text text-muted offset-4">Transaction number must be 6
+                  digits.</small>
+              </div>
+
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" (click)="ExchangeProduct()" data-dismiss="modal"
+          [disabled]="form.invalid || paymentMode =='0'">Save
+          changes</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+.scroll-to-top {
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
+  opacity: 0;
+  transition: all .2s ease-in-out;
+}
+
+.show-scroll {
+  opacity: 1;
+  transition: all .2s ease-in-out;
+}
+
+.button {
+  background-color: #928d8d;
+  border: none;
+  color: white;
+  padding: -8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}

@@ -1,0 +1,470 @@
+.form-inline .form-control {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+}
+
+.searchTerm {
+  font-size: 12px;
+  box-shadow: none;
+  color: #949494;
+}
+
+.form-group {
+  background-color: rgba(0, 0, 0, 0.06);
+  color: black;
+  border: none;
+  margin-bottom: 2px !important;
+}
+
+.top {
+  margin-top: -42px;
+}
+
+.nav-link-main {
+  background-color: #333333 !important;
+  color: #767676 !important;
+  padding: .7rem 1rem;
+  font-weight: 500;
+}
+
+.clientAdmin {
+  background-color: #f8f8f8 !important;
+  color: #878787 !important;
+  border-top: 1px solid #e9e9e9;
+  border-left: 1px solid #e9e9e9;
+  border-right: 1px solid #e9e9e9;
+}
+
+.clientAdmin div {
+  padding: 0.7rem 1rem;
+}
+
+.siteadmin {
+  background-color: #ffff !important;
+  border-top: 1px solid #e9e9e9;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.fa-edit,
+.fa-calendar-alt {
+  font-size: 16px;
+  color: #000;
+}
+
+.fa-plus,
+.fa-trash-alt {
+  color: #eb5050;
+  font-size: 18px;
+}
+
+.fa-trash-alt {
+  color: #eb5050;
+  font-size: 18px;
+  opacity: 0.5;
+}
+
+.fa-plus-square {
+  font-size: 18px;
+}
+
+.username {
+  color: #888888;
+  font-weight: 500;
+  /*text-transform: capitalize;*/
+}
+
+.role {
+  color: #333333;
+  font-weight: 600;
+}
+
+.companyname {
+  color: #3a4f93;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.location {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden !important;
+}
+
+.pl-4 {
+  padding-left: 2rem !important;
+}
+
+.pl-5 {
+  padding-left: 3rem !important;
+}
+
+/* tootip css starts*/
+#myPopoverContent,
+#noProducts {
+  display: none;
+}
+
+.trial {
+  color: #FEC20A;
+}
+
+.subscribed {
+  color: #70AD47;
+}
+
+/* tootip css starts*/
+
+/* responsive styles starts here */
+
+
+/* GalaxyNote3 / GalaxyNote9 / Galaxy S5 / Galaxy S9/S9+ / Iphone 5/SE / Iphone (6/7/8) / Iphone (6/7/8 Plus)
+ / Iphone X/XS / Iphone XR / Iphone XS Max / LG Optimus L70 / Nexus 5X / Nexus 6P / Pixel 2 / Pixel 2XL */
+@media (min-width: 320px) and (max-width: 480px) {
+  .top {
+    margin-top: -12px;
+    margin-right: -22px;
+  }
+
+  * {
+    font-size: 10px;
+  }
+
+  .nav-link-main {
+    background-color: #333333 !important;
+    color: #767676 !important;
+    padding: .7rem 0rem;
+    font-weight: 500;
+  }
+
+  .clientAdmin div {
+    padding: 0.7rem 1rem;
+  }
+
+  .fa-edit {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .fa-plus,
+  .fa-trash-alt {
+    color: #eb5050;
+    font-size: 14px;
+  }
+
+  .fa-trash-alt {
+    color: #eb5050;
+    font-size: 14px;
+    opacity: 0.5;
+  }
+
+  .fa-plus-square {
+    font-size: 14px;
+  }
+
+  .scroll {
+    overflow-x: scroll;
+    padding: 0%;
+  }
+
+  .tree {
+    max-height: 400px;
+    width: 200%;
+  }
+
+  .text-right {
+    text-align: center !important;
+  }
+}
+
+/* Nexus 7 */
+@media (min-width: 481px) and (max-width: 767px) {
+  .top {
+    margin-top: -12px;
+    margin-right: -22px;
+  }
+
+  * {
+    font-size: 12px;
+  }
+
+  .nav-link-main {
+    background-color: #333333 !important;
+    color: #767676 !important;
+    padding: .7rem 0rem;
+    font-weight: 500;
+  }
+
+  .clientAdmin div {
+    padding: 0.7rem 1rem;
+  }
+
+  .fa-edit {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .fa-plus,
+  .fa-trash-alt {
+    color: #eb5050;
+    font-size: 14px;
+  }
+
+  .fa-trash-alt {
+    color: #eb5050;
+    font-size: 14px;
+    opacity: 0.5;
+  }
+
+  .fa-plus-square {
+    font-size: 14px;
+  }
+
+  .scroll {
+    overflow-x: scroll;
+    padding: 0%;
+  }
+
+  .tree {
+    max-height: 400px;
+    width: 200%;
+  }
+}
+
+/* Ipad / Ipad Mini */
+@media (min-width: 768px) and (max-width: 799px) {
+  .top {
+    margin-top: -12px;
+    margin-right: -22px;
+  }
+
+  * {
+    font-size: 14px;
+  }
+
+  .nav-link-main {
+    background-color: #333333 !important;
+    color: #767676 !important;
+    padding: .7rem 0rem;
+    font-weight: 500;
+  }
+
+  .clientAdmin div {
+    padding: 0.7rem 1rem;
+  }
+
+  .fa-edit {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .fa-plus,
+  .fa-trash-alt {
+    color: #eb5050;
+    font-size: 14px;
+  }
+
+  .fa-trash-alt {
+    color: #eb5050;
+    font-size: 14px;
+    opacity: 0.5;
+  }
+
+  .fa-plus-square {
+    font-size: 14px;
+  }
+
+  .scroll {
+    overflow-x: scroll;
+    padding: 0%;
+  }
+
+  .tree {
+    max-height: 400px;
+    width: 200%;
+  }
+
+  .text-right {
+    text-align: center !important;
+  }
+}
+
+/* Ipad Pro(10.5 Inch) / Nexus 10 */
+@media (min-width: 800px) and (max-width: 1000px) {
+  .top {
+    margin-top: -12px;
+    margin-right: -22px;
+  }
+
+  * {
+    font-size: 15px;
+  }
+
+  .nav-link-main {
+    background-color: #333333 !important;
+    color: #767676 !important;
+    padding: .7rem 0rem;
+    font-weight: 500;
+  }
+
+  .clientAdmin div {
+    padding: 0.7rem 1rem;
+  }
+
+  .fa-edit {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .fa-plus,
+  .fa-trash-alt {
+    color: #eb5050;
+    font-size: 14px;
+  }
+
+  .fa-trash-alt {
+    color: #eb5050;
+    font-size: 14px;
+    opacity: 0.5;
+  }
+
+  .fa-plus-square {
+    font-size: 14px;
+  }
+
+  .scroll {
+    overflow-x: scroll;
+    padding: 0%;
+  }
+
+  .tree {
+    max-height: 400px;
+    width: 200%;
+  }
+
+  .text-right {
+    text-align: center !important;
+  }
+
+}
+
+/* Ipad Pro(12.9 Inch) */
+@media (min-width: 1001px) and (max-width: 1024px) {
+  .top {
+    margin-top: -8px;
+  }
+
+  * {
+    font-size: 15px;
+  }
+
+  .row {
+    margin-left: 10px;
+  }
+
+  .nav-link-main {
+    background-color: #333333 !important;
+    color: #767676 !important;
+    padding: .7rem 0rem;
+    font-weight: 500;
+  }
+
+  .clientAdmin div {
+    padding: 0.7rem 1rem;
+  }
+
+  .fa-edit {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .fa-plus,
+  .fa-trash-alt {
+    color: #eb5050;
+    font-size: 14px;
+  }
+
+  .fa-trash-alt {
+    color: #eb5050;
+    font-size: 14px;
+    opacity: 0.5;
+  }
+
+  .fa-plus-square {
+    font-size: 14px;
+  }
+
+  .scroll {
+    overflow-x: scroll;
+    padding: 0%;
+  }
+
+  .tree {
+    max-height: 400px;
+    width: 200%;
+  }
+
+  .text-right {
+    text-align: center !important;
+  }
+
+}
+
+/* Laptop with HIDPI Screen / Laptop with MDPI Screen / Laptop With Touch  */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .top {
+    margin-top: -8px;
+  }
+
+  * {
+    font-size: 15px;
+  }
+
+  .nav-link-main {
+    background-color: #333333 !important;
+    color: #767676 !important;
+    padding: .7rem 0rem;
+    font-weight: 500;
+  }
+
+  .clientAdmin div {
+    padding: 0.7rem 1rem;
+  }
+
+  .fa-edit {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .fa-plus,
+  .fa-trash-alt {
+    color: #eb5050;
+    font-size: 14px;
+  }
+
+  .fa-trash-alt {
+    color: #eb5050;
+    font-size: 14px;
+    opacity: 0.5;
+  }
+
+  .fa-plus-square {
+    font-size: 14px;
+  }
+
+  .scroll {
+    overflow-x: scroll;
+    padding: 0%;
+  }
+
+  .tree {
+    max-height: 400px;
+    width: 200%;
+  }
+
+  .text-right {
+    text-align: center !important;
+  }
+}

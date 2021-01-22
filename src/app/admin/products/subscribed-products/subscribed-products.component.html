@@ -1,0 +1,172 @@
+<!-- Loading Indicator -->
+<div *ngIf="!title.isLoding" class="d-flex justify-content-center">
+  <div class="lds-facebook">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<!-- Products against related suite-->
+<div class="row" *ngIf="title.isLoding">
+
+  <div class="col-12" *ngIf="!showSubscribedProducts">
+    <div class="d-flex justify-content-center">
+      <img src="./../assets/Images/noproduct.png" class="img-fluid" alt="noproduct">
+    </div>
+    <div class="text-center noSub">
+      No subscribed products.
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+      <button type="button" class="btn btn-select" title="Select Products" (click)="select()">Subscribed
+        Products</button>
+    </div>
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 my-auto pb-3"
+    *ngFor="let subProd of tenantSubscribedProducts| paginate: { itemsPerPage: 6, currentPage: p }; let i = index;">
+
+
+    <div class="card">
+
+      <a (click)="goToLink(subProd,i)" class="pointer">
+        <img src="{{subProd.productImage}}" class="card-img-top" alt="{{subProd.productName}}">
+      </a>
+      <div class="card-body text-center card-margin">
+        <div class="img-icon-div pointer" (click)="goToLink(subProd)">
+          <img [src]="sanitizer.bypassSecurityTrustResourceUrl(subProd.productIcon)" alt="{{subProd.productName}}"
+            class="img-icon">
+        </div>
+        <p class="subscribedBy" [hidden]="!subProd.subscribedBy">Subscribed by: {{subProd.subscribedBy}}</p>
+        <a (click)="goToLink(subProd)" class="pointer">
+          <h5 class="card-title">{{subProd.productName}}</h5>
+        </a>
+        <!-- show without year -->
+        <p class="card-text" [hidden]="daysLeft[i]['years'] != 0">{{daysLeft[i]['days']}}
+          days left</p>
+
+        <!-- show with year -->
+        <p class="card-text" [hidden]="daysLeft[i]['years'] == 0">
+          {{daysLeft[i]['years']}} years {{daysLeft[i]['days']}}
+          days left</p>
+        <!-- show with 1 year -->
+        <!--    <p class="card-text" *ngIf="daysLeft[i]['years'] == 1 year">{{daysLeft[i]['years']}} year
+          {{daysLeft[i]['days']}}
+          days left</p> -->
+
+        <p class="to"><span class="prddate">{{subProd.startDate | date:'dd-MMM-yyyy'}}</span> to
+          <span class="prddate">{{subProd.endDate | date:'dd-MMM-yyyy'}}</span></p>
+
+        <p class="card-desc" *ngIf="subProd.productDescription.length <= 55">
+          {{subProd.productDescription.substr(0, 55)}}<br>
+
+        </p>
+        <span *ngIf="subProd.productDescription.length > 55">
+          <p class="card-desc" *ngIf="expanded[i] == false">
+            {{subProd.productDescription.substr(0, 55)}}...<br>
+
+            <a id="{{i}}" (click)="readmore(i)" class="readmore">Readmore</a>
+          </p>
+
+          <p class="card-desc-more" *ngIf="expanded[i] == true">
+            {{subProd.productDescription}} <br>
+            <a id="{{i}}" (click)="Readless(i)" class="readmore">Readless</a>
+          </p>
+        </span>
+        <div class="py-3">
+
+          <button type="button" class="btn btn-assign mr-2" data-toggle="modal" data-target="#assign" title="Assign"
+            data-backdrop="static" data-keyboard="false" (click)="copyAssignProduct(subProd)"
+            [disabled]="daysLeft[i] == 0"> Assign
+          </button>
+
+          <button type="button" class="btn btn-sm btn-renewal ml-1 font-weight-bold" disabled="buttonEnable[i]"
+            title="Renewal">Renewal</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<div *ngIf="tenantSubscribedProducts.length > 6">
+  <pagination-controls (pageChange)="p = $event" responsive=" true" previousLabel="Previous" nextLabel="Next">
+  </pagination-controls>
+</div>
+
+<!-- modal  -->
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content" *ngIf="selectedProd">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">{{selectedProd.productName}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <p>
+            You are accessing <strong>{{selectedProd.productName}}</strong> by valid token
+          </p>
+          <div style="word-wrap: break-word;">
+            <p>{{token}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Assign modal  -->
+<div class="modal fade" id="assign" tabindex="-1" role="dialog" aria-labelledby="assignTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Assign to</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clear()">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form *ngIf="siteAdmins">
+          <div class="col-12 my-3">Select Site Admin</div>
+          <div class="col-12">
+            <select id="siteAdmin" name="siteAdmin" class="form-control" placeholder="Select Site Admin" required
+              (change)="getSiteUsers()" [(ngModel)]="selectedSiteAdmin">
+              <option value="">Select Site Admin</option>
+              <option *ngFor="let sa of siteAdmins" [value]="sa.username">
+                {{sa.username}}
+              </option>
+            </select>
+          </div>
+          <div class="col-12 my-3">Select User</div>
+          <div class="col-12">
+            <select id="siteUsers" name="siteUsers" class="form-control" placeholder="Select Site Admin" required
+              [(ngModel)]="selectedSiteUser">
+              <option value="">Select User</option>
+              <option *ngFor="let su of siteUsers" [value]="su.username">
+                {{su.username}}
+              </option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3 text-center">
+        <button type="button" class="btn btn-modelAssign" data-dismiss="modal" title="Assign" (click)="assign()"
+          [disabled]="selectedSiteUser == '' || selectedSiteAdmin == ''">
+          Assign
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<!-- modal  -->

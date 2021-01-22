@@ -1,0 +1,133 @@
+<form #CouponToProd="ngForm">
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-5 col-sm-5 col-md-3 col-lg-3 col-xl-3 mb-2 mt-5" *ngIf="errmsg">
+        <div class="alert alert-danger" role="alert">
+          {{errmsg}}
+        </div>
+      </div>
+
+      <div class="col-5 col-sm-5 col-md-3 col-lg-3 col-xl-3 mb-2" *ngIf="!errmsg">
+
+        <div class="row border text-center mb-2 mt-2" *ngFor=" let coupon of couponlist; let i = index"
+          id="{{coupon.couponCode}}" [ngStyle]="{'opacity':coupon.couponCode === localcouponcode ? '0.5' : '1' }">
+
+          <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
+            <span class="credate">{{coupon.createdDate | date: 'dd/MM/yyyy'}}</span>
+          </div>
+
+          <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 font-weight-bold coupon-div">
+            <span class="cpncode"> {{coupon.couponCode}} </span>
+          </div>
+
+          <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 font-weight-bold price-div">
+            <span> $ {{coupon.amount}} <sub>off</sub></span>
+          </div>
+
+          <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 font-weight-bold actions-div">
+
+            <div class="row">
+
+              <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 text-left exptime">
+                <span> Expires in {{statusForCouponCodes[i]}} days </span>
+              </div>
+
+              <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 text-right resalign">
+
+                <a [routerLink]="['']" routerLinkActive="router-link-active" data-toggle="modal" data-target="#View"
+                  (click)="viewCoupon(coupon)" data-backdrop="static" data-keyboard="false">
+                  View
+                </a>
+
+                <a routerLink="/admin/coupons/coupon-to-tenant" routerLinkActive="active" class="ml-3"
+                  (click)="ApplyCoupon(coupon)">Apply</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-7 col-sm-7 col-md-9 col-lg-9 col-xl-9" *ngIf="usrerrmsg">
+
+        <div class="alert alert-danger m-5 text-center col-5 col-md-5 col-sm-5 col-lg-5 col-xl-5" role="alert">
+          {{usrerrmsg}}
+        </div>
+
+      </div>
+
+      <div class="col-7 col-sm-7 col-md-9 col-lg-9 col-xl-9" *ngIf="!usrerrmsg">
+
+        <div class="form-group row aligndiv">
+          <div class="col-md-5">
+            <input type="text" class="form-control form-input font-weight-bold text-center loccoupon" id="couponCode"
+              placeholder="Coupon Code" name="couponCode" disabled value="{{localcouponcode}}">
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <div class="row">
+
+              <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
+                <label class="prdheading">Select Users </label>
+              </div>
+
+              <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                <input type="checkbox" id="All" [(ngModel)]="selectedAll" [ngModelOptions]="{standalone: true}"
+                  (change)="selectAll($event);" [disabled]="!localcouponcode" />
+                <label class="prdname pl-1" for="All" style="position: absolute;">Select All Users</label>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row responsive-div">
+          <div class="col-md-3" *ngFor="let user of usersList; let i =index;">
+            <ng-container *ngIf="user.role == 'ROLE_USER'">
+              <input type="checkbox" id="{{user.userId}}" class="custom-checkbox" [(ngModel)]="user.selected"
+                [ngModelOptions]="{standalone: true}" (change)="change($event)" [disabled]="!localcouponcode">
+              <label class="prdname pl-1 text-capitalize" for="{{user.userId}}" style="position: absolute;">
+                {{user.username}}</label>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="col-md-10 text-center m-2">
+          <button type="submit" class="btn-publish text-uppercase"
+            [disabled]="CouponToProd.invalid || publishBtnDisable" (click)="couponToUser(localcouponcode)">
+            <span class="spinner-border spinner-border-sm mr-1" *ngIf="loading" role="status" aria-hidden="true"></span>
+            Publish
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</form>
+
+<!-- View coupon model popup -->
+<div class="modal fade" id="View" tabindex="-1" role="dialog" aria-labelledby="buyModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Coupon/Offer Details - <strong> {{couponCode}}</strong></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body desc">
+        {{couponDescription}}
+      </div>
+    </div>
+  </div>
+</div>

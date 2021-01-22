@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="row d-flex top">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-end">
+      <div class="form-inline form-group searchbox">
+        <input class="form-control searchTerm" type="text" name="search" placeholder="Search by subject"
+          [(ngModel)]="searchTerm" aria-label="search" aria-describedby="search" autocomplete="off">
+        <span class="p-2"><i class="fas fa-search"></i></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">To</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Body</th>
+        <th scope="col">Time</th>
+        <th scope="col">Date</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="sentItems">
+        <ng-container *ngIf="sentItems.length == 0">
+          <td colspan="6" class="text-center">No Sent mails</td>
+        </ng-container>
+      </tr>
+
+      <ng-container *ngIf="sentItems">
+        <tr
+          *ngFor="let sentmails of sentItems | paginate: { itemsPerPage: 10, currentPage: p } | notificationFilter : searchTerm;let i=index; ">
+          <td class="pointer email" id="mail{{i}}" (mouseover)="mail(i)" data-toggle="tooltip" data-placement="auto"
+            title="{{sentmails.emails}}" (click)="openSentMails(sentmails.id)">
+            <ng-container *ngIf="sentmails.emails.length == 1">
+              <span>{{sentmails.emails[0]}}</span>
+            </ng-container>
+            <ng-container *ngIf="sentmails.emails.length != 1">
+              <span>{{sentmails.emails[0]}}...</span>
+            </ng-container>
+          </td>
+          <td class="subject pointer" (click)="openSentMails(sentmails.id)">
+            {{sentmails.subject}}
+          </td>
+          <td class="w-50 pointer" (click)="openSentMails(sentmails.id)">
+
+            <ng-container *ngIf="sentmails.message.length < 45; else elseTemplate">
+              <span>{{sentmails.message.substr(0, 45)}}</span>
+            </ng-container>
+            <ng-template #elseTemplate>
+              <span>{{sentmails.message.substr(0, 45)}}...</span>
+            </ng-template>
+          </td>
+          <td class="pointer" (click)="openSentMails(sentmails.id)"> {{sentmails.time}}</td>
+          <td class="pointer" (click)="openSentMails(sentmails.id)"> {{sentmails.date}}</td>
+
+          <td>
+            <span class="pointer" title="Delete" data-toggle="modal" data-target="#delsentitems" data-backdrop="static"
+              data-keyboard="false" (click)="getdeletesentMails(sentmails)"> <i class="fas fa-trash-alt"></i> </span>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="sentItems.length > 10">
+  <pagination-controls (pageChange)="p = $event" responsive="true" previousLabel="Previous" nextLabel="Next">
+  </pagination-controls>
+</div>
+
+<!-- Delete modal -->
+<div class="modal fade" id="delsentitems" tabindex="-1" role="dialog" aria-labelledby="tryModalTitle"
+  aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Do you want to delete Sent Mails - <strong>{{sub}}</strong></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body p-4">
+        <p>{{msg}}</p>
+      </div>
+
+      <div class="modal-footer mx-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2 text-center">
+          <button type="button" class="btn btn-delete" title="Delete" data-dismiss="modal"
+            (click)="DeleteSentMails(deleteSentMails.id)">Delete</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+docker build -t ui-sm:1.0 .
+docker run ui-sm:1.0

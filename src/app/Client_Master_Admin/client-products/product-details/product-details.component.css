@@ -1,0 +1,217 @@
+.productstyleone {
+  border: 1px solid #E2e2e2;
+  background-color: #f8f8f9;
+  padding: 15px;
+}
+
+.productstyleone h6 {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.productstyleone-h6 {
+  font-weight: 800;
+  color: #0070C0;
+  font-size: 14px;
+  cursor: not-allowed;
+}
+
+.price {
+  font-size: 20px;
+  color: #F00;
+  font-weight: 500;
+}
+
+.fa-cogs,
+.fa-chart-pie,
+.fa-calendar-check,
+.fa-map-marker-alt,
+.fa-columns {
+  font-size: 25px;
+}
+
+.fa-youtube,
+.fa-file-pdf {
+  font-size: 25px;
+  color: #f00
+}
+
+.btn-trial {
+  background-color: #FEC20A;
+  color: #333;
+  font-size: 1em;
+  font-weight: 500;
+  border-radius: 3px;
+}
+
+.btn-buy {
+  background-color: #0070C0;
+  color: #FFF;
+  font-size: 1em;
+  font-weight: 500;
+  border-radius: 3px;
+}
+
+.mx-5 {
+  margin-left: 9rem !important;
+  margin-right: 9rem !important;
+}
+
+.desc {
+  word-wrap: break-word;
+}
+
+/* GalaxyNote3 / GalaxyNote9 / Galaxy S5 / Galaxy S9/S9+ / Iphone 5/SE / Iphone (6/7/8) / Iphone (6/7/8 Plus)
+ / Iphone X/XS / Iphone XR / Iphone XS Max / LG Optimus L70 / Nexus 5X / Nexus 6P / Pixel 2 / Pixel 2XL */
+@media (min-width: 320px) and (max-width: 480px) {
+
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+
+  .modal-title {
+    font-size: 14px !important;
+  }
+
+  .resalign {
+    margin-top: 15px !important;
+  }
+
+  .prddetail {
+    text-align: center !important;
+  }
+
+  .prddetail img {
+    height: 60px !important;
+    width: 60px !important;
+  }
+
+  .prddetail h1 {
+    font-size: 16px !important;
+  }
+
+  .price {
+    font-size: 12px;
+  }
+
+  .float-right {
+    text-align: center !important;
+  }
+
+  .productstyleone h6 {
+    font-size: 14px;
+    font-weight: 700;
+  }
+}
+
+/* Nexus 7 */
+@media (min-width: 481px) and (max-width: 767px) {
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+
+  .modal-title {
+    font-size: 14px !important;
+  }
+
+  .resalign {
+    margin-top: 15px !important;
+  }
+
+  .prddetail {
+    text-align: center !important;
+  }
+
+  .prddetail img {
+    height: 60px !important;
+    width: 60px !important;
+  }
+
+  .prddetail h1 {
+    font-size: 20px !important;
+  }
+
+  .price {
+    font-size: 15px;
+  }
+
+  .productstyleone h6 {
+    font-size: 14px;
+    font-weight: 700;
+  }
+}
+
+/* Ipad / Ipad Mini */
+@media (min-width: 768px) and (max-width: 799px) {
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+
+  .modal-title {
+    font-size: 14px !important;
+  }
+
+  .resalign {
+    margin-top: 15px;
+  }
+
+  .prddetail h1 {
+    font-size: 20px !important;
+  }
+
+  .price {
+    font-size: 15px;
+  }
+
+  .productstyleone h6 {
+    font-size: 14px;
+    font-weight: 700;
+  }
+}
+
+/* Ipad Pro(10.5 Inch) / Nexus 10 */
+@media (min-width: 800px) and (max-width: 1000px) {
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+
+  .modal-title {
+    font-size: 14px !important;
+  }
+
+  .resalign {
+    margin-top: 15px;
+  }
+
+  .prddetail h1 {
+    font-size: 20px !important;
+  }
+
+  .price {
+    font-size: 15px;
+  }
+
+  .productstyleone h6 {
+    font-size: 14px;
+    font-weight: 700;
+  }
+}
+
+/* Ipad Pro(12.9 Inch) */
+@media (min-width: 1001px) and (max-width: 1024px) {
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+}
+
+/* Laptop with HIDPI Screen / Laptop with MDPI Screen / Laptop With Touch  */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .float-right {
+    font-size: 14px;
+  }
+}

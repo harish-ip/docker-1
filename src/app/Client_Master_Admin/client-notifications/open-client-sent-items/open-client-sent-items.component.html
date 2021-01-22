@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-center" *ngIf="sentitems">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+        <div>
+            <span class="labels">Subject : </span>
+            <span class="subject"> {{sentitems.subject}}</span>
+        </div>
+
+        <div class="my-3 sent row px-3">
+            <span class="labels">To : </span>
+            <span class="email  p-2 ml-1 mb-1" *ngFor="let select of sentitems.emails">{{select}}</span>
+        </div>
+
+        <div class="my-3">
+            <span class="labels">Message : </span>
+            <span class="message">{{sentitems.message}}</span>
+        </div>
+
+        <div class="my-3 float-right">
+            <button type="button" class="btn btn-back ml-3" title="Back" (click)="back()"> Back </button>
+            <button type="button" class="btn btn-next ml-3" title="Next" (click)="getSentItems()"
+                [disabled]="maxindex == index">
+                Next
+            </button>
+        </div>
+
+    </div>
+
+</div>

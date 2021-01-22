@@ -1,0 +1,119 @@
+.prd-div {
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0.5px #BDBDBD;
+  border-color: #e2e2e2;
+}
+
+.prdname {
+  color: #333;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.prddura {
+  color: #BDBDBD;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.prdprice {
+  color: #F00;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.prddesc {
+  color: #535353;
+  font-size: 16px;
+  font-weight: 600;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.btn-assign {
+  background-color: #fec20a;
+  color: #4f4f4f;
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.btn-edit {
+  background-color: #70AD47;
+  color: #FFF;
+  font-size: 16px;
+  padding: 6px 20px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.btn-delete {
+  background-color: #DD2527;
+  color: #FFF;
+  font-size: 16px;
+  padding: 6px 8px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.modal-footer {
+  justify-content: normal !important;
+}
+
+.img-icon {
+  border-radius: 50%;
+  width: 100px;
+  background-color: red;
+  padding: 20px;
+  height: 100px;
+}
+
+
+/* GalaxyNote3 / GalaxyNote9 / Galaxy S5 / Galaxy S9/S9+ / Iphone 5/SE / Iphone (6/7/8) / Iphone (6/7/8 Plus)
+ / Iphone X/XS / Iphone XR / Iphone XS Max / LG Optimus L70 / Nexus 5X / Nexus 6P / Pixel 2 / Pixel 2XL */
+@media (min-width: 320px) and (max-width: 480px) {
+  .img-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+}
+
+/* Nexus 7 */
+@media (min-width: 481px) and (max-width: 767px) {
+  .img-icon {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Ipad / Ipad Mini */
+@media (min-width: 768px) and (max-width: 799px) {
+  .img-icon {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Ipad Pro(10.5 Inch) / Nexus 10 */
+@media (min-width: 800px) and (max-width: 1000px) {
+  .img-icon {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Ipad Pro(12.9 Inch) */
+@media (min-width: 1001px) and (max-width: 1024px) {
+  .img-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+}
+
+/* Laptop with HIDPI Screen / Laptop with MDPI Screen / Laptop With Touch  */
+@media (min-width: 1025px) and (max-width: 1280px) {}

@@ -1,0 +1,12 @@
+.extensionnum {
+  background-color: #EBEBEB;
+  font-weight: 600;
+  padding: 12px;
+  max-width: 96px !important;
+}
+
+@media only screen and (max-width: 834px) {
+  .column-margin {
+    margin-bottom: 1rem !important;
+  }
+}

@@ -1,0 +1,56 @@
+.input-custom-control-textarea {
+  background-color: #fcfcfc;
+  border: 1px solid #CCC;
+  border-radius: 3px !important;
+  height: 230px;
+  color: #333;
+}
+
+#productDescription::placeholder {
+  transform: translateY(90px) !important;
+}
+
+.bgi {
+  background: url(/assets/Images/dummyImage.png);
+  background-size: 100% 100%;
+  width: 100%;
+}
+
+.border-secondary {
+  background-color: #EAEBED;
+  border: 1px solid #CCC !important;
+}
+
+.anchor {
+  font-weight: 700;
+  color: #333 !important;
+}
+
+.text-color {
+  color: #FF0040;
+  font-weight: 600;
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 575px) {
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 768px) {
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 1024px) {
+  .mx-5 {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+}

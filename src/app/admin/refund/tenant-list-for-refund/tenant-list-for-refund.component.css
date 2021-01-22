@@ -1,0 +1,35 @@
+.form-inline .form-control {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+}
+
+.form-group {
+  background-color: rgba(0, 0, 0, 0.06);
+  color: black;
+  border: none;
+  border-radius: 25px;
+  margin-bottom: 2px !important;
+}
+
+.searchbox {
+  float: right;
+  margin-top: -40px;
+}
+
+.searchTerm {
+  font-size: 12px;
+  box-shadow: none;
+}
+
+/* responsive styles starts here */
+@media only screen and (max-width: 575px) {
+
+  .searchbox {
+    float: right;
+    margin-top: -52px;
+  }
+
+}
